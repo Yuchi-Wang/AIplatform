@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="88px" height="101px" viewBox="0 0 88 101" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>编组 12</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="p002prompt" transform="translate(-977.000000, -1316.000000)">
+            <g id="编组-16" transform="translate(977.000000, 1314.000000)">
+                <g id="编组-12" transform="translate(2.000000, 0.000000)">
+                    <g stroke-width="1" fill-rule="evenodd" transform="translate(41.500000, 37.000000) rotate(12.000000) translate(-41.500000, -37.000000) translate(7.000000, 7.000000)" id="矩形">
+                        <polygon fill="#2F54EB" transform="translate(19.996148, 20.452659) rotate(4.000000) translate(-19.996148, -20.452659) " points="2.21508714 2.17439288 37.7616093 2.18966044 37.7772088 38.730925 2.2306866 38.7156574"></polygon>
+                        <polygon fill="#D2DBFF" transform="translate(34.430925, 34.489722) rotate(-33.000000) translate(-34.430925, -34.489722) " points="16.6768544 16.3019016 52.2873911 16.2016838 52.1849947 52.6775422 16.5744581 52.7777599"></polygon>
+                        <polygon fill="#2F54EB" transform="translate(52.262382, 20.841407) rotate(-330.000000) translate(-52.262382, -20.841407) " points="40.3797257 8.89729232 64.0385874 9.00374259 64.1450377 32.7855225 40.486176 32.6790722"></polygon>
+                    </g>
+                    <path d="M74.5146314,41 L81,41 C61.5563116,57.4432102 50.6984723,70.3761733 48.4264821,79.7988892 C45.0184968,93.9329631 42.3763361,101 40.5,101 C38.6236639,101 36.1170105,93.9329631 32.9800398,79.7988892 C30.888726,70.3761733 19.8953794,57.4432102 0,41" id="路径" stroke="#3356E5" stroke-width="3" stroke-linecap="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

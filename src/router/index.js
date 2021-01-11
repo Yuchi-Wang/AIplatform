@@ -48,6 +48,18 @@ const routes = [
     name: 'privacyPolicy',
     component: () =>
       import('../views/user/privacyPolicy.vue')
+  },
+  {
+    path: '/abaoProduct',
+    name: 'abaoProduct',
+    component: () =>
+      import('../views/product/abaoProduct.vue')
+  },
+  {
+    path: '/promptProductIntro',
+    name: 'promptProductIntro',
+    component: () =>
+      import('../views/product/promptProductIntro.vue')
   }
 ]
 
