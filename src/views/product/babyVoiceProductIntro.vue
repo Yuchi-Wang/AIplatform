@@ -3,10 +3,10 @@
     <BaseHeader />
     <div class="banner">
       <div>
-        <h3>prompt</h3>
+        <h3>婴语识别</h3>
         <p>
-          Prompt是一款基于人工智能技术，为各行各业的企业和开发者提供的针对文本智能化分析及处理的服务，意在帮助用户高效处理文本数据，
-          实现数字化和智能化转型；应用范围包括：电商、交通、金融、游戏等行业。
+          婴语识别基于新生儿哭声侦测及辨识技术开发，协助新手爸妈于短时间内听懂哭声、了解宝宝的内心在想什么；利用婴儿哭声中的特定声学特征、
+          随着婴儿的成长自动修正哭声模型，再结合机器学习与巨量资料分析技术；并且支持肚子饿、想睡觉、尿布湿、需要安抚等不同哭声模型。
         </p>
         <button>合作咨询</button>
       </div>
@@ -77,18 +77,6 @@ export default {
       { id: 3,
         src: require('../../assets/img/product/prompt/product-characteristic3.svg'),
         title: '文本纠错'
-      },
-      { id: 4,
-        src: require('../../assets/img/product/prompt/product-characteristic4.svg'),
-        title: '词法分析'
-      },
-      { id: 5,
-        src: require('../../assets/img/product/prompt/product-characteristic5.svg'),
-        title: '敏感词识别'
-      },
-      { id: 6,
-        src: require('../../assets/img/product/prompt/product-characteristic6.svg'),
-        title: '关键词提取'
       }
     ]
   }),
