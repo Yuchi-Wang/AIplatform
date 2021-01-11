@@ -60,6 +60,12 @@ const routes = [
     name: 'promptProductIntro',
     component: () =>
       import('../views/product/promptProductIntro.vue')
+  },
+  {
+    path: '/babyVoiceProductIntro',
+    name: 'babyVoiceProductIntro',
+    component: () =>
+      import('../views/product/babyVoiceProductIntro.vue')
   }
 ]
 
