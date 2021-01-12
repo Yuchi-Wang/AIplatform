@@ -66,6 +66,12 @@ const routes = [
     name: 'babyVoiceProductIntro',
     component: () =>
       import('../views/product/babyVoiceProductIntro.vue')
+  },
+  {
+    path: '/solution',
+    name: 'solution',
+    component: () =>
+      import('../views/product/solution.vue')
   }
 ]
 

@@ -10,7 +10,8 @@ import {
   Form,
   FormItem,
   Button,
-  Checkbox
+  Checkbox,
+  Upload
 } from 'element-ui'
 import '@/components/ElementUI'
 
@@ -25,3 +26,4 @@ Vue.use(Menu)
   .use(FormItem)
   .use(Button)
   .use(Checkbox)
+  .use(Upload)
