@@ -13,9 +13,6 @@ const routes = [
   {
     path: '/sdkProductinfo',
     name: 'SdkProductInfo',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import('../views/product/sdkProductInfo.vue')
   },
@@ -72,6 +69,24 @@ const routes = [
     name: 'solution',
     component: () =>
       import('../views/product/solution.vue')
+  },
+  {
+    path: '/businessCoperation',
+    name: 'businessCoperation',
+    component: () =>
+      import('../views/about/businessCoperation.vue')
+  },
+  {
+    path: '/companyInfo',
+    name: 'companyInfo',
+    component: () =>
+      import('../views/about/companyInfo.vue')
+  },
+  {
+    path: '/technicalSupport',
+    name: 'technicalSupport',
+    component: () =>
+      import('../views/about/technicalSupport.vue')
   }
 ]
 

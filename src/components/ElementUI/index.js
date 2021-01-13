@@ -11,7 +11,10 @@ import {
   FormItem,
   Button,
   Checkbox,
-  Upload
+  Upload,
+  Timeline,
+  TimelineItem,
+  Icon
 } from 'element-ui'
 import '@/components/ElementUI'
 
@@ -27,3 +30,6 @@ Vue.use(Menu)
   .use(Button)
   .use(Checkbox)
   .use(Upload)
+  .use(Timeline)
+  .use(TimelineItem)
+  .use(Icon)
