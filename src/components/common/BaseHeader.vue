@@ -7,19 +7,19 @@
         mode="horizontal"
         background-color="transparent"
         text-color="#fff"
-        active-text-color="#ffd04b"
+        active-text-color="#4575FF"
       >
         <el-menu-item index="1">首页</el-menu-item>
-        <el-menu-item index="1">解决方案</el-menu-item>
-        <!-- <el-submenu index="2">
-          <template slot="title">解决方案</template>
-          <el-menu-item index="2-1">方案1</el-menu-item>
-          <el-menu-item index="2-2">方案2</el-menu-item>
-        </el-submenu> -->
+        <el-menu-item index="2">解决方案</el-menu-item>
         <el-menu-item index="3">产品简介</el-menu-item>
         <el-menu-item index="4">SDK</el-menu-item>
         <el-menu-item index="5">开发文档</el-menu-item>
-        <el-menu-item index="6">关于我们</el-menu-item>
+        <el-submenu index="6">
+          <template slot="title">关于我们</template>
+          <el-menu-item index="6-1">公司简介</el-menu-item>
+          <el-menu-item index="6-2">技术支持</el-menu-item>
+          <el-menu-item index="6-2">商务合作</el-menu-item>
+        </el-submenu>
         <el-menu-item index="7">控制台</el-menu-item>
       </el-menu>
     </div>
@@ -59,14 +59,28 @@ export default {
       > li {
         height: 61.49px;
         line-height: 61.49px;
+        background: transparent！;
         width: 14.28%;
         text-align: center;
         /deep/ .el-submenu__title{
           height: 61.49px;
           line-height: 61.49px;
+          &:hover {
+            background: #4575FF!important;
+            color: #fff!important;
+          }
         }
       }
     }
   }
+}
+.el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
+  background: #4575FF!important;
+  color: #fff!important;
+}
+.el-menu--horizontal {
+  /deep/ .el-menu--popup-bottom-start {
+ background: rgba(0, 0, 0, 0.6)!important;
+}
 }
 </style>
