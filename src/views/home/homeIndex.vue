@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <BaseHeader />
     <div class="banner">
       <el-carousel height="675px" class="banner-img">
         <el-carousel-item v-for="item in imgBox" :key="item.id">

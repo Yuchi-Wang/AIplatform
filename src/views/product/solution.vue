@@ -1,6 +1,5 @@
 <template>
   <div class="solution">
-    <BaseHeader />
     <div class="banner">
       <div>
         <h3>语音识别解决方案</h3>

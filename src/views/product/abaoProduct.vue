@@ -1,6 +1,5 @@
 <template>
   <div class="abao-product">
-    <BaseHeader />
     <div class="banner">
       <div>
         <h3>诚龙阿宝</h3>

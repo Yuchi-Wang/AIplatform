@@ -1,6 +1,5 @@
 <template>
   <div class="sdkProductinfo">
-    <BaseHeader />
     <div class="banner">
       <div>
         <h3>智慧金融SDK</h3>

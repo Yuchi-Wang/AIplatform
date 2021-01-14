@@ -1,6 +1,5 @@
 <template>
   <div class="prompt-product">
-    <BaseHeader />
     <div class="banner">
       <div>
         <h3>prompt</h3>

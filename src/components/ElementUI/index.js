@@ -14,7 +14,9 @@ import {
   Upload,
   Timeline,
   TimelineItem,
-  Icon
+  Icon,
+  Table,
+  TableColumn
 } from 'element-ui'
 import '@/components/ElementUI'
 
@@ -33,3 +35,5 @@ Vue.use(Menu)
   .use(Timeline)
   .use(TimelineItem)
   .use(Icon)
+  .use(Table)
+  .use(TableColumn)

@@ -1,39 +1,35 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
-    <!-- <sidebar class="sidebar-container" /> -->
-    <div class="main-container">
-      <!-- <navbar />
-      <tags-view />
-      <app-main /> -->
+  <div class="app-wrapper">
+    <BaseHeader />
+    <div class="main thin-scroll">
+      <transition name="el-fade-in" mode="out-in">
+        <router-view />
+      </transition>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'Layout',
-  components: {}
-}
-</script>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
-  .app-wrapper {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    &.mobile.openSidebar{
-      position: fixed;
-      top: 0;
+  data() {
+    return {
+      mapWidth: null
     }
   }
-  .drawer-bg {
-    background: #000;
-    opacity: 0.3;
-    width: 100%;
-    top: 0;
-    height: 100%;
+}
+</script>
+<style scoped lang="scss">
+.app-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .main {
     position: absolute;
-    z-index: 999;
+    top: 0;
+    bottom: 0;
+    transition: top 0.6s;
+    overflow-y: auto;
+    width: 100%;
   }
+}
 </style>

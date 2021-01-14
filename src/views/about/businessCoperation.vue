@@ -1,6 +1,5 @@
 <template>
   <div class="technical-support">
-    <BaseHeader />
     <div class="banner" />
     <div class="main">
       <h3>商务合作</h3>
