@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Layout from '@/components/layout/layout'
-import fileLayout from '@/components/layout/fileLayout'
+import Layout from '@/components/layout/defaultLayout/Layout'
+import FileLayout from '@/components/layout/fileLayout/FileLayout'
+import ConsoleLayout from '@/components/layout/consoleLayout/ConsoleLayout'
 const _import = file => () => import('@/views/' + file + '.vue')
 
 Vue.use(VueRouter)
@@ -137,7 +138,7 @@ const user = {
 // 导读
 const ReadingGuide = {
   path: '/file',
-  component: fileLayout,
+  component: FileLayout,
   hidden: false,
   redirect: '/file/platformInfo',
   name: 'ReadingGuide',
@@ -174,18 +175,18 @@ const ReadingGuide = {
 
 // 婴儿哭泣识别
 const babyVoiceTechDoucment = {
-  path: '/file',
-  component: fileLayout,
+  path: '/file/babyVoiceTechDoucment',
+  component: FileLayout,
   hidden: false,
   singleMenu: true,
   redirect: '/file/babyVoiceTechDoucment',
   name: 'babyVoiceTechDoucment',
   meta: {
-    title: '婴儿哭泣识别  '
+    title: '婴儿哭泣识别'
   },
   children: [
     {
-      path: 'babyVoiceTechDoucment',
+      path: '',
       name: 'babyVoiceTechDoucment',
       component: _import('file/babyVoiceTechDoucment'),
       meta: {
@@ -196,18 +197,18 @@ const babyVoiceTechDoucment = {
 }
 // 成龙阿宝
 const clabTechDoucment = {
-  path: '/file',
-  component: fileLayout,
+  path: '/file/clabTechDoucment',
+  component: FileLayout,
   hidden: false,
   singleMenu: true,
   redirect: '/file/clabTechDoucment',
   name: 'clabTechDoucment',
   meta: {
-    title: '成龙阿宝  '
+    title: '成龙阿宝'
   },
   children: [
     {
-      path: 'clabTechDoucment',
+      path: '',
       name: 'clabTechDoucment',
       component: _import('file/clabTechDoucment'),
       meta: {
@@ -218,8 +219,8 @@ const clabTechDoucment = {
 }
 // prompt
 const promptTechDoucment = {
-  path: '/file',
-  component: fileLayout,
+  path: '/file/promptTechDoucment',
+  component: FileLayout,
   hidden: false,
   singleMenu: true,
   redirect: '/file/promptTechDoucment',
@@ -229,11 +230,132 @@ const promptTechDoucment = {
   },
   children: [
     {
-      path: 'promptTechDoucment',
+      path: '',
       name: 'promptTechDoucment',
       component: _import('file/promptTechDoucment'),
       meta: {
         title: 'prompt'
+      }
+    }
+  ]
+}
+
+// 控制台模块
+const account = {
+  path: '/console',
+  component: ConsoleLayout,
+  hidden: false,
+  singleMenu: true,
+  redirect: '/console/accountManage',
+  name: 'accountManage',
+  meta: {
+    title: '账号管理'
+  },
+  children: [
+    {
+      path: 'accountManage',
+      name: 'accountManage',
+      component: _import('console/accountManage'),
+      meta: {
+        title: '账号管理'
+      }
+    }
+  ]
+}
+
+// 应用管理
+const appManage = {
+  path: '/console/appManage',
+  component: ConsoleLayout,
+  hidden: false,
+  redirect: '/console/appManage/apiManage',
+  name: 'ReadingGuide',
+  meta: {
+    title: '应用管理'
+  },
+  children: [
+    {
+      path: 'apiManage',
+      name: 'apiManage',
+      component: _import('console/apiManage'),
+      meta: {
+        title: 'api'
+      }
+    },
+    {
+      path: 'promptConsoleList',
+      name: 'promptConsoleList',
+      component: _import('console/promptConsoleList'),
+      meta: {
+        title: 'prompt'
+      }
+    },
+    {
+      path: 'clabConsoleList',
+      name: 'clabConsoleList',
+      component: _import('console/clabConsoleList'),
+      meta: {
+        title: '诚龙阿宝'
+      }
+    },
+    {
+      path: 'babyVocieConsoleList',
+      name: 'babyVocieConsoleList',
+      component: _import('console/babyVocieConsoleList'),
+      meta: {
+        title: '婴语识别'
+      }
+    }
+  ]
+}
+
+// SDk资源库
+const sdkDiction = {
+  path: '/console',
+  component: ConsoleLayout,
+  hidden: false,
+  redirect: '/console/sdkDiction',
+  name: 'SDK',
+  meta: {
+    title: 'SDK'
+  },
+  children: [
+    {
+      path: 'sdkDiction',
+      name: 'sdkDiction',
+      component: _import('console/sdkDiction'),
+      meta: {
+        title: 'SDK资源库'
+      }
+    }
+  ]
+}
+
+const noticeList = {
+  path: '/console/noticeManage',
+  component: ConsoleLayout,
+  hidden: false,
+  redirect: '/console/noticeManage/noticeList',
+  name: 'noticeList',
+  meta: {
+    title: '通知管理'
+  },
+  children: [
+    {
+      path: 'noticeList',
+      name: 'noticeList',
+      component: _import('console/noticeList'),
+      meta: {
+        title: '通知列表'
+      }
+    },
+    {
+      path: 'noticeDetail',
+      name: 'noticeDetail',
+      hidden: true,
+      component: _import('console/noticeDetail'),
+      meta: {
+        title: '通知详情'
       }
     }
   ]
@@ -244,6 +366,7 @@ VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
 
+// 总路由
 export const constRouter = [
   login,
   Home,
@@ -256,7 +379,27 @@ export const constRouter = [
   ReadingGuide,
   babyVoiceTechDoucment,
   clabTechDoucment,
+  promptTechDoucment,
+  account,
+  appManage,
+  sdkDiction,
+  noticeList
+]
+
+// 文档模块路由
+export const fileRouter = [
+  ReadingGuide,
+  babyVoiceTechDoucment,
+  clabTechDoucment,
   promptTechDoucment
+]
+
+// 控制台路由
+export const consoleRouter = [
+  account,
+  appManage,
+  sdkDiction,
+  noticeList
 ]
 
 const createRouter = () =>

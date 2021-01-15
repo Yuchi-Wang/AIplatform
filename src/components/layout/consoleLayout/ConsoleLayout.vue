@@ -2,17 +2,21 @@
   <div class="app-wrapper">
     <BaseHeader />
     <div class="main thin-scroll">
-      <Sidebar />
+      <Sidebar :menu-router="consoleRouter" />
       <section class="content-container">
         <div class="content-wrapper">
           <div class="content-header">
-            <h3>{{ header }}</h3>
+            <h3>
+              <span>控制台</span> > {{ header }}
+            </h3>
           </div>
-          <transition name="el-fade-in" mode="out-in">
-            <keep-alive>
-              <router-view />
-            </keep-alive>
-          </transition>
+          <div class="content-box">
+            <transition name="el-fade-in" mode="out-in">
+              <keep-alive>
+                <router-view />
+              </keep-alive>
+            </transition>
+          </div>
         </div>
       </section>
     </div>
@@ -20,12 +24,14 @@
 </template>
 
 <script>
-import Sidebar from '@/components/layout/Sidebar'
+import Sidebar from '../commonSidebar/Siderbar'
+import { consoleRouter } from '@/router'
 export default {
   components: { Sidebar },
   data() {
     return {
-      mapWidth: null
+      mapWidth: null,
+      consoleRouter
     }
   },
   computed: {
@@ -41,7 +47,7 @@ export default {
   width: 100%;
   font-size: 13px;
   height: 100%;
-  background: #fff;
+  background: #F0F5FF;
   .main {
     position: absolute;
     top: 61.49px;
@@ -53,20 +59,28 @@ export default {
     .content-container {
       transition: margin-left 0.28s ease-out;
       margin-left: 220px;
-      padding: 25px 0 0 40px;
       height: 100%;
       box-sizing: border-box;
-      width: 1200px;
       .content-header {
         h3 {
-          font-size: 23px;
+          height: 40px;
+          font-size: 14px;
           font-weight: 600;
           color: #000000;
-          line-height: 33px;
-          padding-bottom: 10px;
-          border-bottom: 1px solid #E0E0E0;
-          margin-bottom: 33px;
+          line-height: 40px;
+          background: #fff;
+          margin-top: 15px;
+          padding-left: 25px;
+          span {
+            color: #344DFF;
+          }
         }
+      }
+      .content-box {
+        margin: 10px;
+        max-width: 1710px;
+        background: #fff;
+        border-radius: 4px;
       }
     }
     .sidebar-container {

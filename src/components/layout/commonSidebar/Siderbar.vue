@@ -9,11 +9,8 @@
       unique-opened
       @select="selectMenuItem"
     >
-      <template v-for="item in constRouter">
-        <div
-          v-if="!item.hidden && item.children"
-          :key="item.name"
-        >
+      <template v-for="item in menuRouter">
+        <div :key="item.name">
           <el-submenu
             v-if="!item.singleMenu"
             :key="item.name"
@@ -49,11 +46,15 @@
   </div>
 </template>
 <script>
-import { constRouter } from '@/router'
 export default {
+  props: {
+    menuRouter: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {
-      constRouter,
       isNest: true
     }
   },

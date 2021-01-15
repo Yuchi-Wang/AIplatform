@@ -16,7 +16,13 @@ import {
   TimelineItem,
   Icon,
   Table,
-  TableColumn
+  TableColumn,
+  Tabs,
+  TabPane,
+  Row,
+  Col,
+  Select,
+  Option
 } from 'element-ui'
 import '@/components/ElementUI'
 
@@ -37,3 +43,9 @@ Vue.use(Menu)
   .use(Icon)
   .use(Table)
   .use(TableColumn)
+  .use(Tabs)
+  .use(TabPane)
+  .use(Row)
+  .use(Col)
+  .use(Select)
+  .use(Option)
