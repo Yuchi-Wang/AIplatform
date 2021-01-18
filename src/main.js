@@ -3,12 +3,12 @@ import App from './App.vue'
 import router from './router'
 
 // 引入全局组件
-import '../src/components/common'
-import '../src/components/ElementUI'
-import 'element-ui/lib/theme-chalk/index.css'
+import '@/components/Common'
+// 引入自定义配置的elementUI
+import '@/components/ElementUI'
 
 //  初始化CSS
-import '../src/assets/css/reset.css'
+import '@/assets/css/reset.css'
 
 Vue.config.productionTip = false
 

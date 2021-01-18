@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Sidebar from '../commonSidebar/Siderbar'
+import Sidebar from '../CommonSidebar'
 import { fileRouter } from '@/router'
 export default {
   components: { Sidebar },

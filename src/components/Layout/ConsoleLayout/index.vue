@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Sidebar from '../commonSidebar/Siderbar'
+import Sidebar from '../CommonSidebar'
 import { consoleRouter } from '@/router'
 export default {
   components: { Sidebar },

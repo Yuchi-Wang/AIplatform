@@ -32,10 +32,8 @@
 </template>
 
 <script>
-import BaseFooter from '../../components/common/BaseFooter.vue'
 export default {
   name: 'TechnicalSupport',
-  components: { BaseFooter },
   data: () => ({
     supportForm: {
       userName: '',

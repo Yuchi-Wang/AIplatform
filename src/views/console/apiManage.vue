@@ -1,6 +1,6 @@
 <template>
   <div class="clab-console">
-    <el-button type="primary" size="small">新建API Key</el-button>
+    <el-button type="primary" size="small" @click="createApi('newApi')">新建API Key</el-button>
     <div class="api-key">
       <h4>API Key</h4>
       <el-table :data="apiData" stripe border style="width: 100%" class="table-class">
@@ -55,6 +55,37 @@
         <el-table-column prop="remainingTimes" label="剩余次数" />
       </el-table>
     </div>
+    <!-- 创建api -->
+    <el-dialog :title="ApiTitle" :visible.sync="createApiFormShow" width="400px">
+      <el-form ref="form" :model="createApiForm" label-width="80px">
+        <el-form-item label="应用名称">
+          <el-select v-if="checkApi" v-model="createApiForm.name" placeholder="请选择应用名称">
+            <el-option label="应用1" value="1" />
+            <el-option label="应用2" value="2" />
+          </el-select>
+          <el-input v-else v-model="createApiForm.name" disabled style="width:221px" />
+        </el-form-item>
+        <el-form-item label="应用分类">
+          <el-select v-if="checkApi" v-model="createApiForm.class" placeholder="请选择应用分类">
+            <el-option label="分类1" value="1" />
+            <el-option label="分类2" value="2" />
+          </el-select>
+          <el-input v-else v-model="createApiForm.class" disabled style="width:221px" />
+        </el-form-item>
+        <el-form-item label="应用平台">
+          <el-select v-if="checkApi" v-model="createApiForm.platform" placeholder="请选择应用平台">
+            <el-option label="平台1" value="1" />
+            <el-option label="平台2" value="2" />
+          </el-select>
+          <el-input v-else v-model="createApiForm.platform" disabled style="width:221px" />
+        </el-form-item>
+        <el-form-item>
+          <el-button v-if="checkApi" style="width:221px" type="primary" @click="submitForm('ruleForm')">创建</el-button>
+          <el-button v-if="!checkApi" style="width:221px" @click="editApi">修改</el-button>
+          <el-button v-if="!checkApi" type="danger" class="delete-button" @click="deleteApi">删除</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 
@@ -99,11 +130,34 @@ export default {
           value: '3',
           label: '3小时'
         }
-      ]
+      ],
+      createApiFormShow: false,
+      createApiForm: {
+        name: '',
+        class: '',
+        platform: ''
+      },
+      ApiTitle: '',
+      checkApi: true
     }
   },
   methods: {
-    operation(row) {}
+    operation(row) {
+      this.ApiTitle = '查看API Key'
+      this.createApiFormShow = true
+      this.checkApi = false
+    },
+    createApi(vaule) {
+      this.ApiTitle = '创建API Key'
+      this.createApiFormShow = true
+      this.checkApi = true
+    },
+    editApi() {
+      this.ApiTitle = '编辑API Key'
+      this.checkApi = true
+    },
+    deleteApi() {},
+    submitForm(form) {}
   }
 }
 </script>
@@ -161,6 +215,10 @@ export default {
       color: #000000;
       line-height: 15px;
     }
+  }
+  .delete-button {
+    margin: 18px 0 0 0;
+    width: 221px;
   }
 }
 </style>

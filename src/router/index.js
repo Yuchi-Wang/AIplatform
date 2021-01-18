@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Layout from '@/components/layout/defaultLayout/Layout'
-import FileLayout from '@/components/layout/fileLayout/FileLayout'
-import ConsoleLayout from '@/components/layout/consoleLayout/ConsoleLayout'
+import Layout from '@/components/Layout/DefaultLayout'
+import FileLayout from '@/components/Layout/FileLayout'
+import ConsoleLayout from '@/components/Layout/ConsoleLayout'
 const _import = file => () => import('@/views/' + file + '.vue')
 
 Vue.use(VueRouter)

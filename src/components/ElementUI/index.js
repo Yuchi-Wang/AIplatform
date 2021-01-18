@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import 'element-ui/lib/theme-chalk/index.css'
 import {
   Menu,
   Submenu,
@@ -22,7 +23,10 @@ import {
   Row,
   Col,
   Select,
-  Option
+  Option,
+  Dialog,
+  Pagination,
+  MessageBox
 } from 'element-ui'
 import '@/components/ElementUI'
 
@@ -49,3 +53,8 @@ Vue.use(Menu)
   .use(Col)
   .use(Select)
   .use(Option)
+  .use(Dialog)
+  .use(Pagination)
+  .use(MessageBox)
+
+Vue.prototype.$confirm = MessageBox.confirm
