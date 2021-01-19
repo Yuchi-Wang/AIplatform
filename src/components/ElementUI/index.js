@@ -1,60 +1,63 @@
-import Vue from 'vue'
-import 'element-ui/lib/theme-chalk/index.css'
 import {
+  Pagination,
+  Dialog,
   Menu,
   Submenu,
   MenuItem,
-  Carousel,
-  CarouselItem,
   Input,
-  Link,
-  Form,
-  FormItem,
-  Button,
   Checkbox,
-  Upload,
-  Timeline,
-  TimelineItem,
-  Icon,
-  Table,
-  TableColumn,
-  Tabs,
-  TabPane,
-  Row,
-  Col,
   Select,
   Option,
-  Dialog,
-  Pagination,
-  MessageBox
+  Button,
+  Timeline,
+  TimelineItem,
+  Table,
+  TableColumn,
+  Form,
+  FormItem,
+  Tabs,
+  TabPane,
+  Icon,
+  Row,
+  Col,
+  Upload,
+  Carousel,
+  CarouselItem,
+  Link,
+  MessageBox,
+  Message
 } from 'element-ui'
-import '@/components/ElementUI'
+const CustomElement = {
+  install: function(Vue) {
+    Vue.use(Pagination)
+      .use(Dialog)
+      .use(Menu)
+      .use(Submenu)
+      .use(MenuItem)
+      .use(Input)
+      .use(Checkbox)
+      .use(Select)
+      .use(Option)
+      .use(Button)
+      .use(Table)
+      .use(TableColumn)
+      .use(Form)
+      .use(FormItem)
+      .use(Tabs)
+      .use(TabPane)
+      .use(Icon)
+      .use(Row)
+      .use(Col)
+      .use(Upload)
+      .use(Carousel)
+      .use(CarouselItem)
+      .use(Link)
+      .use(Timeline)
+      .use(TimelineItem)
+    Vue.prototype.$message = Message
+    Vue.prototype.$confirm = MessageBox.confirm
+  }
+}
 
-Vue.use(Menu)
-  .use(Submenu)
-  .use(MenuItem)
-  .use(Carousel)
-  .use(CarouselItem)
-  .use(Input)
-  .use(Link)
-  .use(Form)
-  .use(FormItem)
-  .use(Button)
-  .use(Checkbox)
-  .use(Upload)
-  .use(Timeline)
-  .use(TimelineItem)
-  .use(Icon)
-  .use(Table)
-  .use(TableColumn)
-  .use(Tabs)
-  .use(TabPane)
-  .use(Row)
-  .use(Col)
-  .use(Select)
-  .use(Option)
-  .use(Dialog)
-  .use(Pagination)
-  .use(MessageBox)
+export default CustomElement
 
-Vue.prototype.$confirm = MessageBox.confirm
