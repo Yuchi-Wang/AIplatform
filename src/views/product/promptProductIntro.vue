@@ -7,7 +7,7 @@
           Prompt是一款基于人工智能技术，为各行各业的企业和开发者提供的针对文本智能化分析及处理的服务，意在帮助用户高效处理文本数据，
           实现数字化和智能化转型；应用范围包括：电商、交通、金融、游戏等行业。
         </p>
-        <button>合作咨询</button>
+        <button @click="coperation">合作咨询</button>
       </div>
     </div>
     <div class="main">
@@ -92,7 +92,11 @@ export default {
     ]
   }),
   mounted() {},
-  methods: {}
+  methods: {
+    coperation() {
+      this.$router.push('/about/businessCoperation')
+    }
+  }
 }
 </script>
 

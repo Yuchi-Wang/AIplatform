@@ -2,14 +2,13 @@
   <div class="sdk-diction">
     <el-tabs v-model="activeName" type="border-card" @tab-click="handleClick">
       <el-tab-pane label="API" name="first">
-        <el-row :gutter="20">
-          <el-col v-for="item in sdkList" :key="item.id" :span="6">
-            <div>
-              <p>{{ item.text }}</p>
-              <h5>API文档</h5>
-            </div>
-          </el-col>
-        </el-row>
+        <el-checkbox-group v-model="checkList">
+          <el-checkbox v-for="item in sdkList" :key="item.id" :label="item.id">
+            <span>{{ item.title }}</span>
+            <p>{{ item.text }}</p>
+          </el-checkbox>
+        </el-checkbox-group>
+        <el-button type="primary">下载</el-button>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -21,22 +20,47 @@ export default {
   data() {
     return {
       activeName: 'first',
+      checkList: [],
       sdkList: [
         {
           id: 1,
-          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+          title: '模糊匹配',
+          text: '人脸81关键点，人脸106关键点'
         },
         {
           id: 2,
-          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+          title: '模糊匹配1',
+          text: '人脸81关键点，人脸106关键点'
         },
         {
           id: 3,
-          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+          title: '模糊匹配2',
+          text: '人脸81关键点，人脸106关键点'
         },
         {
           id: 4,
-          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+          title: '模糊匹配3',
+          text: '人脸81关键点，人脸106关键点'
+        },
+        {
+          id: 5,
+          title: '模糊匹配4',
+          text: '人脸81关键点，人脸106关键点'
+        },
+        {
+          id: 6,
+          title: '模糊匹配5',
+          text: '人脸81关键点，人脸106关键点'
+        },
+        {
+          id: 7,
+          title: '模糊匹配6',
+          text: '人脸81关键点，人脸106关键点'
+        },
+        {
+          id: 8,
+          title: '模糊匹配7',
+          text: '人脸81关键点，人脸106关键点'
         }
       ]
     }
@@ -50,28 +74,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.el-row {
+.sdk-diction {
   width: 100%;
-  .el-col {
-    div {
-      border-radius: 4px;
-      border: 1px solid #E4E4E4;
-      padding: 19px;
-      p {
-      font-size: 12px;
-      font-weight: 400;
-      color: #7A7A7A;
-      line-height: 15px;
-      margin-bottom: 33px;
-      }
-      h5 {
-        height: 15px;
-        font-size: 11px;
-        color: #2F54EB;
-        line-height: 15px;
-        cursor: pointer;
-      }
-    }
+  .el-tabs {
+   .el-checkbox-group {
+     .el-checkbox {
+       width: 20%;
+       padding-bottom: 25px;
+       margin: 0 0 20px 0;
+       span {
+          color: #344DFF;
+       }
+       p {
+         position: absolute;
+         margin-top: 10px;
+         color: #999!important;
+         line-height: 15px;
+       }
+     }
+   }
+   .el-button {
+     margin-top: 50px;
+   }
   }
 }
 </style>

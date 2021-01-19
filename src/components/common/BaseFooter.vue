@@ -9,7 +9,7 @@
           <p>商务合作：xxxxxx@xxx.com</p>
         </li>
         <li class="qr-code-box">
-          <img src="../../assets/img/qrCode.png">
+          <img src="@/assets/img/common/qrCode.png">
           <p>关注公众号</p>
         </li>
       </ul>

@@ -7,7 +7,7 @@
           针对金融领域，进行声学模型以及语言模型的数据训练，提升准确率，可用于智能会议、智能质检分析等场景。 将文字信息转化为声音信息。
           合成音在音色、自然度等方面的表现均接近甚至超过了人声。可用于智能客服、智能外呼等方案。
         </p>
-        <button>合作咨询</button>
+        <button @click="coperation">合作咨询</button>
       </div>
     </div>
     <div class="main">
@@ -56,7 +56,11 @@ export default {
   name: 'SdkProductInfo',
   data: () => ({}),
   mounted() {},
-  methods: {}
+  methods: {
+    coperation() {
+      this.$router.push('/about/businessCoperation')
+    }
+  }
 }
 </script>
 
@@ -153,7 +157,7 @@ export default {
         width: 33.33%;
         display: inline-block;
         height: 450px;
-        background: url('../../assets/img/medical.png') no-repeat;
+        background: url('../../assets/img/home/medical.png') no-repeat;
         text-align: center;
         background-size: cover;
         .main-title {
@@ -169,10 +173,10 @@ export default {
         }
       }
       .office {
-        background: url('../../assets/img/office.png') no-repeat;
+        background: url('../../assets/img/home/office.png') no-repeat;
       }
       .edu {
-        background: url('../../assets/img/edu.png') no-repeat;
+        background: url('../../assets/img/home/edu.png') no-repeat;
       }
     }
   }

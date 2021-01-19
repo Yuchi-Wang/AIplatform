@@ -63,7 +63,7 @@
     </div>
     <div class="cooperation">
       <div>
-        <button>合作洽谈</button>
+        <button @click="coperation">合作洽谈</button>
         <p>联系方式：021-2651625</p>
       </div>
     </div>
@@ -76,15 +76,19 @@ export default {
   name: 'Home',
   data: () => ({
     imgBox: [
-      { id: 1, src: require('../../assets/img/true.jpg') },
-      { id: 2, src: require('../../assets/img/true.jpg') },
-      { id: 3, src: require('../../assets/img/true.jpg') }
+      { id: 1, src: require('@/assets/img/home/banner.jpg') },
+      { id: 2, src: require('@/assets/img/home/banner.jpg') },
+      { id: 3, src: require('@/assets/img/home/banner.jpg') }
     ],
     bannerHeight: 0,
     imgHeight: 0
   }),
   mounted() {},
-  methods: {}
+  methods: {
+    coperation() {
+      this.$router.push('/about/businessCoperation')
+    }
+  }
 }
 </script>
 <style scoped lang="scss">
@@ -97,7 +101,7 @@ export default {
   .product-info {
     width: 100%;
     height: 625px;
-    background: url('../../assets/img/default-productInfo.jpg') no-repeat;
+    background: url('../../assets/img/home/default-productInfo.jpg') no-repeat;
     background-size: cover;
     padding-top: 54px;
     h3 {
@@ -187,7 +191,7 @@ export default {
   .application-scenarios {
     width: 100%;
     height: 647px;
-    background: url('../../assets/img/default-productInfo.jpg') no-repeat;
+    background: url('../../assets/img/home/default-productInfo.jpg') no-repeat;
     background-size: cover;
     padding-top: 42px;
     h3 {
@@ -219,7 +223,7 @@ export default {
         width: 33.33%;
         display: inline-block;
         height: 450px;
-        background: url('../../assets/img/medical.png') no-repeat;
+        background: url('../../assets/img/home/medical.png') no-repeat;
         text-align: center;
         background-size: cover;
         .main-title {
@@ -235,10 +239,10 @@ export default {
         }
       }
       .office {
-        background: url('../../assets/img/office.png') no-repeat;
+        background: url('../../assets/img/home/office.png') no-repeat;
       }
       .edu {
-        background: url('../../assets/img/edu.png') no-repeat;
+        background: url('../../assets/img/home/edu.png') no-repeat;
       }
     }
   }

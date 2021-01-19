@@ -25,14 +25,17 @@ const register = {
 
 // 主页
 const Home = {
-  path: '',
+  path: '/',
   component: Layout,
-  hidden: true,
+  singleMenu: true,
+  meta: {
+    title: '首页'
+  },
   children: [
     {
       path: '',
       name: 'Home',
-      component: _import('home/homeIndex')
+      component: _import('home/default')
     }
   ]
 }
@@ -49,7 +52,10 @@ const forgetPwd = {
 const solution = {
   path: '/solution',
   component: Layout,
-  hidden: true,
+  singleMenu: true,
+  meta: {
+    title: '解决方案'
+  },
   children: [
     {
       path: '/solution',
@@ -63,28 +69,85 @@ const solution = {
 const product = {
   path: '/product',
   component: Layout,
-  hidden: true,
-  redirect: '/product/sdkProductinfo',
+  singleMenu: false,
+  redirect: '/product/abaoProduct',
+  meta: {
+    title: '产品简介'
+  },
   children: [
-    {
-      path: 'sdkProductinfo',
-      name: 'SdkProductInfo',
-      component: _import('product/sdkProductInfo')
-    },
     {
       path: 'abaoProduct',
       name: 'abaoProduct',
-      component: _import('product/abaoProduct')
+      component: _import('product/abaoProduct'),
+      meta: {
+        title: '诚龙阿宝'
+      }
     },
     {
       path: 'promptProductIntro',
       name: 'promptProductIntro',
-      component: _import('product/promptProductIntro')
+      component: _import('product/promptProductIntro'),
+      meta: {
+        title: 'prompt'
+      }
     },
     {
       path: 'babyVoiceProductIntro',
       name: 'babyVoiceProductIntro',
-      component: _import('product/babyVoiceProductIntro')
+      component: _import('product/babyVoiceProductIntro'),
+      meta: {
+        title: '婴儿哭声'
+      }
+    }
+  ]
+}
+
+// sdk产品
+const sdkProductinfo = {
+  path: '/sdkProductinfo',
+  component: Layout,
+  singleMenu: true,
+  meta: {
+    title: 'SDK'
+  },
+  children: [
+    {
+      path: '/sdkProductinfo',
+      name: 'sdkProductinfo',
+      component: _import('product/sdkProductInfo')
+    }
+  ]
+}
+// 顶部菜单控制台
+const navConsole = {
+  path: '/console',
+  redirect: '/console/accountManage',
+  component: Layout,
+  singleMenu: true,
+  meta: {
+    title: '控制台'
+  },
+  children: [
+    {
+      path: 'accountManage',
+      name: 'accountManage'
+    }
+  ]
+}
+
+//  顶部菜单文档
+const navFile = {
+  path: '/file',
+  redirect: '/file/platformInfo',
+  singleMenu: true,
+  component: Layout,
+  meta: {
+    title: '开发文档'
+  },
+  children: [
+    {
+      path: 'platformInfo',
+      name: 'platformInfo'
     }
   ]
 }
@@ -93,23 +156,35 @@ const product = {
 const about = {
   path: '/about',
   component: Layout,
-  hidden: true,
+  singleMenu: false,
   redirect: '/about/companyInfo',
+  meta: {
+    title: '关于我们'
+  },
   children: [
     {
       path: 'companyInfo',
       name: 'companyInfo',
-      component: _import('about/companyInfo')
+      component: _import('about/companyInfo'),
+      meta: {
+        title: '公司简介'
+      }
     },
     {
       path: 'businessCoperation',
       name: 'businessCoperation',
-      component: _import('about/businessCoperation')
+      component: _import('about/businessCoperation'),
+      meta: {
+        title: '商务合作'
+      }
     },
     {
       path: 'technicalSupport',
       name: 'technicalSupport',
-      component: _import('about/technicalSupport')
+      component: _import('about/technicalSupport'),
+      meta: {
+        title: '技术支持'
+      }
     }
   ]
 }
@@ -119,7 +194,7 @@ const user = {
   path: '/user',
   component: Layout,
   hidden: true,
-  redirect: '/user/serviceagreement',
+  redirect: '/user/privacyPolicy',
   children: [
     {
       path: 'serviceagreement',
@@ -180,7 +255,6 @@ const babyVoiceTechDoucment = {
   hidden: false,
   singleMenu: true,
   redirect: '/file/babyVoiceTechDoucment',
-  name: 'babyVoiceTechDoucment',
   meta: {
     title: '婴儿哭泣识别'
   },
@@ -202,7 +276,6 @@ const clabTechDoucment = {
   hidden: false,
   singleMenu: true,
   redirect: '/file/clabTechDoucment',
-  name: 'clabTechDoucment',
   meta: {
     title: '成龙阿宝'
   },
@@ -224,7 +297,6 @@ const promptTechDoucment = {
   hidden: false,
   singleMenu: true,
   redirect: '/file/promptTechDoucment',
-  name: 'promptTechDoucment',
   meta: {
     title: 'prompt'
   },
@@ -247,7 +319,6 @@ const account = {
   hidden: false,
   singleMenu: true,
   redirect: '/console/accountManage',
-  name: 'accountManage',
   meta: {
     title: '账号管理'
   },
@@ -269,7 +340,7 @@ const appManage = {
   component: ConsoleLayout,
   hidden: false,
   redirect: '/console/appManage/apiManage',
-  name: 'ReadingGuide',
+  name: 'appManage',
   meta: {
     title: '应用管理'
   },
@@ -336,7 +407,7 @@ const noticeList = {
   component: ConsoleLayout,
   hidden: false,
   redirect: '/console/noticeManage/noticeList',
-  name: 'noticeList',
+  name: 'noticeManage',
   meta: {
     title: '通知管理'
   },
@@ -383,7 +454,10 @@ export const constRouter = [
   account,
   appManage,
   sdkDiction,
-  noticeList
+  noticeList,
+  sdkProductinfo,
+  navConsole,
+  navFile
 ]
 
 // 文档模块路由
@@ -400,6 +474,17 @@ export const consoleRouter = [
   appManage,
   sdkDiction,
   noticeList
+]
+
+// 顶部菜单路由
+export const navRouter = [
+  Home,
+  solution,
+  product,
+  sdkProductinfo,
+  navFile,
+  about,
+  navConsole
 ]
 
 const createRouter = () =>

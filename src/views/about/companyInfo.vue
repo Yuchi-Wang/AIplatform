@@ -3,7 +3,7 @@
     <div class="banner">
       <div>
         <h3>公司简介</h3>
-        <button>合作咨询</button>
+        <button @click="coperation">合作咨询</button>
       </div>
     </div>
     <div class="main">
@@ -65,7 +65,11 @@ export default {
     }]
   }),
   mounted() {},
-  methods: {}
+  methods: {
+    coperation() {
+      this.$router.push('/about/businessCoperation')
+    }
+  }
 }
 </script>
 

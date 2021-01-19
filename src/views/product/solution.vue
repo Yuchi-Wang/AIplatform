@@ -9,7 +9,7 @@
         <p>
           除中文普通话和英文外，支持12个语种，25种方言，提供四川话、广东话与普通话的混合识别
         </p>
-        <button>合作咨询</button>
+        <button @click="coperation">合作咨询</button>
       </div>
     </div>
     <div class="quick-nav">
@@ -79,13 +79,13 @@
             <p>对接</p>
           </div>
         </div>
-        <button>相关文档</button>
+        <button @click="checkFile">相关文档</button>
       </div>
     </div>
     <!-- 1880 -->
     <div class="cooperation">
       <div>
-        <button>合作洽谈</button>
+        <button @click="coperation">合作洽谈</button>
         <p>联系方式：021-2651625</p>
       </div>
     </div>
@@ -124,6 +124,12 @@ export default {
     active: 1
   }),
   methods: {
+    coperation() {
+      this.$router.push('/about/businessCoperation')
+    },
+    checkFile() {
+      this.$router.push('/file/platformInfo')
+    },
     jumpTo(position) {
       window.scrollTo({ top: position, left: 0, behavior: 'smooth' })
     }

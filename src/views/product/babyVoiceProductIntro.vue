@@ -7,7 +7,7 @@
           婴语识别基于新生儿哭声侦测及辨识技术开发，协助新手爸妈于短时间内听懂哭声、了解宝宝的内心在想什么；利用婴儿哭声中的特定声学特征、
           随着婴儿的成长自动修正哭声模型，再结合机器学习与巨量资料分析技术；并且支持肚子饿、想睡觉、尿布湿、需要安抚等不同哭声模型。
         </p>
-        <button>合作咨询</button>
+        <button @click="coperation">合作咨询</button>
       </div>
     </div>
     <div class="main">
@@ -123,6 +123,9 @@ export default {
   mounted() {},
   methods: {
     handleRemove() {},
+    coperation() {
+      this.$router.push('/about/businessCoperation')
+    },
     handlePreview(file) {
       console.log(file)
     },

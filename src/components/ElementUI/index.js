@@ -6,6 +6,7 @@ import {
   MenuItem,
   Input,
   Checkbox,
+  CheckboxGroup,
   Select,
   Option,
   Button,
@@ -36,6 +37,7 @@ const CustomElement = {
       .use(MenuItem)
       .use(Input)
       .use(Checkbox)
+      .use(CheckboxGroup)
       .use(Select)
       .use(Option)
       .use(Button)

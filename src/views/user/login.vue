@@ -1,49 +1,51 @@
 <template>
   <div class="login">
-    <h3>胜龙AI开放平台</h3>
-    <h4>AI&emsp;解决方案&emsp;科技未来</h4>
-    <p>提供金融等各行业技术服务</p>
-    <div class="login-form">
-      <img src="../../assets/img/user/login-title.svg" class="login-title">
-      <img src="../../assets/img/user/login-qrcode.svg" class="login-qrcode">
-      <el-form ref="loginForm" :rules="rules" :model="loginForm" class="login-ruleForm">
-        <el-form-item prop="password">
-          <el-input
-            v-model="loginForm.account"
-            maxlength="18"
-            prop="account"
-            placeholder="请输入手机号码/邮箱账号/用户名"
-          />
-        </el-form-item>
-        <el-form-item prop="password">
-          <el-input
-            v-model="loginForm.password"
-            maxlength="16"
-            class="password-input"
-            placeholder="请输入密码"
-            show-password
-          />
-        </el-form-item>
-        <el-form-item class="fogot-password">
-          <el-link type="primary" :underline="false" @click="fogetPassword">忘记密码？</el-link>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" class="login-button" @click="submitForm('loginForm')">登录</el-button>
-        </el-form-item>
-      </el-form>
-      <p class="no-register">
-        <span>您还没有注册？</span>
-        <span class="mob-register register-color" @click="mobileRegistration">手机注册</span>
-        <span class="register-color" @click="emailRegistration">邮箱注册</span>
-      </p>
+    <div>
+      <h3>胜龙AI开放平台</h3>
+      <h4>AI&emsp;解决方案&emsp;科技未来</h4>
+      <p>提供金融等各行业技术服务</p>
+      <div class="login-form">
+        <img src="../../assets/img/user/login-title.svg" class="login-title">
+        <img src="../../assets/img/user/login-qrcode.svg" class="login-qrcode">
+        <el-form ref="loginForm" :rules="rules" :model="loginForm" class="login-ruleForm">
+          <el-form-item prop="password">
+            <el-input
+              v-model="loginForm.account"
+              maxlength="18"
+              prop="account"
+              placeholder="请输入手机号码/邮箱账号/用户名"
+            />
+          </el-form-item>
+          <el-form-item prop="password">
+            <el-input
+              v-model="loginForm.password"
+              maxlength="16"
+              class="password-input"
+              placeholder="请输入密码"
+              show-password
+            />
+          </el-form-item>
+          <el-form-item class="fogot-password">
+            <el-link type="primary" :underline="false" @click="fogetPassword">忘记密码？</el-link>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" class="login-button" @click="submitForm('loginForm')">登录</el-button>
+          </el-form-item>
+        </el-form>
+        <p class="no-register">
+          <span>您还没有注册？</span>
+          <span class="mob-register register-color" @click="mobileRegistration">手机注册</span>
+          <span class="register-color" @click="emailRegistration">邮箱注册</span>
+        </p>
+      </div>
+      <footer>
+        <p>
+          <span>备案号</span>
+          <span class="record-no">xxx xxxxxxxxxxx</span>
+          <span>v.1.0</span>
+        </p>
+      </footer>
     </div>
-    <footer>
-      <p>
-        <span>备案号</span>
-        <span class="record-no">xxx xxxxxxxxxxx</span>
-        <span>v.1.0</span>
-      </p>
-    </footer>
   </div>
 </template>
 
@@ -84,58 +86,62 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 body, html {
  height: 100%;
  min-height: 100%;
- background: url('../../assets/img/user/user.jpg') no-repeat;
- background-size: cover;
 }
 .login {
-  padding-top: 107px;
-  width: 1200px;
-  margin: auto;
+  background: url('../../assets/img/user/user.jpg') no-repeat;
+  background-size: cover;
+  width: 100%;
   height: 100%;
-  min-height: 100%;
-  position: relative;
-  h3 {
-    height: 46px;
-    font-size: 33px;
-    font-weight: 600;
-    color: #FFFFFF;
-    margin-bottom: 4px;
-    line-height: 46px;
-    text-shadow: 0px 0px 40px #000000;
-    background: linear-gradient(180deg, #8DB2FF 0%, rgba(143, 195, 255, 0.95) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  h4 {
-    height: 61px;
-    font-size: 44px;
-    font-family: HiraKakuProN-W6, HiraKakuProN;
-    margin-bottom: 27px;
-    font-weight: normal;
-    color: #FFFFFF;
-    line-height: 66px;
-    text-shadow: 0px 0px 40px #000000;
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.4) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  > p {
-    height: 35px;
-    font-size: 25px;
-    color: #FFFFFF;
-    line-height: 35px;
-    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-  }
-  .login-form {
+  overflow: hidden;
+  > div {
+    padding-top: 107px;
+    width: 1200px;
+    position: relative;
+    margin: auto;
+    height: 100%;
+    h3 {
+      height: 46px;
+      font-size: 33px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+      line-height: 46px;
+      text-shadow: 0px 0px 40px #000000;
+      background: linear-gradient(180deg, #8DB2FF 0%, rgba(143, 195, 255, 0.95) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h4 {
+      height: 61px;
+      font-size: 44px;
+      font-family: HiraKakuProN-W6, HiraKakuProN;
+      margin-bottom: 27px;
+      font-weight: normal;
+      color: #FFFFFF;
+      line-height: 66px;
+      text-shadow: 0px 0px 40px #000000;
+      background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.4) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    > p {
+      height: 35px;
+      font-size: 25px;
+      color: #FFFFFF;
+      line-height: 35px;
+      text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    }
+    .login-form {
       position: absolute;
-      top: 154px;
+      top: 50%;
+      transform: translateY(-50%);
       right: 0;
       width: 372px;
-      background: #FFFFFF;
+      background: #FFF;
       box-shadow: 0px 0px 9px 0px rgba(125,125,125,1);
       border-radius: 7px;
       border: 3px solid #EFF3FF;
@@ -159,11 +165,11 @@ body, html {
         }
         .fogot-password {
           text-align: right;
-          a {
-            color: #4360FF;
+            a {
+              color: #4360FF;
+            }
           }
-        }
-        .el-input {
+        /deep/ .el-input {
           input {
             background: #F0F5FF;
             border-radius: 18px;
@@ -175,10 +181,10 @@ body, html {
             &::-moz-placeholder {
               color: #2E3362;
             }
-             &:-moz-placeholder {
+            &:-moz-placeholder {
               color: #2E3362;
             }
-             &:-ms-input-placeholder {
+            &:-ms-input-placeholder {
               color: #2E3362;
             }
           }
@@ -207,8 +213,8 @@ body, html {
           cursor: pointer;
         }
       }
-  }
-  footer {
+    }
+    footer {
       width: 100%;
       position: absolute;
       bottom: 0;
@@ -226,6 +232,7 @@ body, html {
           margin: 0 40px 0 14px;
         }
       }
+    }
   }
 }
 </style>

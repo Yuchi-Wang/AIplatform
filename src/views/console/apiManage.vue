@@ -1,224 +1,95 @@
 <template>
-  <div class="clab-console">
-    <el-button type="primary" size="small" @click="createApi('newApi')">新建API Key</el-button>
-    <div class="api-key">
-      <h4>API Key</h4>
-      <el-table :data="apiData" stripe border style="width: 100%" class="table-class">
-        <el-table-column
-          prop="name"
-          label="api接口应用名称"
-        />
-        <el-table-column
-          prop="keyName"
-          label="API key"
-        />
-        <el-table-column
-          prop="APISercret"
-          label="API sercret"
-        />
-        <el-table-column label="状态">
-          <template slot-scope="scope">
-            {{ scope.row.status ? '启用': '禁用' }}
-          </template>
-        </el-table-column>
-        <el-table-column label="操作">
-          <template slot-scope="scope">
-            <el-link :underline="false" type="primary" @click="operation(scope.row)">查看</el-link>
-          </template>
-        </el-table-column>
-      </el-table>
-    </div>
-    <div class="api-times">
-      <h4>API 使用次数统计</h4>
-      <el-table :data="apiTimes" stripe border style="width: 100%" class="table-class">
-        <el-table-column prop="api" label="api" />
-        <el-table-column prop="type" label="次数套餐类型" />
-        <el-table-column prop="remainingDays" label="剩余天数" />
-        <el-table-column prop="remainingTimes" label="剩余次数" />
-      </el-table>
-    </div>
-    <div class="api-situation">
-      <h4>使用情况汇总</h4>
-      <el-select v-model="timeValue" placeholder="请选择">
-        <el-option
-          v-for="item in timeOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        />
-      </el-select>
-      <span class="situation-range">最近使用时间范围</span>
-      <el-table :data="situationData" stripe border style="width: 100%" class="table-class">
-        <el-table-column prop="api" label="api" />
-        <el-table-column prop="type" label="次数套餐类型" />
-        <el-table-column prop="remainingDays" label="剩余天数" />
-        <el-table-column prop="remainingTimes" label="剩余次数" />
-      </el-table>
-    </div>
-    <!-- 创建api -->
-    <el-dialog :title="ApiTitle" :visible.sync="createApiFormShow" width="400px">
-      <el-form ref="form" :model="createApiForm" label-width="80px">
-        <el-form-item label="应用名称">
-          <el-select v-if="checkApi" v-model="createApiForm.name" placeholder="请选择应用名称">
-            <el-option label="应用1" value="1" />
-            <el-option label="应用2" value="2" />
-          </el-select>
-          <el-input v-else v-model="createApiForm.name" disabled style="width:221px" />
-        </el-form-item>
-        <el-form-item label="应用分类">
-          <el-select v-if="checkApi" v-model="createApiForm.class" placeholder="请选择应用分类">
-            <el-option label="分类1" value="1" />
-            <el-option label="分类2" value="2" />
-          </el-select>
-          <el-input v-else v-model="createApiForm.class" disabled style="width:221px" />
-        </el-form-item>
-        <el-form-item label="应用平台">
-          <el-select v-if="checkApi" v-model="createApiForm.platform" placeholder="请选择应用平台">
-            <el-option label="平台1" value="1" />
-            <el-option label="平台2" value="2" />
-          </el-select>
-          <el-input v-else v-model="createApiForm.platform" disabled style="width:221px" />
-        </el-form-item>
-        <el-form-item>
-          <el-button v-if="checkApi" style="width:221px" type="primary" @click="submitForm('ruleForm')">创建</el-button>
-          <el-button v-if="!checkApi" style="width:221px" @click="editApi">修改</el-button>
-          <el-button v-if="!checkApi" type="danger" class="delete-button" @click="deleteApi">删除</el-button>
-        </el-form-item>
-      </el-form>
-    </el-dialog>
+  <div class="sdk-diction">
+    <el-tabs v-model="activeName" type="border-card" @tab-click="handleClick">
+      <el-tab-pane label="API" name="first">
+        <el-row :gutter="20">
+          <el-col v-for="item in sdkList" :key="item.id" :span="6">
+            <div>
+              <p>{{ item.text }}</p>
+              <h5>API文档</h5>
+            </div>
+          </el-col>
+        </el-row>
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'SdkDiction',
   data() {
     return {
-      apiData: [
+      activeName: 'first',
+      sdkList: [
         {
-          name: '人脸识别接口',
-          keyName: 'dj85_C93TOz7CYQSaArz…',
-          APISercret: 'bwhj1m5-rYtoi8r-…',
-          status: true
+          id: 1,
+          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
         },
         {
-          name: '人脸识别接口',
-          keyName: 'dj85_C93TOz7CYQSaArz…',
-          APISercret: 'bwhj1m5-rYtoi8r-…',
-          status: true
-        }
-      ],
-      apiTimes: [
-        {
-          api: '人脸识别接口',
-          type: '类型1',
-          remainingDays: '5',
-          remainingTimes: '5'
-        }
-      ],
-      situationData: [],
-      timeValue: '1',
-      timeOptions: [
-        {
-          value: '1',
-          label: '1小时'
+          id: 2,
+          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
         },
         {
-          value: '2',
-          label: '2小时'
+          id: 3,
+          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
         },
         {
-          value: '3',
-          label: '3小时'
+          id: 4,
+          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+        },
+        {
+          id: 1,
+          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+        },
+        {
+          id: 2,
+          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+        },
+        {
+          id: 3,
+          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+        },
+        {
+          id: 4,
+          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
         }
-      ],
-      createApiFormShow: false,
-      createApiForm: {
-        name: '',
-        class: '',
-        platform: ''
-      },
-      ApiTitle: '',
-      checkApi: true
+      ]
     }
   },
   methods: {
-    operation(row) {
-      this.ApiTitle = '查看API Key'
-      this.createApiFormShow = true
-      this.checkApi = false
-    },
-    createApi(vaule) {
-      this.ApiTitle = '创建API Key'
-      this.createApiFormShow = true
-      this.checkApi = true
-    },
-    editApi() {
-      this.ApiTitle = '编辑API Key'
-      this.checkApi = true
-    },
-    deleteApi() {},
-    submitForm(form) {}
+    handleClick(tab, event) {
+      console.log(tab, event)
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.clab-console {
-  padding: 19px;
-  > .el-button {
-    margin-bottom: 18px;
-  }
-  h4 {
-    height: 18px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #000000;
-    line-height: 18px;
-    margin-bottom: 10px;
-  }
-  >div{
-    margin-bottom: 32px;
-  }
-  .el-table {
-    /deep/ thead th {
-      padding: 0;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-    }
-    /deep/ tbody td {
-      padding: 0;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-    }
-     /deep/ .el-table__empty-block {
-      height: 40px!important;
-      min-height: 40px!important;
-    }
-    /deep/ .el-table__empty-text {
-      height: 40px;
-      line-height: 40px;
-    }
-  }
-  .api-situation {
-    .el-select {
-      width: 150px;
-      margin-bottom: 10px;
-    }
-    .situation-range {
-      display: inline-block;
-      margin-left: 7px;
-      height: 15px;
-      font-size: 11px;
+.el-row {
+  width: 100%;
+  .el-col {
+    div {
+      border-radius: 4px;
+      border: 1px solid #E4E4E4;
+      padding: 19px;
+      margin-bottom: 15px;
+      p {
+      font-size: 12px;
       font-weight: 400;
-      color: #000000;
+      color: #7A7A7A;
       line-height: 15px;
+      margin-bottom: 33px;
+      }
+      h5 {
+        height: 15px;
+        font-size: 11px;
+        color: #2F54EB;
+        line-height: 15px;
+        cursor: pointer;
+      }
     }
-  }
-  .delete-button {
-    margin: 18px 0 0 0;
-    width: 221px;
   }
 }
 </style>
+

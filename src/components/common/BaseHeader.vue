@@ -5,34 +5,57 @@
       <el-menu
         class="nav-menu"
         mode="horizontal"
+        :default-active="$route.path"
         background-color="transparent"
         text-color="#fff"
         active-text-color="#4575FF"
+        @select="selectMenuItem"
       >
-        <el-menu-item index="1">首页</el-menu-item>
-        <el-menu-item index="2">解决方案</el-menu-item>
-        <el-menu-item index="3">产品简介</el-menu-item>
-        <el-menu-item index="4">SDK</el-menu-item>
-        <el-menu-item index="5">开发文档</el-menu-item>
-        <el-submenu index="6">
-          <template slot="title">关于我们</template>
-          <el-menu-item index="6-1">公司简介</el-menu-item>
-          <el-menu-item index="6-2">技术支持</el-menu-item>
-          <el-menu-item index="6-2">商务合作</el-menu-item>
-        </el-submenu>
-        <el-menu-item index="7">控制台</el-menu-item>
+        <template v-for="item in navRouter">
+          <el-menu-item v-if="item.singleMenu" :key="item.name" :index="item.path">
+            {{ item.meta && item.meta.title }}
+          </el-menu-item>
+          <el-submenu
+            v-else
+            :key="item.name"
+            :index="item.name || item.path"
+          >
+            <template slot="title">
+              {{ item.meta && item.meta.title }}
+            </template>
+            <template v-for="child in item.children">
+              <el-menu-item
+                :key="child.path + 'index'"
+                :index="
+                  child.redirect ? child.redirect : item.path + '/' + child.path
+                "
+                :routes="[child]"
+              >
+                {{ child.meta && child.meta.title }}
+              </el-menu-item>
+            </template>
+          </el-submenu>
+        </template>
       </el-menu>
     </div>
   </header>
 </template>
 
 <script>
+import { navRouter } from '@/router'
 export default {
   name: 'BaseHeader',
-  data: () => ({})
+  data: () => ({
+    navRouter
+  }),
+  methods: {
+    selectMenuItem(path) {
+      this.$router.push({ path: path })
+    }
+  }
 }
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 .baseHeader {
   width: 100%;
   height: 61.49px;

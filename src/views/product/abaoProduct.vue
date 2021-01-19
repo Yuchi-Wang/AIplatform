@@ -7,7 +7,7 @@
           阿宝作为胜龙主要产品形态之一，包含金融词库、语音模糊匹配、智能应答、等多模态产品组合，
           基于行业应用场景实践，搭载了诚龙AI算法，可用于金融业，电信业、教育业等各类复杂场景的综合应用。
         </p>
-        <button>合作咨询</button>
+        <button @click="coperation">合作咨询</button>
       </div>
     </div>
     <div class="main">
@@ -78,7 +78,11 @@ export default {
   name: 'AbaoProduct',
   data: () => ({}),
   mounted() {},
-  methods: {}
+  methods: {
+    coperation() {
+      this.$router.push('/about/businessCoperation')
+    }
+  }
 }
 </script>
 
