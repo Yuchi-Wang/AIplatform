@@ -4,7 +4,7 @@ Vue.directive('enlarge-styleBackground', function(el) {
   // el.style.borderRadius = '50%'
   el.style.overflow = 'hidden'
   el.style.transition = 'all 0.3s ease-in-out'
-  el.style.cursor = 'all 0.3s ease-in-out'
+  el.style.cursor = 'pointer'
   el.onmouseover = () => {
     el.style.backgroundSize = '110%'
   }
