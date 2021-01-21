@@ -1,7 +1,7 @@
 <template>
   <header class="baseHeader">
     <div>
-      <img src="../../assets/img/common/logo.png" class="logo">
+      <img src="@/assets/img/common/logo.png" class="logo" @click="goIndex">
       <el-menu
         class="nav-menu"
         mode="horizontal"
@@ -49,6 +49,9 @@ export default {
     navRouter
   }),
   methods: {
+    goIndex() {
+      this.$router.push('/')
+    },
     selectMenuItem(path) {
       this.$router.push({ path: path })
     }
@@ -62,7 +65,7 @@ export default {
   position: fixed;
   top: 0;
   z-index: 999;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.9);
   > div {
     width: 1200px;
     margin: auto;
@@ -72,6 +75,7 @@ export default {
       width: 180px;
       position: absolute;
       top: 50%;
+      cursor: pointer;
       transform: translateY(-50%);
     }
     .nav-menu {
@@ -82,7 +86,7 @@ export default {
       > li {
         height: 61.49px;
         line-height: 61.49px;
-        background: transparent！;
+        background: transparent!important;
         width: 14.28%;
         text-align: center;
         /deep/ .el-submenu__title{

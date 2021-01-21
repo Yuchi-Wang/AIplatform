@@ -44,6 +44,19 @@ export default {
   font-size: 13px;
   height: 100%;
   background: #fff;
+  /deep/.baseHeader {
+    .el-menu {
+      .el-menu-item {
+        &:nth-of-type(5) {
+          color: rgb(69, 117, 255)!important;
+          border-bottom-color: rgb(69, 117, 255)!important;
+          &:hover {
+            color:#fff!important;
+          }
+        }
+      }
+    }
+  }
   .main {
     position: absolute;
     top: 61.49px;

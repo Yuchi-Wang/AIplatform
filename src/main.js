@@ -9,6 +9,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import CustomElement from '@/components/ElementUI'
 Vue.use(CustomElement)
 
+// 引入自定指令
+import './directive/enlargeBgimg'
 //  初始化CSS
 import '@/assets/css/reset.css'
 

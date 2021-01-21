@@ -114,7 +114,11 @@ export default {
     .el-form-item {
       .el-button {
         width: 300px;
-        background:#2F54EB ;
+        background:#2F54EB;
+        transition: all .3s;
+        &:hover {
+          background: #1d39c4;
+        }
       }
     }
   }

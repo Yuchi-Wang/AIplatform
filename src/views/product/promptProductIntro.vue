@@ -17,10 +17,17 @@
           <ul>
             <li>
               <h3>请输入关键字</h3>
-              <div />
+              <div>
+                <el-input
+                  v-model="textarea"
+                  type="textarea"
+                  :rows="9"
+                  placeholder="请输入内容"
+                />
+              </div>
             </li>
             <li>
-              <h3>返沪结果</h3>
+              <h3>返回结果</h3>
               <div />
             </li>
           </ul>
@@ -40,18 +47,18 @@
       </div>
       <div class="app-scene">
         <h3>应用场景</h3>
-        <div class="customer-service">
+        <div v-enlarge-styleBackground class="customer-service">
           <p class="app-scene-dec">智能客服</p>
         </div>
         <div class="robot-intelligence">
-          <div class="robot-ai">
+          <div v-enlarge-styleBackground class="robot-ai">
             <p class="app-scene-dec">机器人AI</p>
           </div>
-          <div class="intelligence-search">
+          <div v-enlarge-styleBackground class="intelligence-search">
             <p class="app-scene-dec">智能搜索</p>
           </div>
         </div>
-        <div class="intelligence-transaction">
+        <div v-enlarge-styleBackground class="intelligence-transaction">
           <p class="app-scene-dec">智能交易</p>
         </div>
       </div>
@@ -89,7 +96,8 @@ export default {
         src: require('../../assets/img/product/prompt/product-characteristic6.svg'),
         title: '关键词提取'
       }
-    ]
+    ],
+    textarea: ''
   }),
   mounted() {},
   methods: {
@@ -138,6 +146,10 @@ export default {
         font-size: 16px;
         color: #FFFFFF;
         text-shadow: 0px 0px 14px #0F244F;
+        transition: all .3s;
+        &:hover {
+           background: rgba(255, 255, 255, 0.2);
+        }
       }
     }
   }
@@ -191,6 +203,13 @@ export default {
               background: #F9F9F9;
               width: 100%;
               height: 185px;
+              /deep/ .el-textarea {
+                textarea {
+                  resize:none;
+                  border:none;
+                  background: #F9F9F9;
+                }
+              }
             }
           }
         }

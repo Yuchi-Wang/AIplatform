@@ -102,6 +102,10 @@ export default {
         font-size: 16px;
         color: #FFFFFF;
         text-shadow: 0px 0px 14px #0F244F;
+        transition: all .3s;
+        &:hover {
+           background: rgba(255, 255, 255, 0.2);
+        }
       }
     }
   }
@@ -119,18 +123,18 @@ export default {
         line-height: 26px;
         text-align: center;
         margin-bottom: 37px;
-      &::before {
-        content: '';
-        position: absolute;
-        width: 39px;
-        height: 5px;
-        background: #2F54EB;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: -11px;
-        border-radius: 4px;
+        &::before {
+          content: '';
+          position: absolute;
+          width: 39px;
+          height: 5px;
+          background: #2F54EB;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: -11px;
+          border-radius: 4px;
+        }
       }
-    }
     > p {
       font-size: 16px;
       font-weight: 400;

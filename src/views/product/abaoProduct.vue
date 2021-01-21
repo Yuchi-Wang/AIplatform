@@ -17,7 +17,14 @@
           <ul>
             <li>
               <h3>输入搜索内容</h3>
-              <div />
+              <div>
+                <el-input
+                  v-model="textarea"
+                  type="textarea"
+                  :rows="8"
+                  placeholder="请输入内容"
+                />
+              </div>
             </li>
             <li>
               <h3>搜索结果</h3>
@@ -48,22 +55,22 @@
       </div>
       <div class="app-scene">
         <h3>应用场景</h3>
-        <div class="quick-search-info">
+        <div v-enlarge-styleBackground class="quick-search-info">
           <p class="app-scene-dec">快速查询金融产品资讯</p>
         </div>
         <div class="quick-info">
-          <div class="quick-transaction">
+          <div v-enlarge-styleBackground class="quick-transaction">
             <p class="app-scene-dec">快速交易</p>
           </div>
-          <div class="quick-pay">
+          <div v-enlarge-styleBackground class="quick-pay">
             <p class="app-scene-dec">快速支付</p>
           </div>
         </div>
         <div class="quick-info">
-          <div class="quick-order">
+          <div v-enlarge-styleBackground class="quick-order">
             <p class="app-scene-dec">快速下单</p>
           </div>
-          <div class="quick-search">
+          <div v-enlarge-styleBackground class="quick-search">
             <p class="app-scene-dec">快速查询</p>
           </div>
         </div>
@@ -76,7 +83,9 @@
 <script>
 export default {
   name: 'AbaoProduct',
-  data: () => ({}),
+  data: () => ({
+    textarea: ''
+  }),
   mounted() {},
   methods: {
     coperation() {
@@ -124,6 +133,10 @@ export default {
         font-size: 16px;
         color: #FFFFFF;
         text-shadow: 0px 0px 14px #0F244F;
+        transition: all .3s;
+        &:hover {
+           background: rgba(255, 255, 255, 0.2);
+        }
       }
     }
   }
@@ -159,6 +172,7 @@ export default {
             display: inline-block;
             width: 49.166%;
             padding: 20px;
+            background: #fff;
             vertical-align: text-top;
             &:first-child {
               margin-right: 20px;
@@ -177,6 +191,13 @@ export default {
               border: 1px solid #FFFFFF;
               width: 100%;
               height: 185px;
+               /deep/ .el-textarea {
+                textarea {
+                  resize:none;
+                  border:none;
+                  background: #fff;
+                }
+              }
             }
           }
         }
@@ -237,7 +258,6 @@ export default {
       .quick-search-info {
           background: url('../../assets/img/product/abao/quick-search-info.jpg');
           background-repeat: no-repeat;
-          background-size: cover;
           background-position: 50% 50%;
       }
       .quick-info {
@@ -246,21 +266,24 @@ export default {
           width: 100%;
           height: 145px;
           background-repeat: no-repeat;
-          background-size: cover;
           background-position: 50% 50%;
           margin-bottom: 10px;
         }
         .quick-transaction {
           background: url('../../assets/img/product/abao/quick-transaction.jpg');
+          background-position: 50% 50%;
         }
         .quick-pay {
           background: url('../../assets/img/product/abao/quick-pay.jpg');
+          background-position: 50% 50%;
         }
         .quick-order {
           background: url('../../assets/img/product/abao/quick-order.jpg');
+          background-position: 50% 50%;
         }
         .quick-search {
           background: url('../../assets/img/product/abao/quick-search.jpg');
+          background-position: 50% 50%;
         }
       }
     }

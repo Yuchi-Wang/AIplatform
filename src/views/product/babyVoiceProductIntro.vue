@@ -72,22 +72,22 @@
       </div>
       <div class="app-scene">
         <h3>应用场景</h3>
-        <div class="boby-hunger">
+        <div v-enlarge-styleBackground class="boby-hunger">
           <p class="app-scene-dec">宝宝饿了</p>
         </div>
         <div class="boby-info">
-          <div class="boby-sleep">
+          <div v-enlarge-styleBackground class="boby-sleep">
             <p class="app-scene-dec">宝宝困了</p>
           </div>
-          <div class="boby-cry">
+          <div v-enlarge-styleBackground class="boby-cry">
             <p class="app-scene-dec">宝宝哭闹</p>
           </div>
         </div>
         <div class="boby-info">
-          <div class="boby-ill">
+          <div v-enlarge-styleBackground class="boby-ill">
             <p class="app-scene-dec">宝宝生病了</p>
           </div>
-          <div class="boby-diarrhea">
+          <div v-enlarge-styleBackground class="boby-diarrhea">
             <p class="app-scene-dec">宝宝拉肚子</p>
           </div>
         </div>
@@ -177,6 +177,10 @@ export default {
         font-size: 16px;
         color: #FFFFFF;
         text-shadow: 0px 0px 14px #0F244F;
+        transition: all .3s;
+        &:hover {
+           background: rgba(255, 255, 255, 0.2);
+        }
       }
     }
   }

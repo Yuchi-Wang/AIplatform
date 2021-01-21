@@ -21,9 +21,15 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-    vertical-align: baseline;
+  vertical-align: baseline;
 	box-sizing: border-box;
-	font-family: "PingFangSC-Regular","PingFang SC","Microsoft YaHei",arial,sans-serif;
+  font-family: "PingFangSC-Regular","PingFang SC","Microsoft YaHei",arial,sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -60,6 +66,23 @@ html, body {
 }
 
 /* 修改滚动条样式 */
+::-webkit-scrollbar {
+  background-color: rgba(27,27,27,.4);
+  border-radius: 10px;
+  width: 7px;
+  height:7px;
+}
+	
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(27,27,27,.4);
+}
+	
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #fff;
+}
+
 .thin-scroll::-webkit-scrollbar,
 .subContent::-webkit-scrollbar,.coolBody::-webkit-scrollbar,
 .el-table__body-wrapper::-webkit-scrollbar,

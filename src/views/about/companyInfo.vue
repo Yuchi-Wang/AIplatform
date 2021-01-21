@@ -105,6 +105,9 @@ export default {
         font-size: 16px;
         color: #FFFFFF;
         text-shadow: 0px 0px 14px #0F244F;
+        &:hover {
+          background: rgba(255, 255, 255, 0.2);
+        }
       }
     }
   }

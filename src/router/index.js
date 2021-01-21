@@ -23,6 +23,14 @@ const register = {
   hidden: true
 }
 
+// 忘记密码
+const forgetPwd = {
+  path: '/forgetpwd',
+  component: _import('user/forgetPwd'),
+  name: 'forgetPwd',
+  hidden: true
+}
+
 // 主页
 const Home = {
   path: '/',
@@ -38,14 +46,6 @@ const Home = {
       component: _import('home/default')
     }
   ]
-}
-
-// 忘记密码
-const forgetPwd = {
-  path: '/forgetpwd',
-  component: _import('user/forgetPwd'),
-  name: 'forgetPwd',
-  hidden: true
 }
 
 // 解决方案
@@ -210,7 +210,6 @@ const user = {
 }
 
 // 这里是文档板块
-// 导读
 const ReadingGuide = {
   path: '/file',
   component: FileLayout,

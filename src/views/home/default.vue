@@ -3,44 +3,52 @@
     <div class="banner">
       <el-carousel height="675px" class="banner-img">
         <el-carousel-item v-for="item in imgBox" :key="item.id">
-          <img ref="bannerHeight" :src="item.src">
+          <div class="banner-content" :style="{'background-image': 'url('+ item.src +')'}">
+            <h3>诚龙AI 科技未来</h3>
+          </div>
         </el-carousel-item>
       </el-carousel>
     </div>
     <div class="product-info">
-      <h3>产品介绍</h3>
+      <div>
+        <h3>产品介绍</h3>
+        <ul class="product-info-title">
+          <li
+            v-for="(item, index) in productInfoList"
+            :key="item.id"
+            :style="activeIndex === index ? productInfoBg : ''"
+            @mouseover="selectProduct(index)"
+          >
+            {{ item.title }}
+          </li>
+        </ul>
+        <ul class="product-info-detail">
+          <li
+            v-for="(item, index) in productInfoDetail"
+            v-show="index === activeIndex"
+            :key="item.id"
+            :style="{'background-image': 'url('+ item.src +')'}"
+          >
+            <div>
+              <h4>{{ item.title }}</h4>
+              <p>{{ item.content }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="market-advantage">
       <div>
         <h3>市场优势</h3>
         <ul>
-          <li>
-            <div class="img-box">
-              <img src="../../assets/img/home/advantage1.png">
-            </div>
-            <h4>多终端适配</h4>
-            <p>防御多种攻击方式，防攻击算法更新频率高</p>
-          </li>
-          <li>
-            <div class="img-box">
-              <img src="../../assets/img/home/advantage2.png">
-            </div>
-            <h4>算法技术领先</h4>
-            <p>防御多种攻击方式，防攻击算法更新频率高</p>
-          </li>
-          <li>
-            <div class="img-box">
-              <img src="../../assets/img/home/advantage3.png">
-            </div>
-            <h4>支付级安全性</h4>
-            <p>防御多种攻击方式，防攻击算法更新频率高</p>
-          </li>
-          <li>
-            <div class="img-box">
-              <img src="../../assets/img/home/advantage4.png">
-            </div>
-            <h4>防伪攻击</h4>
-            <p>防御多种攻击方式，防攻击算法更新频率高</p>
+          <li v-for="item in productAdvantage" :key="item.id">
+            <div
+              v-enlarge-styleBackground
+              class="img-box"
+              :style="{'background-image': 'url('+ item.src +')'}"
+            />
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.content }}</p>
           </li>
         </ul>
       </div>
@@ -80,13 +88,70 @@ export default {
       { id: 2, src: require('@/assets/img/home/banner.jpg') },
       { id: 3, src: require('@/assets/img/home/banner.jpg') }
     ],
+    productInfoList: [
+      { id: 1, title: 'prompt' },
+      { id: 2, title: '诚龙阿宝' },
+      { id: 3, title: '婴语识别' }
+    ],
+    productInfoBg: {
+      backgroundImage: 'url(' + require('@/assets/img/home/product-info-title.png') + ')',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover'
+    },
+    productInfoDetail: [
+      {
+        id: 1,
+        src: require('@/assets/img/home/protuct-info-detail.png'),
+        title: 'prompt产品介绍',
+        content: 'prompt是具有唯一辨识度的用户特征，且具有不可复制性。身份认证，刷脸支付等业务已经成为金融行业的发展新方向，在金融领域价值巨大。'
+      },
+      {
+        id: 2, src: require('@/assets/img/home/protuct-info-detail.png'),
+        title: '诚龙阿宝产品介绍',
+        content: '诚龙阿宝是具有唯一辨识度的用户特征，且具有不可复制性。身份认证，刷脸支付等业务已经成为金融行业的发展新方向，在金融领域价值巨大。'
+      },
+      {
+        id: 3,
+        src: require('@/assets/img/home/protuct-info-detail.png'),
+        title: '婴语识别产品介绍',
+        content: '婴语识别是具有唯一辨识度的用户特征，且具有不可复制性。身份认证，刷脸支付等业务已经成为金融行业的发展新方向，在金融领域价值巨大。'
+      }
+    ],
+    productAdvantage: [
+      {
+        id: 1,
+        src: require('@/assets/img/home/advantage1.png'),
+        title: '多终端适配',
+        content: '防御多种攻击方式，防攻击算法更新频率高'
+      },
+      {
+        id: 2, src: require('@/assets/img/home/advantage2.png'),
+        title: '算法技术领先',
+        content: '防御多种攻击方式，防攻击算法更新频率高'
+      },
+      {
+        id: 3,
+        src: require('@/assets/img/home/advantage3.png'),
+        title: '支付级安全性',
+        content: '防御多种攻击方式，防攻击算法更新频率高'
+      },
+      {
+        id: 4,
+        src: require('@/assets/img/home/advantage4.png'),
+        title: '防伪攻击',
+        content: '防御多种攻击方式，防攻击算法更新频率高'
+      }
+    ],
     bannerHeight: 0,
-    imgHeight: 0
+    imgHeight: 0,
+    activeIndex: 0
   }),
-  mounted() {},
   methods: {
     coperation() {
       this.$router.push('/about/businessCoperation')
+    },
+    selectProduct(index) {
+      this.activeIndex = index
     }
   }
 }
@@ -94,8 +159,21 @@ export default {
 <style scoped lang="scss">
 .home {
   .banner-img {
-    img {
+    .banner-content {
       width: 100%;
+      height: 675px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+      h3 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 80px;
+      color: #FFFFFF;
+      text-shadow: 0 16px 15px rgba(0,0,0,0.50)
+      }
     }
   }
   .product-info {
@@ -104,28 +182,73 @@ export default {
     background: url('../../assets/img/home/default-productInfo.jpg') no-repeat;
     background-size: cover;
     padding-top: 54px;
-    h3 {
+    >div {
+      width: 1200px;
+      margin: auto;
       position: relative;
-      text-align: center;
-      height: 29px;
-      font-size: 21px;
-      font-weight: 600;
-      color: #FFFFFF;
-      line-height: 29px;
-      &::before {
-        content: '';
-        position: absolute;
-        width: 39px;
-        height: 5px;
-        background: #FAFAFA;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: -23px;
-        border-radius: 4px;
+      h3 {
+        position: relative;
+        text-align: center;
+        height: 29px;
+        font-size: 21px;
+        font-weight: 600;
+        color: #FFFFFF;
+        line-height: 29px;
+        &::before {
+          content: '';
+          position: absolute;
+          width: 39px;
+          height: 5px;
+          background: #FAFAFA;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: -23px;
+          border-radius: 4px;
+        }
       }
-    }
-    .product-info-title {
-      width: 353px;
+      .product-info-title {
+        width: 353px;
+        display: inline-block;
+        position: absolute;
+        top: 200px;
+        li {
+          height:70px;
+          font-size: 18px;
+          font-weight: 400;
+          color: #d8d8d8;
+          line-height: 70px;
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+      .product-info-detail {
+        margin: 62px 0 0 353px;
+        li {
+          width: 740px;
+          height: 442px;
+          background-repeat: no-repeat;
+          background-size: cover;
+          > div {
+            text-align: center;
+            padding: 100px 80px 0 100px;
+            h4 {
+              height: 33px;
+              font-size: 23px;
+              font-weight: 600;
+              margin-bottom: 48px;
+              color: #FFFFFF;
+              line-height: 33px;
+              text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+            }
+            p {
+              font-size: 16px;
+              font-weight: 500;
+              color: #FFFFFF;
+              line-height: 22px;
+            }
+          }
+        }
+      }
     }
   }
   .market-advantage {
@@ -162,10 +285,11 @@ export default {
           width: 25%;
           .img-box {
             width: 173px;
+            height: 173px;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
             margin: auto;
-            img {
-              width: 100%;
-            }
           }
           h4 {
             margin-top: 35px;
@@ -250,7 +374,8 @@ export default {
     width: 100%;
     height: 508px;
     background: url('../../assets/img/home/cooperation.jpg') no-repeat;
-    background-size: contain;
+    background-size: cover;
+    background-position: center center;
     position: relative;
     > div {
       position: absolute;
@@ -270,6 +395,10 @@ export default {
         color: #FFFFFF;
         text-align: center;
         cursor: pointer;
+        transition: all .3s;
+        &:hover {
+           background: #1d39c4;
+        }
       }
       p {
         height: 25px;

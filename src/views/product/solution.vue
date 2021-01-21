@@ -1,5 +1,5 @@
 <template>
-  <div class="solution">
+  <div ref="solution" class="solution">
     <div class="banner">
       <div>
         <h3>语音识别解决方案</h3>
@@ -20,7 +20,6 @@
       </ul>
     </div>
     <div class="main">
-      <!-- 496 -->
       <div>
         <h3>方案原理</h3>
         <p>
@@ -28,32 +27,31 @@
           目前已逐步支持英日韩法西俄等多语种与中文的高品质互译。
         </p>
       </div>
-      <!-- 720 -->
       <div class="app-scene">
         <h3>应用场景</h3>
-        <div class="oral-language">
+        <div v-enlarge-styleBackground class="oral-language">
           <div class="app-scene-dec">
             <p>口语交流学习</p>
             <h5>辅助日常社交沟通、阅读、外语学习等</h5>
           </div>
         </div>
-        <div class="go-abroad">
+        <div v-enlarge-styleBackground class="go-abroad">
           <div class="app-scene-dec">
             <p>出国旅游</p>
           </div>
         </div>
-        <div class="translate">
+        <div v-enlarge-styleBackground class="translate">
           <div class="app-scene-dec">
             <p>文档资料翻译</p>
           </div>
         </div>
       </div>
-      <!-- 1148 -->
       <div class="technology-advantage">
         <h3>技术优势</h3>
         <ul>
           <li v-for="item in technologyAdvantage" :key="item.id">
             <div
+              v-enlarge-styleBackground
               class="product-characteristic-bg"
               :style="{backgroundImage: 'url('+ item.src +')'}"
             />
@@ -63,7 +61,6 @@
         </ul>
       </div>
       <div class="docking-process">
-        <!-- 1555 -->
         <h3>对接流程</h3>
         <div class="steps">
           <div class="first">
@@ -82,7 +79,6 @@
         <button @click="checkFile">相关文档</button>
       </div>
     </div>
-    <!-- 1880 -->
     <div class="cooperation">
       <div>
         <button @click="coperation">合作洽谈</button>
@@ -115,20 +111,53 @@ export default {
       }
     ],
     quickNav: [
-      { id: 1, title: '方案原理', position: '496' },
-      { id: 2, title: '应用场景', position: '720' },
-      { id: 3, title: '技术优势', position: '1148' },
-      { id: 4, title: '对接流程', position: '1555' },
-      { id: 5, title: '合作咨询', position: '1880' }
+      { id: 1, title: '方案原理', position: '445' },
+      { id: 2, title: '应用场景', position: '646' },
+      { id: 3, title: '技术优势', position: '1080' },
+      { id: 4, title: '对接流程', position: '1480' },
+      { id: 5, title: '合作咨询', position: '1817' }
     ],
-    active: 1
+    scroll: ''
   }),
+  computed: {
+    // 为了清除选择器作用域过大问题
+    queryDom() {
+      const dom = this.$refs.solution
+      return dom || document
+    }
+  },
+  mounted() {
+    this.menu()
+    window.addEventListener('scroll', this.menu)
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.menu)
+  },
   methods: {
     coperation() {
       this.$router.push('/about/businessCoperation')
     },
     checkFile() {
       this.$router.push('/file/platformInfo')
+    },
+    menu() {
+      this.scroll = document.documentElement.scrollTop || document.body.scrollTop
+      console.log(this.scroll)
+      if (this.scroll > 440) {
+        this.queryDom.querySelectorAll('.quick-nav').forEach(itemDom => {
+          itemDom.setAttribute(
+            'style',
+            'width:100%;position:fixed;top:61.49px;z-index:999'
+          )
+        })
+      } else {
+        this.queryDom.querySelectorAll('.quick-nav').forEach(itemDom => {
+          itemDom.setAttribute(
+            'style',
+            'width:100%;position:position: relative'
+          )
+        })
+      }
     },
     jumpTo(position) {
       window.scrollTo({ top: position, left: 0, behavior: 'smooth' })
@@ -175,6 +204,10 @@ export default {
         font-size: 16px;
         color: #FFFFFF;
         text-shadow: 0px 0px 14px #0F244F;
+        transition: all .3s;
+        &:hover {
+           background: rgba(255, 255, 255, 0.2);
+        }
       }
     }
   }
@@ -226,7 +259,7 @@ export default {
   .main {
     width: 1200px;
     margin: auto;
-    padding-top: 33px;
+    padding-top: 70px;
     > div {
       > h3 {
         position: relative;
@@ -264,7 +297,7 @@ export default {
        display: inline-block;
        position: relative;
        width: 32.222%;
-       height: 300px;
+       height: 266px;
        vertical-align: text-top;
        &:nth-of-type(1),&:nth-of-type(2) {
            margin-right: 20px;
@@ -326,7 +359,7 @@ export default {
           width: 132px;
           height: 132px;
           margin: 0 auto 21px;
-          background-size: contain;
+          border-radius: 50%;
           background-position: 50% 50%;
           background-repeat: no-repeat;
         }
@@ -413,6 +446,10 @@ export default {
         color: #fff;
         border-radius: 27px;
         cursor: pointer;
+        transition: all .3s;
+        &:hover {
+           background: #1d39c4;
+        }
         &::after {
           position: absolute;
           z-index: 99;
@@ -433,11 +470,12 @@ export default {
       }
     }
   }
-    .cooperation {
+  .cooperation {
     width: 100%;
     height: 508px;
     background: url('../../assets/img/home/cooperation.jpg') no-repeat;
-    background-size: contain;
+    background-size: cover;
+    background-position: center center;
     position: relative;
     > div {
       position: absolute;
@@ -457,6 +495,10 @@ export default {
         color: #FFFFFF;
         text-align: center;
         cursor: pointer;
+        transition: all .3s;
+        &:hover {
+           background: #1d39c4;
+        }
       }
       p {
         height: 25px;
