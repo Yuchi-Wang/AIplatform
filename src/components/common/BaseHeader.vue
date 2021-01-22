@@ -15,6 +15,7 @@
           <el-menu-item v-if="item.singleMenu" :key="item.name" :index="item.path">
             {{ item.meta && item.meta.title }}
           </el-menu-item>
+          <!-- 包含子菜单的菜单 -->
           <el-submenu
             v-else
             :key="item.name"
@@ -72,7 +73,7 @@ export default {
     height: 61.49px;
     position: relative;
     .logo {
-      width: 180px;
+      width: 240px;
       position: absolute;
       top: 50%;
       cursor: pointer;

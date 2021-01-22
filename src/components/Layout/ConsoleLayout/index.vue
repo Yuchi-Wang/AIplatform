@@ -75,6 +75,7 @@ export default {
       height: 100%;
       box-sizing: border-box;
       .content-header {
+        margin: 0 10px;
         h3 {
           height: 40px;
           font-size: 14px;

@@ -56,17 +56,13 @@
     <div class="application-scenarios">
       <h3>应用场景</h3>
       <div>
-        <div>
-          <div class="medical">
-            <h4 class="main-title">医疗</h4>
-          </div>
-          <div class="medical office">
-            <h4 class="main-title">办公</h4>
-          </div>
-          <div class="medical edu">
-            <h4 class="main-title">教育</h4>
-          </div>
-        </div>
+        <el-row>
+          <el-col v-for="item in appScenarios" :key="item.id" :span="8">
+            <div :style="{'background-image': 'url('+ item.src +')'}">
+              <h4>{{ item.title }}</h4>
+            </div>
+          </el-col>
+        </el-row>
       </div>
     </div>
     <div class="cooperation">
@@ -96,23 +92,24 @@ export default {
     productInfoBg: {
       backgroundImage: 'url(' + require('@/assets/img/home/product-info-title.png') + ')',
       backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
+      backgroundPosition: '50% 50%'
     },
     productInfoDetail: [
       {
         id: 1,
-        src: require('@/assets/img/home/protuct-info-detail.png'),
+        src: require('@/assets/img/home/protuct-info-detail1.png'),
         title: 'prompt产品介绍',
         content: 'prompt是具有唯一辨识度的用户特征，且具有不可复制性。身份认证，刷脸支付等业务已经成为金融行业的发展新方向，在金融领域价值巨大。'
       },
       {
-        id: 2, src: require('@/assets/img/home/protuct-info-detail.png'),
+        id: 2, src: require('@/assets/img/home/protuct-info-detail2.png'),
         title: '诚龙阿宝产品介绍',
         content: '诚龙阿宝是具有唯一辨识度的用户特征，且具有不可复制性。身份认证，刷脸支付等业务已经成为金融行业的发展新方向，在金融领域价值巨大。'
       },
       {
         id: 3,
-        src: require('@/assets/img/home/protuct-info-detail.png'),
+        src: require('@/assets/img/home/protuct-info-detail3.png'),
         title: '婴语识别产品介绍',
         content: '婴语识别是具有唯一辨识度的用户特征，且具有不可复制性。身份认证，刷脸支付等业务已经成为金融行业的发展新方向，在金融领域价值巨大。'
       }
@@ -142,8 +139,25 @@ export default {
         content: '防御多种攻击方式，防攻击算法更新频率高'
       }
     ],
-    bannerHeight: 0,
-    imgHeight: 0,
+    appScenarios: [
+      {
+        id: 1,
+        src: require('@/assets/img/home/medical.png'),
+        title: '医疗',
+        content: '防御多种攻击方式，防攻击算法更新频率高'
+      },
+      {
+        id: 2, src: require('@/assets/img/home/office.png'),
+        title: '办公',
+        content: '防御多种攻击方式，防攻击算法更新频率高'
+      },
+      {
+        id: 3,
+        src: require('@/assets/img/home/edu.png'),
+        title: '教育',
+        content: '防御多种攻击方式，防攻击算法更新频率高'
+      }
+    ],
     activeIndex: 0
   }),
   methods: {
@@ -228,6 +242,7 @@ export default {
           height: 442px;
           background-repeat: no-repeat;
           background-size: cover;
+          background-position: 50% 50%;
           > div {
             text-align: center;
             padding: 100px 80px 0 100px;
@@ -342,31 +357,25 @@ export default {
     > div {
       width: 1200px;
       margin: auto;
-      .medical {
-        position: relative;
-        width: 33.33%;
-        display: inline-block;
-        height: 450px;
-        background: url('../../assets/img/home/medical.png') no-repeat;
-        text-align: center;
-        background-size: cover;
-        .main-title {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          height: 40px;
-          font-size: 28px;
-          font-weight: 600;
-          color: #FFFFFF;
-          line-height: 40px;
+      .el-col {
+        div{
+          height: 450px;
+          background-size: cover;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          position: relative;
+          h4 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            height: 40px;
+            font-size: 28px;
+            font-weight: 600;
+            color: #FFFFFF;
+            line-height: 40px;
+          }
         }
-      }
-      .office {
-        background: url('../../assets/img/home/office.png') no-repeat;
-      }
-      .edu {
-        background: url('../../assets/img/home/edu.png') no-repeat;
       }
     }
   }

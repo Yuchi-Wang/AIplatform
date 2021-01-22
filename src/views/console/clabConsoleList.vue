@@ -113,6 +113,11 @@ export default {
   padding: 19px;
   > .el-button {
     margin-bottom: 18px;
+    background:#2F54EB;
+    transition: all .3s;
+    &:hover {
+      background: #1d39c4;
+    }
   }
   h4 {
     height: 18px;

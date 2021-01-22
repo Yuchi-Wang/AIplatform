@@ -130,7 +130,7 @@ const navConsole = {
   children: [
     {
       path: 'accountManage',
-      name: 'accountManage'
+      name: 'console'
     }
   ]
 }
@@ -147,7 +147,7 @@ const navFile = {
   children: [
     {
       path: 'platformInfo',
-      name: 'platformInfo'
+      name: 'file'
     }
   ]
 }
@@ -488,12 +488,16 @@ export const navRouter = [
 
 const createRouter = () =>
   new VueRouter({
-    routes: constRouter
+    routes: constRouter,
+    scrollBehavior() {
+    // 路由跳转定位在顶部
+      return { x: 0, y: 0 }
+    }
   })
 const router = createRouter()
 export function resetRouter() {
   const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
+  router.matcher = newRouter.matcher
 }
 
 export default router

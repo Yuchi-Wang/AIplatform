@@ -30,7 +30,7 @@
           <el-input v-model="baseInfoForm.baseName" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+          <el-button type="primary" class="submit-button" @click="submitForm('ruleForm')">提交</el-button>
           <el-button>重置</el-button>
         </el-form-item>
       </el-form>
@@ -214,6 +214,13 @@ export default {
       .m-l-10 {
         margin-left: 10px;
       }
+      .submit-button {
+        background:#2F54EB;
+        transition: all .3s;
+        &:hover {
+          background: #1d39c4;
+        }
+      }
     }
   }
   .edit-pwd-dialog {
@@ -240,6 +247,13 @@ export default {
       .el-button {
         width: 100%;
         margin: 0 0 18px 0;
+        &:nth-of-type(1) {
+          background:#2F54EB;
+          transition: all .3s;
+          &:hover {
+            background: #1d39c4;
+          }
+        }
       }
     }
     /deep/.el-input {

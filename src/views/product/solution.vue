@@ -14,8 +14,9 @@
     </div>
     <div class="quick-nav">
       <ul>
-        <li v-for="item in quickNav" :key="item.id">
-          <span @click="jumpTo(item.position)">{{ item.title }}</span>
+        <li v-for="(item, index) in quickNav" :key="item.id">
+          <img v-if="activeIndex === index" src="../../assets/img/product/solution/posittion.svg">
+          <span @click="jumpTo(item.position, index)">{{ item.title }}</span>
         </li>
       </ul>
     </div>
@@ -113,11 +114,12 @@ export default {
     quickNav: [
       { id: 1, title: '方案原理', position: '445' },
       { id: 2, title: '应用场景', position: '646' },
-      { id: 3, title: '技术优势', position: '1080' },
-      { id: 4, title: '对接流程', position: '1480' },
+      { id: 3, title: '技术优势', position: '1060' },
+      { id: 4, title: '对接流程', position: '1440' },
       { id: 5, title: '合作咨询', position: '1817' }
     ],
-    scroll: ''
+    scroll: '',
+    activeIndex: 0
   }),
   computed: {
     // 为了清除选择器作用域过大问题
@@ -142,7 +144,6 @@ export default {
     },
     menu() {
       this.scroll = document.documentElement.scrollTop || document.body.scrollTop
-      console.log(this.scroll)
       if (this.scroll > 440) {
         this.queryDom.querySelectorAll('.quick-nav').forEach(itemDom => {
           itemDom.setAttribute(
@@ -159,7 +160,8 @@ export default {
         })
       }
     },
-    jumpTo(position) {
+    jumpTo(position, index) {
+      this.activeIndex = index
       window.scrollTo({ top: position, left: 0, behavior: 'smooth' })
     }
   }
@@ -223,10 +225,14 @@ export default {
         line-height: 52px;
         display: inline-block;
         width: 20%;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 600;
         text-align: center;
         position: relative;
+        img {
+          vertical-align: middle;
+          transform: translate(-5px, 2px)
+        }
         span {
           display: inline-block;
           height: 52px;
@@ -235,7 +241,7 @@ export default {
         }
         &::before {
           content:"";
-          width:35%;
+          width:25%;
           height:1px;
           background-color: #D8D8D8;
           position:absolute;
@@ -245,14 +251,24 @@ export default {
           }
         &::after {
             content:"";
-            width:35%;
+            width:25%;
             height:1px;
             background-color: #D8D8D8;
             position:absolute;
             top:26px;
             z-index:1;
-            right:0;
+            right: 0;
           }
+        &:nth-of-type(1) {
+           &::before {
+             display: none;
+          }
+        }
+        &:nth-of-type(5) {
+           &::after {
+             display: none;
+          }
+        }
       }
     }
   }

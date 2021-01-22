@@ -94,7 +94,12 @@ export default {
      }
    }
    .el-button {
-     margin-top: 50px;
+      margin-top: 50px;
+      background:#2F54EB;
+      transition: all .3s;
+      &:hover {
+        background: #1d39c4;
+      }
    }
   }
 }

@@ -39,19 +39,19 @@ export default {
           text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
         },
         {
-          id: 1,
+          id: 5,
           text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
         },
         {
-          id: 2,
+          id: 6,
           text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
         },
         {
-          id: 3,
+          id: 7,
           text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
         },
         {
-          id: 4,
+          id: 8,
           text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
         }
       ]
