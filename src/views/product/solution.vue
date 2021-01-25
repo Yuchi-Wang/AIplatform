@@ -15,7 +15,7 @@
     <div class="quick-nav">
       <ul>
         <li v-for="(item, index) in quickNav" :key="item.id">
-          <img v-if="activeIndex === index" src="../../assets/img/product/solution/posittion.svg">
+          <img v-if="activeIndex === index" src="@/assets/img/product/solution/posittion.svg">
           <span @click="jumpTo(item.position, index)">{{ item.title }}</span>
         </li>
       </ul>
@@ -30,20 +30,15 @@
       </div>
       <div class="app-scene">
         <h3>应用场景</h3>
-        <div v-enlarge-styleBackground class="oral-language">
+        <div
+          v-for="item in appScene"
+          :key="item.index"
+          v-enlarge-styleBackground
+          :style="{'background-image': 'url('+ item.src +')'}"
+        >
           <div class="app-scene-dec">
-            <p>口语交流学习</p>
-            <h5>辅助日常社交沟通、阅读、外语学习等</h5>
-          </div>
-        </div>
-        <div v-enlarge-styleBackground class="go-abroad">
-          <div class="app-scene-dec">
-            <p>出国旅游</p>
-          </div>
-        </div>
-        <div v-enlarge-styleBackground class="translate">
-          <div class="app-scene-dec">
-            <p>文档资料翻译</p>
+            <p>{{ item.title }}</p>
+            <h5 v-if="item.dec">{{ item.dec }}</h5>
           </div>
         </div>
       </div>
@@ -96,27 +91,44 @@ export default {
   data: () => ({
     technologyAdvantage: [
       { id: 1,
-        src: require('../../assets/img/product/solution/technology-advantage1.png'),
+        src: require('@/assets/img/product/solution/technology-advantage1.png'),
         title: '技术先进',
         dec: '辅助日常社交沟通、阅读、外语学习等'
       },
       { id: 2,
-        src: require('../../assets/img/product/solution/technology-advantage2.png'),
+        src: require('@/assets/img/product/solution/technology-advantage2.png'),
         title: '注音校正',
         dec: '中英互译水平达到大学英语六级水平，极速返回翻译结果，响应速度800ms以内。'
       },
       { id: 3,
-        src: require('../../assets/img/product/solution/technology-advantage3.png'),
+        src: require('@/assets/img/product/solution/technology-advantage3.png'),
         title: '文本纠错',
         dec: '支持英语、日语、韩语、法语、西班牙语、俄语等10多种语种与中文的互译。'
       }
     ],
+    appScene: [
+      { id: 1,
+        src: require('@/assets/img/product/solution/app-scene1.jpg'),
+        title: '口语交流学习',
+        dec: '辅助日常社交沟通、阅读、外语学习等'
+      },
+      { id: 2,
+        src: require('@/assets/img/product/solution/app-scene2.jpg'),
+        title: '出国旅游',
+        dec: ''
+      },
+      { id: 3,
+        src: require('@/assets/img/product/solution/app-scene3.jpg'),
+        title: '文档资料翻译',
+        dec: ''
+      }
+    ],
     quickNav: [
       { id: 1, title: '方案原理', position: '445' },
-      { id: 2, title: '应用场景', position: '646' },
-      { id: 3, title: '技术优势', position: '1060' },
-      { id: 4, title: '对接流程', position: '1440' },
-      { id: 5, title: '合作咨询', position: '1817' }
+      { id: 2, title: '应用场景', position: '625' },
+      { id: 3, title: '技术优势', position: '1040' },
+      { id: 4, title: '对接流程', position: '1410' },
+      { id: 5, title: '合作咨询', position: '1750' }
     ],
     scroll: '',
     activeIndex: 0
@@ -279,13 +291,12 @@ export default {
     > div {
       > h3 {
         position: relative;
-        height: 26px;
-        font-size: 19px;
+        font-size: 28px;
         font-weight: 600;
         color: #303030;
-        line-height: 26px;
+        line-height: 30px;
         text-align: center;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
         &::before {
           content: '';
           position: absolute;
@@ -294,7 +305,7 @@ export default {
           background: #2F54EB;
           left: 50%;
           transform: translateX(-50%);
-          bottom: -11px;
+          bottom: -20px;
           border-radius: 4px;
         }
       }
@@ -341,24 +352,6 @@ export default {
 
           }
         }
-      }
-      .oral-language {
-          background: url('../../assets/img/product/solution/app-scene1.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: 50% 50%;
-      }
-       .go-abroad {
-          background: url('../../assets/img/product/solution/app-scene2.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: 50% 50%;
-      }
-       .translate {
-          background: url('../../assets/img/product/solution/app-scene3.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: 50% 50%;
       }
     }
     .technology-advantage {

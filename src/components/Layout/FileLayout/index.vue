@@ -1,6 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <BaseHeader />
+    <BaseHeader :menu-type="menuType" />
     <div class="main thin-scroll">
       <Sidebar :menu-router="fileRouter" />
       <section class="content-container">
@@ -27,7 +27,8 @@ export default {
   data() {
     return {
       mapWidth: null,
-      fileRouter
+      fileRouter,
+      menuType: 'ConsoleHeader'
     }
   },
   computed: {
@@ -45,6 +46,7 @@ export default {
   height: 100%;
   background: #fff;
   /deep/.baseHeader {
+    box-shadow: 0 3px 10px 0 rgba(198,198,198,0.50);
     .el-menu {
       .el-menu-item {
         &:nth-of-type(5) {

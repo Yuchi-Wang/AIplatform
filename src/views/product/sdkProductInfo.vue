@@ -20,17 +20,13 @@
       <div class="app-scenarios">
         <h3>应用场景</h3>
         <div>
-          <div>
-            <div class="medical">
-              <h4 class="main-title">营销获客</h4>
-            </div>
-            <div class="medical office">
-              <h4 class="main-title">人机交互</h4>
-            </div>
-            <div class="medical edu">
-              <h4 class="main-title">风险控制</h4>
-            </div>
-          </div>
+          <el-row>
+            <el-col v-for="item in appScenarios" :key="item.id" :span="8">
+              <div :style="{'background-image': 'url('+ item.src +')'}">
+                <h4>{{ item.title }}</h4>
+              </div>
+            </el-col>
+          </el-row>
         </div>
       </div>
       <div>
@@ -54,7 +50,24 @@
 <script>
 export default {
   name: 'SdkProductInfo',
-  data: () => ({}),
+  data: () => ({
+    appScenarios: [
+      {
+        id: 1,
+        src: require('@/assets/img/product/sdk/app-scenarios1.png'),
+        title: '营销获客'
+      },
+      {
+        id: 2, src: require('@/assets/img/product/sdk/app-scenarios2.png'),
+        title: '人机交互'
+      },
+      {
+        id: 3,
+        src: require('@/assets/img/product/sdk/app-scenarios3.png'),
+        title: '风险控制'
+      }
+    ]
+  }),
   mounted() {},
   methods: {
     coperation() {
@@ -113,17 +126,16 @@ export default {
   .main {
     width: 1200px;
     margin: auto;
-    padding-top: 105px;
+    padding-top: 58px;
     > div {
       h3 {
         position: relative;
-        height: 26px;
-        font-size: 19px;
+        font-size: 28px;
         font-weight: 600;
         color: #303030;
-        line-height: 26px;
+        line-height: 30px;
         text-align: center;
-        margin-bottom: 37px;
+        margin-bottom: 40px;
         &::before {
           content: '';
           position: absolute;
@@ -132,15 +144,15 @@ export default {
           background: #2F54EB;
           left: 50%;
           transform: translateX(-50%);
-          bottom: -11px;
+          bottom: -20px;
           border-radius: 4px;
         }
       }
     > p {
-      font-size: 16px;
-      font-weight: 400;
-      color: #2E2E2E;
-      line-height: 18px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #2E2E2E;
+        line-height: 18px;
       }
       .technical-specifications {
         width: 878px;
@@ -157,31 +169,27 @@ export default {
     }
     .app-scenarios {
       margin: 79px 0;
-       .medical {
-        position: relative;
-        width: 33.33%;
-        display: inline-block;
-        height: 450px;
-        background: url('../../assets/img/home/medical.png') no-repeat;
-        text-align: center;
-        background-size: cover;
-        .main-title {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          height: 40px;
-          font-size: 28px;
-          font-weight: 600;
-          color: #FFFFFF;
-          line-height: 40px;
+      > div {
+        .el-col {
+          div{
+            height: 220px;
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            position: relative;
+            h4 {
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              height: 40px;
+              font-size: 28px;
+              font-weight: 600;
+              color: #FFFFFF;
+              line-height: 40px;
+            }
+          }
         }
-      }
-      .office {
-        background: url('../../assets/img/home/office.png') no-repeat;
-      }
-      .edu {
-        background: url('../../assets/img/home/edu.png') no-repeat;
       }
     }
   }

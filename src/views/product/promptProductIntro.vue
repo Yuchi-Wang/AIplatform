@@ -110,6 +110,7 @@ export default {
 
 <style scoped lang="scss">
 .prompt-product {
+  background: #fff;
   .banner {
     width: 100%;
     height: 505px;
@@ -154,19 +155,16 @@ export default {
     }
   }
   .main {
-    width: 1200px;
-    margin: auto;
-    padding-top: 33px;
+    padding-top: 58px;
     > div {
         > h3 {
           position: relative;
-          height: 26px;
-          font-size: 19px;
+          font-size: 28px;
           font-weight: 600;
           color: #303030;
-          line-height: 26px;
+          line-height: 30px;
           text-align: center;
-          margin-bottom: 37px;
+          margin-bottom: 40px;
           &::before {
             content: '';
             position: absolute;
@@ -175,11 +173,13 @@ export default {
             background: #2F54EB;
             left: 50%;
             transform: translateX(-50%);
-            bottom: -11px;
+            bottom: -20px;
             border-radius: 4px;
         }
       }
       .prompt-experience {
+        width: 1200px;
+        margin: auto;
         ul {
           li {
             display: inline-block;
@@ -216,35 +216,46 @@ export default {
       }
     }
     .product-characteristic {
-        padding-top: 70px;
-        ul {
-          width: 100%;
-          li {
-              display: inline-block;
-              width: 33.33%;
-              text-align: center;
-              .product-characteristic-bg {
-                width: 75px;
-                height: 75px;
-                margin: 0 auto 21px;
-                background-size: contain;
-                background-position: 50% 50%;
-                background-repeat: no-repeat;
-              }
-              p {
-                height: 21px;
-                margin-bottom: 67px;
-                font-size: 15px;
-                font-weight: 600;
-                color: #000000;
-                line-height: 21px;
-              }
+      margin-top: 60px;
+      padding-top: 40px;
+      background: #FAFBFF;
+      ul {
+        width: 1200px;
+        margin: auto;
+        li {
+          display: inline-block;
+          width: 33.33%;
+          text-align: center;
+          padding-top: 60px;
+           border: 2px solid transparent;
+           cursor: pointer;
+          .product-characteristic-bg {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 21px;
+            background-size: contain;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+          }
+          p {
+            height: 21px;
+            margin-bottom: 67px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #000000;
+            line-height: 21px;
+          }
+          &:hover {
+            background: #F2F5FF;
+            border: 2px solid #728DFF;
           }
         }
+      }
     }
     .app-scene {
-      padding-top: 55px;
-      margin-bottom: 50px;
+      padding: 55px 0;
+      width: 1200px;
+      margin: auto;
       > div {
        display: inline-block;
        position: relative;

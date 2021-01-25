@@ -187,17 +187,16 @@ export default {
   .main {
     width: 1200px;
     margin: auto;
-    padding-top: 33px;
+    padding-top: 58px;
     > div {
         > h3 {
           position: relative;
-          height: 26px;
-          font-size: 19px;
+          font-size: 28px;
           font-weight: 600;
           color: #303030;
-          line-height: 26px;
+          line-height: 30px;
           text-align: center;
-          margin-bottom: 37px;
+          margin-bottom: 40px;
           &::before {
             content: '';
             position: absolute;
@@ -206,7 +205,7 @@ export default {
             background: #2F54EB;
             left: 50%;
             transform: translateX(-50%);
-            bottom: -11px;
+            bottom: -20px;
             border-radius: 4px;
         }
       }

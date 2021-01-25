@@ -118,11 +118,10 @@ export default {
     > div {
         > h3 {
           position: relative;
-          height: 26px;
-          font-size: 19px;
+          font-size: 28px;
           font-weight: 600;
           color: #303030;
-          line-height: 26px;
+          line-height: 30px;
           text-align: center;
           margin-bottom: 50px;
           &::before {
@@ -133,7 +132,7 @@ export default {
             background: #2F54EB;
             left: 50%;
             transform: translateX(-50%);
-            bottom: -11px;
+            bottom: -20px;
             border-radius: 4px;
         }
       }
@@ -147,6 +146,10 @@ export default {
        width: 32.222%;
        height: 300px;
        vertical-align: text-top;
+       transition: all 0.3s ease-in-out;
+       &:hover {
+           background-size: 130%;
+       }
        &:nth-of-type(1),&:nth-of-type(2) {
            margin-right: 20px;
        }
@@ -166,19 +169,19 @@ export default {
       .ability1 {
         background: url('../../assets/img/about/companyInfo/ability1.jpg');
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 120%;
         background-position: 50% 50%;
       }
       .ability2 {
         background: url('../../assets/img/about/companyInfo/ability2.jpg');
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 120%;
         background-position: 50% 50%;
       }
       .ability3 {
         background: url('../../assets/img/about/companyInfo/ability3.jpg');
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 120%;
         background-position: 50% 50%;
       }
     }
@@ -186,11 +189,10 @@ export default {
   .dev {
     > h3 {
       position: relative;
-      height: 26px;
-      font-size: 19px;
+      font-size: 28px;
       font-weight: 600;
       color: #303030;
-      line-height: 26px;
+      line-height: 30px;
       text-align: center;
       margin-bottom: 50px;
       &::before {
@@ -201,7 +203,7 @@ export default {
         background: #2F54EB;
         left: 50%;
         transform: translateX(-50%);
-        bottom: -11px;
+        bottom: -20px;
         border-radius: 4px;
       }
     }

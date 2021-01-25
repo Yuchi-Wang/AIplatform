@@ -1,6 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <BaseHeader />
+    <BaseHeader :menu-type="menuType" />
     <div class="main thin-scroll">
       <Sidebar :menu-router="consoleRouter" />
       <section class="content-container">
@@ -31,7 +31,8 @@ export default {
   data() {
     return {
       mapWidth: null,
-      consoleRouter
+      consoleRouter,
+      menuType: 'ConsoleHeader'
     }
   },
   computed: {
@@ -49,6 +50,7 @@ export default {
   height: 100%;
   background: #F0F5FF;
   /deep/.baseHeader {
+    box-shadow: 0 3px 10px 0 rgba(198,198,198,0.50);
     .el-menu {
       .el-menu-item {
         &:nth-of-type(7) {
@@ -58,6 +60,11 @@ export default {
             color:#fff!important;
           }
         }
+      }
+    }
+    .el-menu--horizontal {
+      /deep/ .el-submenu__icon-arrow {
+        color: #000!important;
       }
     }
   }
@@ -79,7 +86,6 @@ export default {
         h3 {
           height: 40px;
           font-size: 14px;
-          font-weight: 600;
           color: #000000;
           line-height: 40px;
           background: #fff;
@@ -110,4 +116,14 @@ export default {
     }
   }
 }
+// .baseHeader {
+//   /deep/ .el-menu--horizontal {
+//   /deep/ .el-menu--popup-bottom-start {
+//     background: rgba(0, 0, 0, 0.6)!important;
+//   }
+//   /deep/ .el-submenu__icon-arrow {
+//     color: #fff!important;
+//   }
+// }
+// }
 </style>

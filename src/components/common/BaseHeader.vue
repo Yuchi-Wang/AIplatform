@@ -1,13 +1,20 @@
 <template>
-  <header class="baseHeader">
+  <header
+    class="baseHeader"
+    :style="{'background': menuType === 'defaultType' ? '#000' : '#fff'}"
+  >
     <div>
-      <img src="@/assets/img/common/logo.png" class="logo" @click="goIndex">
+      <img
+        :src="menuType === 'defaultType'? defaultLogo : consoleLogo"
+        class="logo"
+        @click="goIndex"
+      >
       <el-menu
         class="nav-menu"
         mode="horizontal"
         :default-active="$route.path"
-        background-color="transparent"
-        text-color="#fff"
+        :background-color="menuType === 'defaultType'? '#000' : '#fff'"
+        :text-color="menuType === 'defaultType'? '#fff' : '#000'"
         active-text-color="#4575FF"
         @select="selectMenuItem"
       >
@@ -46,8 +53,16 @@
 import { navRouter } from '@/router'
 export default {
   name: 'BaseHeader',
+  props: {
+    menuType: {
+      type: String,
+      required: true
+    }
+  },
   data: () => ({
-    navRouter
+    navRouter,
+    defaultLogo: require('@/assets/img/common/logo.png'),
+    consoleLogo: require('@/assets/img/common/console-logo.png')
   }),
   methods: {
     goIndex() {
@@ -66,7 +81,7 @@ export default {
   position: fixed;
   top: 0;
   z-index: 999;
-  background: rgba(0, 0, 0, 0.9);
+  opacity: .9;
   > div {
     width: 1200px;
     margin: auto;
@@ -105,10 +120,5 @@ export default {
 .el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
   background: #4575FF!important;
   color: #fff!important;
-}
-.el-menu--horizontal {
-  /deep/ .el-menu--popup-bottom-start {
- background: rgba(0, 0, 0, 0.6)!important;
-}
 }
 </style>

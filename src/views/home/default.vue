@@ -57,8 +57,17 @@
       <h3>应用场景</h3>
       <div>
         <el-row>
-          <el-col v-for="item in appScenarios" :key="item.id" :span="8">
-            <div :style="{'background-image': 'url('+ item.src +')'}">
+          <el-col v-for="(item, index) in appScenarios" :key="item.id" :span="8">
+            <div
+              :style="{
+                'background-image'
+                  :index === selectAppScenariosIndex ?
+                    'url('+ item.hoverSrc +')'
+                    :'url('+ item.src +')'
+              }"
+              @mouseover="selectApplication(index)"
+              @mouseout="selectAppScenariosIndex = -1"
+            >
               <h4>{{ item.title }}</h4>
             </div>
           </el-col>
@@ -143,22 +152,27 @@ export default {
       {
         id: 1,
         src: require('@/assets/img/home/medical.png'),
+        hoverSrc: require('../../assets/img/home/medical-hover.png'),
         title: '医疗',
         content: '防御多种攻击方式，防攻击算法更新频率高'
       },
       {
-        id: 2, src: require('@/assets/img/home/office.png'),
+        id: 2,
+        src: require('@/assets/img/home/office.png'),
+        hoverSrc: require('../../assets/img/home/office-hover.png'),
         title: '办公',
         content: '防御多种攻击方式，防攻击算法更新频率高'
       },
       {
         id: 3,
         src: require('@/assets/img/home/edu.png'),
+        hoverSrc: require('../../assets/img/home/edu-hover.png'),
         title: '教育',
         content: '防御多种攻击方式，防攻击算法更新频率高'
       }
     ],
-    activeIndex: 0
+    activeIndex: 0,
+    selectAppScenariosIndex: -1
   }),
   methods: {
     coperation() {
@@ -166,6 +180,9 @@ export default {
     },
     selectProduct(index) {
       this.activeIndex = index
+    },
+    selectApplication(index) {
+      this.selectAppScenariosIndex = index
     }
   }
 }
@@ -195,7 +212,7 @@ export default {
     height: 625px;
     background: url('../../assets/img/home/default-productInfo.jpg') no-repeat;
     background-size: cover;
-    padding-top: 54px;
+    padding-top: 58px;
     >div {
       width: 1200px;
       margin: auto;
@@ -203,11 +220,11 @@ export default {
       h3 {
         position: relative;
         text-align: center;
-        height: 29px;
-        font-size: 21px;
+        font-size: 28px;
+        font-weight: 600;
         font-weight: 600;
         color: #FFFFFF;
-        line-height: 29px;
+        line-height: 30px;
         &::before {
           content: '';
           position: absolute;
@@ -216,7 +233,7 @@ export default {
           background: #FAFAFA;
           left: 50%;
           transform: translateX(-50%);
-          bottom: -23px;
+          bottom: -20px;
           border-radius: 4px;
         }
       }
@@ -271,16 +288,15 @@ export default {
     > div {
       width: 1200px;
       margin: auto;
-      padding-top: 35px;
+      padding-top: 58px;
       padding-bottom: 83px;
       h3 {
         position: relative;
-        height: 29px;
-        font-size: 21px;
+        font-size: 28px;
         text-align: center;
         font-weight: 600;
         color: #000000;
-        line-height: 29px;
+        line-height: 30px;
         margin-bottom: 90px;
         &::before {
           content: '';
@@ -299,8 +315,8 @@ export default {
           display: inline-block;
           width: 25%;
           .img-box {
-            width: 173px;
-            height: 173px;
+            width: 160px;
+            height: 160px;
             background-repeat: no-repeat;
             background-position: center;
             border-radius: 50%;
@@ -332,15 +348,14 @@ export default {
     height: 647px;
     background: url('../../assets/img/home/default-productInfo.jpg') no-repeat;
     background-size: cover;
-    padding-top: 42px;
+    padding-top: 58px;
     h3 {
       position: relative;
-      height: 29px;
-      font-size: 21px;
+      font-size: 28px;
       text-align: center;
       font-weight: 600;
       color: #fff;
-      line-height: 29px;
+      line-height: 30px;
       margin-bottom: 90px;
       &::before {
         content: '';
@@ -350,20 +365,21 @@ export default {
         background: #fff;
         left: 50%;
         transform: translateX(-50%);
-        bottom: -23px;
+        bottom: -20px;
         border-radius: 4px;
       }
     }
     > div {
-      width: 1200px;
+      width: 1080px;
       margin: auto;
       .el-col {
         div{
-          height: 450px;
+          height: 390px;
           background-size: cover;
           background-position: 50% 50%;
           background-repeat: no-repeat;
           position: relative;
+          cursor: pointer;
           h4 {
             position: absolute;
             left: 50%;

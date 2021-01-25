@@ -36,20 +36,10 @@
       <div class="product-characteristic">
         <h3>产品特点</h3>
         <ul>
-          <li>
-            <img src="../../assets/img/product/abao/characteristic1.png" alt="响应快">
-            <h4>响应快</h4>
-            <p>毫秒级响应。通过实时的语音转换，及时响应用户的操作。</p>
-          </li>
-          <li>
-            <img src="../../assets/img/product/abao/characteristic2.png" alt="金融词汇">
-            <h4>金融词汇</h4>
-            <p>丰富的金融词库，满足用户搜索金融资讯。</p>
-          </li>
-          <li>
-            <img src="../../assets/img/product/abao/characteristic3.png" alt="语音交互">
-            <h4>语音交互</h4>
-            <p>支持全程语音模式，线上查询、线上开户、线上交易，实现语音一体化操作。</p>
+          <li v-for="item in porduCtcharacteristic" :key="item.id">
+            <img :src="item.src" :alt="item.title">
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.content }}</p>
           </li>
         </ul>
       </div>
@@ -84,7 +74,27 @@
 export default {
   name: 'AbaoProduct',
   data: () => ({
-    textarea: ''
+    textarea: '',
+    porduCtcharacteristic: [
+      {
+        id: 1,
+        src: require('@/assets/img/product/abao/characteristic1.png'),
+        title: '响应快',
+        content: '毫秒级响应。通过实时的语音转换，及时响应用户的操作。'
+      },
+      {
+        id: 2,
+        src: require('@/assets/img/product/abao/characteristic2.png'),
+        title: '金融词汇',
+        content: '丰富的金融词库，满足用户搜索金融资讯。'
+      },
+      {
+        id: 3,
+        src: require('@/assets/img/product/abao/characteristic3.png'),
+        title: '语音交互',
+        content: '支持全程语音模式，线上查询、线上开户、线上交易，实现语音一体化操作。'
+      }
+    ]
   }),
   mounted() {},
   methods: {
@@ -143,17 +153,16 @@ export default {
   .main {
     width: 1200px;
     margin: auto;
-    padding-top: 33px;
+    padding-top: 58px;
     > div {
         > h3 {
           position: relative;
-          height: 26px;
-          font-size: 19px;
+          font-size: 28px;
           font-weight: 600;
           color: #303030;
-          line-height: 26px;
+          line-height: 30px;
           text-align: center;
-          margin-bottom: 50px;
+          margin-bottom: 40px;
           &::before {
             content: '';
             position: absolute;
@@ -162,7 +171,7 @@ export default {
             background: #2F54EB;
             left: 50%;
             transform: translateX(-50%);
-            bottom: -11px;
+            bottom: -20px;
             border-radius: 4px;
         }
       }
