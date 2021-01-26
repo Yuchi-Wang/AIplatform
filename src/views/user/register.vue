@@ -5,8 +5,7 @@
       <h4>AI&emsp;解决方案&emsp;科技未来</h4>
       <p>提供金融等各行业技术服务</p>
       <div class="register-form">
-        <img src="../../assets/img/user/login-title.svg" class="register-title">
-        <img src="../../assets/img/user/login-qrcode.svg" class="register-qrcode">
+        <img src="../../assets/img/user/login-title.svg" class="register-title" @click="goIndex">
         <el-form ref="registerForm" :rules="rules" :model="registerForm" class="register-ruleForm">
           <el-form-item prop="userName" class="m-b-18">
             <el-input
@@ -136,9 +135,7 @@ export default {
     this.registerType = this.$route.query.type
   },
   methods: {
-    getVerificationCode() {
-      alert(2333)
-    },
+    getVerificationCode() {},
     submitForm(registerForm) {},
     checkAgreement() {
       this.$router.push('/user/serviceagreement')
@@ -148,6 +145,9 @@ export default {
     },
     turnBack() {
       this.$router.replace({ name: 'login' })
+    },
+    goIndex() {
+      this.$router.replace('/')
     }
   }
 }
@@ -174,7 +174,7 @@ body, html {
   height: 100%;
   overflow: hidden;
   > div {
-    padding-top: 107px;
+    padding-top: 13%;
     width: 1200px;
     position: relative;
     margin: auto;
@@ -229,6 +229,8 @@ body, html {
       }
       .verification-button {
         background: #2F54EB;
+        border: 1px solid #2F54EB;
+        transition: all .3s;
         border-radius: 30px;
         margin-left: 9px;
         padding: 9px 12px;
@@ -236,6 +238,10 @@ body, html {
         font-weight: 400;
         color: #FFFFFF;
         line-height: 18px;
+        &:hover {
+          background: #1d39c4;
+          border: 1px solid #1d39c4;
+        }
       }
     }
     .policy {
@@ -257,12 +263,8 @@ body, html {
     }
     .register-title {
       width: 157px;
-      margin-top: 47px;
-    }
-    .register-qrcode {
-      position: absolute;
-      top: -5px;
-      right: -5px;
+      margin-top: 40px;
+      cursor: pointer;
     }
     .register-ruleForm {
       padding: 20px 50px 0 50px;
@@ -303,8 +305,14 @@ body, html {
         height: 30px;
         line-height: 30px;
         background: #2F54EB;
+        border: 1px solid #2F54EB;
+        transition: all .3s;
         padding: 0!important;
         border-radius: 16px;
+        &:hover {
+          background: #1d39c4;
+          border: 1px solid #1d39c4;
+        }
       }
     }
     .login-button {

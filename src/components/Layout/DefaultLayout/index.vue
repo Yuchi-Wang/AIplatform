@@ -1,6 +1,9 @@
 <template>
   <div class="app-wrapper">
     <BaseHeader :menu-type="defaultType" />
+    <el-backtop :bottom="50">
+      <i class="back-top" />
+    </el-backtop>
     <div class="main thin-scroll">
       <transition name="el-fade-in" mode="out-in">
         <router-view />
@@ -23,7 +26,7 @@ export default {
 .app-wrapper {
   position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
    /deep/.baseHeader {
      box-shadow: none;
     .el-menu--horizontal {
@@ -31,6 +34,21 @@ export default {
         color: #fff!important;
       }
     }
+  }
+  .el-backtop {
+    width: 60px;
+    height: 60px;
+    box-shadow: none;
+    background: transparent;
+  }
+  .back-top {
+    display: inline-block;
+    width: 60px;
+    height:60px;
+    background: url('../../../assets/img/common/back-top.svg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 100%;
   }
 }
 </style>

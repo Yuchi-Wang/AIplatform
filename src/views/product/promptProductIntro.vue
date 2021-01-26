@@ -37,11 +37,13 @@
         <h3>产品体验</h3>
         <ul>
           <li v-for="item in productCharacteristic" :key="item.id">
-            <div
-              class="product-characteristic-bg"
-              :style="{backgroundImage: 'url('+ item.src +')'}"
-            />
-            <p>{{ item.title }}</p>
+            <div>
+              <div
+                class="product-characteristic-bg"
+                :style="{backgroundImage: 'url('+ item.src +')'}"
+              />
+              <p>{{ item.title }}</p>
+            </div>
           </li>
         </ul>
       </div>
@@ -226,9 +228,17 @@ export default {
           display: inline-block;
           width: 33.33%;
           text-align: center;
-          padding-top: 60px;
-           border: 2px solid transparent;
            cursor: pointer;
+           > div {
+              padding-top: 60px;
+              border: 2px solid transparent;
+              width: 248px;
+              margin: auto;
+              &:hover {
+                background: #F2F5FF;
+                border: 2px dotted #728DFF;
+              }
+           }
           .product-characteristic-bg {
             width: 75px;
             height: 75px;
@@ -244,10 +254,6 @@ export default {
             font-weight: 600;
             color: #000000;
             line-height: 21px;
-          }
-          &:hover {
-            background: #F2F5FF;
-            border: 2px solid #728DFF;
           }
         }
       }

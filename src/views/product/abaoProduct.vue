@@ -258,7 +258,7 @@ export default {
           left: 50%;
           transform: translate(-50%,-50%);
           height: 21px;
-          font-size: 15px;
+          font-size: 19px;
           font-weight: 600;
           color: #FFFFFF;
           line-height: 21px;

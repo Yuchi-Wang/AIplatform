@@ -98,9 +98,11 @@ export default {
       .el-button {
         width: 300px;
         background:#2F54EB;
+        border: 1px solid #2F54EB;
         transition: all .3s;
         &:hover {
           background: #1d39c4;
+          border: 1px solid #1d39c4;
         }
       }
     }

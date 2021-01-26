@@ -21,8 +21,17 @@
         <h3>应用场景</h3>
         <div>
           <el-row>
-            <el-col v-for="item in appScenarios" :key="item.id" :span="8">
-              <div :style="{'background-image': 'url('+ item.src +')'}">
+            <el-col v-for="(item, index) in appScenarios" :key="item.id" :span="8">
+              <div
+                :style="{
+                  'background-image'
+                    :index === selectAppScenariosIndex ?
+                      'url('+ item.hoverSrc +')'
+                      :'url('+ item.src +')'
+                }"
+                @mouseover="selectApplication(index)"
+                @mouseout="selectAppScenariosIndex = -1"
+              >
                 <h4>{{ item.title }}</h4>
               </div>
             </el-col>
@@ -55,21 +64,28 @@ export default {
       {
         id: 1,
         src: require('@/assets/img/product/sdk/app-scenarios1.png'),
+        hoverSrc: require('@/assets/img/product/sdk/app-scenarios1-hover.png'),
         title: '营销获客'
       },
       {
         id: 2, src: require('@/assets/img/product/sdk/app-scenarios2.png'),
+        hoverSrc: require('@/assets/img/product/sdk/app-scenarios2-hover.png'),
         title: '人机交互'
       },
       {
         id: 3,
         src: require('@/assets/img/product/sdk/app-scenarios3.png'),
+        hoverSrc: require('@/assets/img/product/sdk/app-scenarios3-hover.png'),
         title: '风险控制'
       }
-    ]
+    ],
+    selectAppScenariosIndex: -1
   }),
   mounted() {},
   methods: {
+    selectApplication(index) {
+      this.selectAppScenariosIndex = index
+    },
     coperation() {
       this.$router.push('/about/businessCoperation')
     }
@@ -177,6 +193,7 @@ export default {
             background-position: 50% 50%;
             background-repeat: no-repeat;
             position: relative;
+            cursor: pointer;
             h4 {
               position: absolute;
               left: 50%;

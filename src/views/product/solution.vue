@@ -110,7 +110,7 @@ export default {
       { id: 1,
         src: require('@/assets/img/product/solution/app-scene1.jpg'),
         title: '口语交流学习',
-        dec: '辅助日常社交沟通、阅读、外语学习等'
+        dec: ''
       },
       { id: 2,
         src: require('@/assets/img/product/solution/app-scene2.jpg'),

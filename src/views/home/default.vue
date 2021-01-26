@@ -152,21 +152,21 @@ export default {
       {
         id: 1,
         src: require('@/assets/img/home/medical.png'),
-        hoverSrc: require('../../assets/img/home/medical-hover.png'),
+        hoverSrc: require('@/assets/img/home/medical-hover.png'),
         title: '医疗',
         content: '防御多种攻击方式，防攻击算法更新频率高'
       },
       {
         id: 2,
         src: require('@/assets/img/home/office.png'),
-        hoverSrc: require('../../assets/img/home/office-hover.png'),
+        hoverSrc: require('@/assets/img/home/office-hover.png'),
         title: '办公',
         content: '防御多种攻击方式，防攻击算法更新频率高'
       },
       {
         id: 3,
         src: require('@/assets/img/home/edu.png'),
-        hoverSrc: require('../../assets/img/home/edu-hover.png'),
+        hoverSrc: require('@/assets/img/home/edu-hover.png'),
         title: '教育',
         content: '防御多种攻击方式，防攻击算法更新频率高'
       }

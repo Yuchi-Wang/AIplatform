@@ -26,7 +26,8 @@ import {
   CarouselItem,
   Link,
   MessageBox,
-  Message
+  Message,
+  Backtop
 } from 'element-ui'
 const CustomElement = {
   install: function(Vue) {
@@ -56,6 +57,7 @@ const CustomElement = {
       .use(Link)
       .use(Timeline)
       .use(TimelineItem)
+      .use(Backtop)
     Vue.prototype.$message = Message
     Vue.prototype.$confirm = MessageBox.confirm
   }

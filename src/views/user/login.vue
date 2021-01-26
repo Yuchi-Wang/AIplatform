@@ -5,9 +5,9 @@
       <h4>AI&emsp;解决方案&emsp;科技未来</h4>
       <p>提供金融等各行业技术服务</p>
       <div class="login-form">
-        <img src="../../assets/img/user/login-title.svg" class="login-title">
-        <img src="../../assets/img/user/login-qrcode.svg" class="login-qrcode">
-        <el-form ref="loginForm" :rules="rules" :model="loginForm" class="login-ruleForm">
+        <img src="../../assets/img/user/login-title.svg" class="login-title" @click="goIndex">
+        <img v-if="!qrcodeLogin" src="../../assets/img/user/login-qrcode.svg" class="login-qrcode" @click="qrcodeLogin = true">
+        <el-form v-if="!qrcodeLogin" ref="loginForm" :rules="rules" :model="loginForm" class="login-ruleForm">
           <el-form-item prop="password">
             <el-input
               v-model="loginForm.account"
@@ -32,11 +32,16 @@
             <el-button type="primary" class="login-button" @click="submitForm('loginForm')">登录</el-button>
           </el-form-item>
         </el-form>
-        <p class="no-register">
+        <p v-if="!qrcodeLogin" class="no-register">
           <span>您还没有注册？</span>
           <span class="mob-register register-color" @click="mobileRegistration">手机注册</span>
           <span class="register-color" @click="emailRegistration">邮箱注册</span>
         </p>
+        <div v-if="qrcodeLogin" class="qrcode-login-box">
+          <img src="../../assets/img/user/login-qrcode.png">
+          <p>微信扫码登录</p>
+          <el-button @click="qrcodeLogin = false">返回</el-button>
+        </div>
       </div>
       <footer>
         <p>
@@ -66,13 +71,12 @@ export default {
         { required: true, message: '请输入密码', trigger: 'blur' },
         { min: 6, max: 16, message: '密码长度在 6 到 16 个字符', trigger: 'blur' }
       ]
-    }
+    },
+    qrcodeLogin: false
   }),
   mounted() {},
   methods: {
-    submitForm(loginForm) {
-
-    },
+    submitForm(loginForm) {},
     fogetPassword() {
       this.$router.push({ name: 'forgetpwd' })
     },
@@ -81,6 +85,9 @@ export default {
     },
     emailRegistration() {
       this.$router.push({ name: 'register', query: { type: 'email' }})
+    },
+    goIndex() {
+      this.$router.replace('/')
     }
   }
 }
@@ -98,7 +105,7 @@ body, html {
   height: 100%;
   overflow: hidden;
   > div {
-    padding-top: 107px;
+    padding-top: 13%;
     width: 1200px;
     position: relative;
     margin: auto;
@@ -149,11 +156,13 @@ body, html {
       .login-title {
         width: 157px;
         margin-top: 47px;
+        cursor: pointer;
       }
       .login-qrcode {
         position: absolute;
         top: -5px;
         right: -5px;
+        cursor: pointer;
       }
       .login-ruleForm {
         padding: 34px 54px 0 54px;
@@ -192,7 +201,36 @@ body, html {
         .login-button {
           width: 264px;
           background: #2F54EB;
+          border: 1px solid #2F54EB;
+          transition: all .3s;
           border-radius: 16px;
+          &:hover {
+          background: #1d39c4;
+          border: 1px solid #1d39c4;
+          }
+        }
+      }
+      .qrcode-login-box {
+        margin-top: 33px;
+        p {
+          height: 18px;
+          font-size: 12px;
+          color: #686868;
+          line-height: 18px;
+          margin: 11px 0 18px 0;
+        }
+        /deep/ .el-button {
+          width: 264px;
+          margin-bottom: 33px;
+          background: #FFFFFF;
+          border-radius: 16px;
+          border: 2px solid #2F54EB;
+          color: #2F54EB;
+          transition: all .3s;
+          &:hover {
+            background:  #2F54EB;
+            color: #fff;
+          }
         }
       }
       .no-register {
