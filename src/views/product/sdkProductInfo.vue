@@ -81,7 +81,6 @@ export default {
     ],
     selectAppScenariosIndex: -1
   }),
-  mounted() {},
   methods: {
     selectApplication(index) {
       this.selectAppScenariosIndex = index

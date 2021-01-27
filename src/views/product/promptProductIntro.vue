@@ -14,23 +14,11 @@
       <div>
         <h3>产品体验</h3>
         <div class="prompt-experience">
-          <ul>
-            <li>
-              <h3>请输入关键字</h3>
-              <div>
-                <el-input
-                  v-model="textarea"
-                  type="textarea"
-                  :rows="9"
-                  placeholder="请输入内容"
-                />
-              </div>
-            </li>
-            <li>
-              <h3>返回结果</h3>
-              <div />
-            </li>
-          </ul>
+          <img
+            :src="prdductExperienceSrc ? prdductExperienceHover: prdductExperience"
+            @mouseover="prdductExperienceSrc= true"
+            @mouseout="prdductExperienceSrc= false"
+          >
         </div>
       </div>
       <div class="product-characteristic">
@@ -73,6 +61,9 @@
 export default {
   name: 'PromptProductIntro',
   data: () => ({
+    prdductExperience: require('@/assets/img/product/prompt/experience.png'),
+    prdductExperienceHover: require('@/assets/img/product/prompt/experience.gif'),
+    prdductExperienceSrc: false,
     productCharacteristic: [
       { id: 1,
         src: require('../../assets/img/product/prompt/product-characteristic1.svg'),
@@ -101,7 +92,6 @@ export default {
     ],
     textarea: ''
   }),
-  mounted() {},
   methods: {
     coperation() {
       this.$router.push('/about/businessCoperation')
@@ -182,38 +172,9 @@ export default {
       .prompt-experience {
         width: 1200px;
         margin: auto;
-        ul {
-          li {
-            display: inline-block;
-            width: 49.166%;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 0 26px 0 rgba(206,206,206,0.50);
-            vertical-align: text-top;
-            &:first-child {
-              margin-right: 20px;
-            }
-            h3 {
-              font-size: 16px;
-              color: #000;
-              font-weight: 600;
-              height: 20px;
-              line-height: 20px;
-              margin-bottom: 20px;
-            }
-            >div {
-              background: #F9F9F9;
-              width: 100%;
-              height: 185px;
-              /deep/ .el-textarea {
-                textarea {
-                  resize:none;
-                  border:none;
-                  background: #F9F9F9;
-                }
-              }
-            }
-          }
+        img {
+          width: 100%;
+          cursor: pointer;
         }
       }
     }

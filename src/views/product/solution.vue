@@ -157,19 +157,15 @@ export default {
     menu() {
       this.scroll = document.documentElement.scrollTop || document.body.scrollTop
       if (this.scroll > 440) {
-        this.queryDom.querySelectorAll('.quick-nav').forEach(itemDom => {
-          itemDom.setAttribute(
-            'style',
-            'width:100%;position:fixed;top:61.49px;z-index:999'
-          )
-        })
+        this.queryDom.querySelector('.quick-nav').setAttribute(
+          'style',
+          'width:100%;position:fixed;top:61.49px;z-index:999'
+        )
       } else {
-        this.queryDom.querySelectorAll('.quick-nav').forEach(itemDom => {
-          itemDom.setAttribute(
-            'style',
-            'width:100%;position:position: relative'
-          )
-        })
+        this.queryDom.querySelector('.quick-nav').setAttribute(
+          'style',
+          'width:100%;position:position: relative'
+        )
       }
     },
     jumpTo(position, index) {

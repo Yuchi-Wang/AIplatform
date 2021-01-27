@@ -120,7 +120,6 @@ export default {
     ],
     fileList: []
   }),
-  mounted() {},
   methods: {
     handleRemove() {},
     coperation() {

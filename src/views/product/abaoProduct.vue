@@ -96,7 +96,6 @@ export default {
       }
     ]
   }),
-  mounted() {},
   methods: {
     coperation() {
       this.$router.push('/about/businessCoperation')
