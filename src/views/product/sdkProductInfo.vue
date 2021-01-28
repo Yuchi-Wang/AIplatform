@@ -173,12 +173,12 @@ export default {
         width: 878px;
         margin: 33px auto 30px;
         background: #F8F8F8;
-        padding: 44px 105px 44px 44px;
+        padding: 30px 105px 30px 30px;
         p {
-        font-size: 21px;
+        font-size: 16px;
         font-weight: 400;
         color: #303030;
-        line-height: 29px;
+        line-height: 24px;
         }
       }
     }

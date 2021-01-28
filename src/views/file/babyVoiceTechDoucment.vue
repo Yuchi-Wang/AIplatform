@@ -107,11 +107,11 @@ export default {
       margin-bottom: 10px;
     }
     p {
-      font-size: 16px;
+      font-size: 14px;
       margin-bottom: 5px;
       font-weight: 400;
       color: #000000;
-      line-height: 22px;
+      line-height: 20px;
     }
   }
 }

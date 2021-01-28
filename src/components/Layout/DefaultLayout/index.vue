@@ -5,9 +5,7 @@
       <i class="back-top" />
     </el-backtop>
     <div class="main thin-scroll">
-      <transition name="el-fade-in" mode="out-in">
-        <router-view />
-      </transition>
+      <router-view />
     </div>
   </div>
 </template>

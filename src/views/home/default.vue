@@ -2,7 +2,7 @@
   <div class="home">
     <div class="banner">
       <el-carousel height="675px" class="banner-img">
-        <el-carousel-item v-for="item in imgBox" :key="item.id">
+        <el-carousel-item v-for="item in bannerList" :key="item.id">
           <div class="banner-content" :style="{'background-image': 'url('+ item.src +')'}">
             <h3>诚龙AI 科技未来</h3>
           </div>
@@ -88,10 +88,10 @@
 export default {
   name: 'Home',
   data: () => ({
-    imgBox: [
+    bannerList: [
       { id: 1, src: require('@/assets/img/home/banner.jpg') },
-      { id: 2, src: require('@/assets/img/home/banner.jpg') },
-      { id: 3, src: require('@/assets/img/home/banner.jpg') }
+      { id: 2, src: require('@/assets/img/home/banner1.jpg') },
+      { id: 3, src: require('@/assets/img/home/banner2.jpg') }
     ],
     productInfoList: [
       { id: 1, title: 'prompt' },
@@ -325,19 +325,20 @@ export default {
           h4 {
             margin-top: 35px;
             height: 29px;
-            font-size: 21px;
+            font-size: 18px;
             font-weight: 600;
             text-align: center;
-            color: #333333;
+            color: #333;
             line-height: 29px;
           }
           p {
             width: 231px;
-            margin: 15px auto 0;
-            font-size: 21px;
+            margin: 5px auto 10px;
+            font-size: 16px;
             font-weight: 400;
             color: #929292;
             line-height: 29px;
+            text-align: justify;
           }
         }
       }
@@ -407,6 +408,7 @@ export default {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      text-align: center;
         button {
         display: inline-block;
         margin-bottom: 36px;

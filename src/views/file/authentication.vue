@@ -26,11 +26,11 @@
   > div {
     margin-bottom: 30px;
     p {
-      font-size: 16px;
+      font-size: 14px;
       margin-bottom: 5px;
       font-weight: 400;
-      color: #000000;
-      line-height: 22px;
+      color: #000;
+      line-height: 20px;
     }
   }
 }

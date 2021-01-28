@@ -21,14 +21,14 @@
       </ul>
     </div>
     <div class="main">
-      <div>
+      <div class="content">
         <h3>方案原理</h3>
         <p>
           基于讯飞自主研发的机器翻译引擎，提供更优质的翻译接口。其中中英互译能力媲美大学英语六级水平，
           目前已逐步支持英日韩法西俄等多语种与中文的高品质互译。
         </p>
       </div>
-      <div class="app-scene">
+      <div class="app-scene content">
         <h3>应用场景</h3>
         <div
           v-for="item in appScene"
@@ -56,7 +56,7 @@
           </li>
         </ul>
       </div>
-      <div class="docking-process">
+      <div class="docking-process content">
         <h3>对接流程</h3>
         <div class="steps">
           <div class="first">
@@ -98,12 +98,12 @@ export default {
       { id: 2,
         src: require('@/assets/img/product/solution/technology-advantage2.png'),
         title: '注音校正',
-        dec: '中英互译水平达到大学英语六级水平，极速返回翻译结果，响应速度800ms以内。'
+        dec: '中英互译水平达到大学英语六级水平，极速返回翻译结果，响应速度800ms以内'
       },
       { id: 3,
         src: require('@/assets/img/product/solution/technology-advantage3.png'),
         title: '文本纠错',
-        dec: '支持英语、日语、韩语、法语、西班牙语、俄语等10多种语种与中文的互译。'
+        dec: '支持英语、日语、韩语、法语、西班牙语、俄语等10多种语种与中文的互译'
       }
     ],
     appScene: [
@@ -127,8 +127,8 @@ export default {
       { id: 1, title: '方案原理', position: '445' },
       { id: 2, title: '应用场景', position: '625' },
       { id: 3, title: '技术优势', position: '1040' },
-      { id: 4, title: '对接流程', position: '1410' },
-      { id: 5, title: '合作咨询', position: '1750' }
+      { id: 4, title: '对接流程', position: '1427' },
+      { id: 5, title: '合作咨询', position: '1800' }
     ],
     scroll: '',
     activeIndex: 0
@@ -281,9 +281,11 @@ export default {
     }
   }
   .main {
-    width: 1200px;
-    margin: auto;
     padding-top: 70px;
+    .content {
+      width: 1200px;
+      margin: auto;
+    }
     > div {
       > h3 {
         position: relative;
@@ -355,6 +357,10 @@ export default {
       padding: 26px 0;
       width: 100%;
       background: #F8F8F8;
+      ul {
+        width: 1200px;
+        margin: auto;
+      }
       li {
         display: inline-block;
         width: 33.33%;
@@ -369,20 +375,20 @@ export default {
           background-repeat: no-repeat;
         }
         h4 {
-          height: 21px;
-          margin-bottom: 13px;
-          font-size: 15px;
+          height: 29px;
+          font-size: 18px;
           font-weight: 600;
-          color: #000000;
-          line-height: 21px;
+          color: #333;
+          line-height: 29px;
         }
         p {
           width: 265px;
-          font-size: 12px;
+          margin: 5px auto 10px;
+          font-size: 16px;
           font-weight: 400;
-          color: #666;
-          line-height: 18px;
-          margin: auto;
+          color: #929292;
+          line-height: 24px;
+          text-align: justify;
         }
       }
     }
@@ -487,6 +493,7 @@ export default {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      text-align: center;
         button {
         display: inline-block;
         margin-bottom: 36px;

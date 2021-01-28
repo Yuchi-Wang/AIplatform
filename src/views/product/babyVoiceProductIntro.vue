@@ -315,21 +315,21 @@ export default {
                 background-repeat: no-repeat;
               }
               h3 {
-                height: 21px;
-                margin-bottom: 18px;
-                font-size: 15px;
+                height: 29px;
+                font-size: 18px;
                 font-weight: 600;
-                color: #000000;
-                line-height: 21px;
+                text-align: center;
+                color: #333;
+                line-height: 29px;
               }
               p {
                 width: 199px;
-                margin: auto;
-                text-align: left;
-                font-size: 15px;
+                margin: 5px auto 10px;
+                font-size: 16px;
                 font-weight: 400;
-                color: #97989A;
-                line-height: 21px;
+                color: #929292;
+                line-height: 29px;
+                text-align: justify;
               }
           }
         }
