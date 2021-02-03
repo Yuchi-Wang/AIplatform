@@ -4,8 +4,8 @@
     <h4>AI&emsp;解决方案&emsp;科技未来</h4>
     <p>提供金融等各行业技术服务</p>
     <div class="register-form">
-      <img src="../../assets/img/user/login-title.svg" class="register-title">
-      <img src="../../assets/img/user/login-qrcode.svg" class="register-qrcode">
+      <img src="@/assets/img/user/login-title.svg" class="register-title">
+      <img src="@/assets/img/user/login-qrcode.svg" class="register-qrcode">
       <el-form ref="registerForm" :rules="rules" :model="registerForm" class="register-ruleForm">
         <el-form-item prop="userName">
           <el-input

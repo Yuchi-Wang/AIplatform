@@ -143,6 +143,7 @@ export default {
   mounted() {
     this.menu()
     window.addEventListener('scroll', this.menu)
+    console.log(process.env)
   },
   destroyed() {
     window.removeEventListener('scroll', this.menu)

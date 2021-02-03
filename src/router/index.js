@@ -3,14 +3,14 @@ import VueRouter from 'vue-router'
 import Layout from '@/components/Layout/DefaultLayout'
 import FileLayout from '@/components/Layout/FileLayout'
 import ConsoleLayout from '@/components/Layout/ConsoleLayout'
-const _import = file => () => import('@/views/' + file + '.vue')
+const _resolve = file => resolve => require([`@/views/${file}.vue`], resolve)
 
 Vue.use(VueRouter)
 
 // 登录
 const login = {
   path: '/login',
-  component: _import('user/login'),
+  component: _resolve('user/login'),
   name: 'login',
   hidden: true
 }
@@ -18,7 +18,7 @@ const login = {
 // 注册
 const register = {
   path: '/register',
-  component: _import('user/register'),
+  component: _resolve('user/register'),
   name: 'register',
   hidden: true
 }
@@ -26,7 +26,7 @@ const register = {
 // 忘记密码
 const forgetPwd = {
   path: '/forgetpwd',
-  component: _import('user/forgetPwd'),
+  component: _resolve('user/forgetPwd'),
   name: 'forgetPwd',
   hidden: true
 }
@@ -43,7 +43,7 @@ const Home = {
     {
       path: '',
       name: 'Home',
-      component: _import('home/default')
+      component: _resolve('home/default')
     }
   ]
 }
@@ -60,7 +60,7 @@ const solution = {
     {
       path: '/solution',
       name: 'Solution',
-      component: _import('product/solution')
+      component: _resolve('product/solution')
     }
   ]
 }
@@ -78,7 +78,7 @@ const product = {
     {
       path: 'abaoProduct',
       name: 'abaoProduct',
-      component: _import('product/abaoProduct'),
+      component: _resolve('product/abaoProduct'),
       meta: {
         title: '诚龙阿宝'
       }
@@ -86,7 +86,7 @@ const product = {
     {
       path: 'promptProductIntro',
       name: 'promptProductIntro',
-      component: _import('product/promptProductIntro'),
+      component: _resolve('product/promptProductIntro'),
       meta: {
         title: 'prompt'
       }
@@ -94,7 +94,7 @@ const product = {
     {
       path: 'babyVoiceProductIntro',
       name: 'babyVoiceProductIntro',
-      component: _import('product/babyVoiceProductIntro'),
+      component: _resolve('product/babyVoiceProductIntro'),
       meta: {
         title: '婴儿哭声'
       }
@@ -114,7 +114,7 @@ const sdkProductinfo = {
     {
       path: '/sdkProductinfo',
       name: 'sdkProductinfo',
-      component: _import('product/sdkProductInfo')
+      component: _resolve('product/sdkProductInfo')
     }
   ]
 }
@@ -165,7 +165,7 @@ const about = {
     {
       path: 'companyInfo',
       name: 'companyInfo',
-      component: _import('about/companyInfo'),
+      component: _resolve('about/companyInfo'),
       meta: {
         title: '公司简介'
       }
@@ -173,7 +173,7 @@ const about = {
     {
       path: 'businessCoperation',
       name: 'businessCoperation',
-      component: _import('about/businessCoperation'),
+      component: _resolve('about/businessCoperation'),
       meta: {
         title: '商务合作'
       }
@@ -181,7 +181,7 @@ const about = {
     {
       path: 'technicalSupport',
       name: 'technicalSupport',
-      component: _import('about/technicalSupport'),
+      component: _resolve('about/technicalSupport'),
       meta: {
         title: '技术支持'
       }
@@ -199,12 +199,12 @@ const user = {
     {
       path: 'serviceagreement',
       name: 'serviceagreement',
-      component: _import('user/serviceAgreement')
+      component: _resolve('user/serviceAgreement')
     },
     {
       path: 'privacyPolicy',
       name: 'privacyPolicy',
-      component: _import('user/privacyPolicy')
+      component: _resolve('user/privacyPolicy')
     }
   ]
 }
@@ -223,7 +223,7 @@ const ReadingGuide = {
     {
       path: 'platformInfo',
       name: 'platformInfo',
-      component: _import('file/platformInfo'),
+      component: _resolve('file/platformInfo'),
       meta: {
         title: '简介'
       }
@@ -231,7 +231,7 @@ const ReadingGuide = {
     {
       path: 'quickGuide',
       name: 'quickGuide',
-      component: _import('file/quickGuide'),
+      component: _resolve('file/quickGuide'),
       meta: {
         title: '快速指引'
       }
@@ -239,7 +239,7 @@ const ReadingGuide = {
     {
       path: 'authentication',
       name: 'authentication',
-      component: _import('file/authentication'),
+      component: _resolve('file/authentication'),
       meta: {
         title: '鉴权认证机制'
       }
@@ -261,7 +261,7 @@ const babyVoiceTechDoucment = {
     {
       path: '',
       name: 'babyVoiceTechDoucment',
-      component: _import('file/babyVoiceTechDoucment'),
+      component: _resolve('file/babyVoiceTechDoucment'),
       meta: {
         title: '婴儿哭泣识别'
       }
@@ -282,7 +282,7 @@ const clabTechDoucment = {
     {
       path: '',
       name: 'clabTechDoucment',
-      component: _import('file/clabTechDoucment'),
+      component: _resolve('file/clabTechDoucment'),
       meta: {
         title: '成龙阿宝'
       }
@@ -303,7 +303,7 @@ const promptTechDoucment = {
     {
       path: '',
       name: 'promptTechDoucment',
-      component: _import('file/promptTechDoucment'),
+      component: _resolve('file/promptTechDoucment'),
       meta: {
         title: 'prompt'
       }
@@ -325,7 +325,7 @@ const account = {
     {
       path: 'accountManage',
       name: 'accountManage',
-      component: _import('console/accountManage'),
+      component: _resolve('console/accountManage'),
       meta: {
         title: '账号管理'
       }
@@ -347,7 +347,7 @@ const appManage = {
     {
       path: 'apiManage',
       name: 'apiManage',
-      component: _import('console/apiManage'),
+      component: _resolve('console/apiManage'),
       meta: {
         title: 'api'
       }
@@ -355,7 +355,7 @@ const appManage = {
     {
       path: 'promptConsoleList',
       name: 'promptConsoleList',
-      component: _import('console/promptConsoleList'),
+      component: _resolve('console/promptConsoleList'),
       meta: {
         title: 'prompt'
       }
@@ -363,7 +363,7 @@ const appManage = {
     {
       path: 'clabConsoleList',
       name: 'clabConsoleList',
-      component: _import('console/clabConsoleList'),
+      component: _resolve('console/clabConsoleList'),
       meta: {
         title: '诚龙阿宝'
       }
@@ -371,7 +371,7 @@ const appManage = {
     {
       path: 'babyVocieConsoleList',
       name: 'babyVocieConsoleList',
-      component: _import('console/babyVocieConsoleList'),
+      component: _resolve('console/babyVocieConsoleList'),
       meta: {
         title: '婴语识别'
       }
@@ -393,7 +393,7 @@ const sdkDiction = {
     {
       path: 'sdkDiction',
       name: 'sdkDiction',
-      component: _import('console/sdkDiction'),
+      component: _resolve('console/sdkDiction'),
       meta: {
         title: 'SDK资源库'
       }
@@ -414,7 +414,7 @@ const noticeList = {
     {
       path: 'noticeList',
       name: 'noticeList',
-      component: _import('console/noticeList'),
+      component: _resolve('console/noticeList'),
       meta: {
         title: '通知列表'
       }
@@ -423,7 +423,7 @@ const noticeList = {
       path: 'noticeDetail',
       name: 'noticeDetail',
       hidden: true,
-      component: _import('console/noticeDetail'),
+      component: _resolve('console/noticeDetail'),
       meta: {
         title: '通知详情'
       }

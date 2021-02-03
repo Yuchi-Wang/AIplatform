@@ -30,7 +30,7 @@ import {
   Backtop
 } from 'element-ui'
 const CustomElement = {
-  install: function(Vue) {
+  install: Vue => {
     Vue.use(Pagination)
       .use(Dialog)
       .use(Menu)

@@ -174,6 +174,9 @@ export default {
     activeIndex: 0,
     selectAppScenariosIndex: -1
   }),
+  mounted() {
+    console.log(process.env)
+  },
   methods: {
     coperation() {
       this.$router.push('/about/businessCoperation')

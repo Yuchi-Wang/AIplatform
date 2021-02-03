@@ -7,7 +7,7 @@
         <div class="content-wrapper">
           <div class="content-header">
             <h3>
-              <span>控制台</span> > {{ header }}
+              <span>控制台</span> > {{ headerTitle }}
             </h3>
           </div>
           <div class="content-box">
@@ -36,7 +36,7 @@ export default {
     }
   },
   computed: {
-    header() {
+    headerTitle() {
       return this.$route.meta.title
     }
   }

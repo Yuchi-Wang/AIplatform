@@ -5,6 +5,7 @@ const resolve = dir => path.join(__dirname, dir)
 module.exports = {
   publicPath: '/',
   outputDir: 'dist',
+  assetsDir: 'static',
   productionSourceMap: false,
   chainWebpack: config => {
     config.resolve.alias

@@ -5,8 +5,8 @@
       <h4>AI&emsp;解决方案&emsp;科技未来</h4>
       <p>提供金融等各行业技术服务</p>
       <div class="login-form">
-        <img src="../../assets/img/user/login-title.svg" class="login-title" @click="goIndex">
-        <img v-if="!qrcodeLogin" src="../../assets/img/user/login-qrcode.svg" class="login-qrcode" @click="qrcodeLogin = true">
+        <img src="@/assets/img/user/login-title.svg" class="login-title" @click="goIndex">
+        <img v-if="!qrcodeLogin" src="@/assets/img/user/login-qrcode.svg" class="login-qrcode" @click="qrcodeLogin = true">
         <el-form v-if="!qrcodeLogin" ref="loginForm" :rules="rules" :model="loginForm" class="login-ruleForm">
           <el-form-item prop="password">
             <el-input
@@ -38,7 +38,7 @@
           <span class="register-color" @click="emailRegistration">邮箱注册</span>
         </p>
         <div v-if="qrcodeLogin" class="qrcode-login-box">
-          <img src="../../assets/img/user/login-qrcode.png">
+          <img src="@/assets/img/user/login-qrcode.png">
           <p>微信扫码登录</p>
           <el-button @click="qrcodeLogin = false">返回</el-button>
         </div>
@@ -78,7 +78,7 @@ export default {
   methods: {
     submitForm(loginForm) {},
     fogetPassword() {
-      this.$router.push({ name: 'forgetpwd' })
+      this.$router.push('/forgetpwd')
     },
     mobileRegistration() {
       this.$router.push({ name: 'register', query: { type: 'mobile' }})

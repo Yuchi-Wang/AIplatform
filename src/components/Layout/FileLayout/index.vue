@@ -6,7 +6,7 @@
       <section class="content-container">
         <div class="content-wrapper">
           <div class="content-header">
-            <h3>{{ header }}</h3>
+            <h3>{{ headerTitle }}</h3>
           </div>
           <transition name="el-fade-in" mode="out-in">
             <keep-alive>
@@ -32,7 +32,7 @@ export default {
     }
   },
   computed: {
-    header() {
+    headerTitle() {
       return this.$route.meta.title
     }
   }

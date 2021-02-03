@@ -66,27 +66,27 @@ export default {
     prdductExperienceSrc: false,
     productCharacteristic: [
       { id: 1,
-        src: require('../../assets/img/product/prompt/product-characteristic1.svg'),
+        src: require('@/assets/img/product/prompt/product-characteristic1.svg'),
         title: '语音输入'
       },
       { id: 2,
-        src: require('../../assets/img/product/prompt/product-characteristic2.svg'),
+        src: require('@/assets/img/product/prompt/product-characteristic2.svg'),
         title: '注音校正'
       },
       { id: 3,
-        src: require('../../assets/img/product/prompt/product-characteristic3.svg'),
+        src: require('@/assets/img/product/prompt/product-characteristic3.svg'),
         title: '文本纠错'
       },
       { id: 4,
-        src: require('../../assets/img/product/prompt/product-characteristic4.svg'),
+        src: require('@/assets/img/product/prompt/product-characteristic4.svg'),
         title: '词法分析'
       },
       { id: 5,
-        src: require('../../assets/img/product/prompt/product-characteristic5.svg'),
+        src: require('@/assets/img/product/prompt/product-characteristic5.svg'),
         title: '敏感词识别'
       },
       { id: 6,
-        src: require('../../assets/img/product/prompt/product-characteristic6.svg'),
+        src: require('@/assets/img/product/prompt/product-characteristic6.svg'),
         title: '关键词提取'
       }
     ],

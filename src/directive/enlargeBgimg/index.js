@@ -1,5 +1,5 @@
 import Vue from 'vue'
-Vue.directive('enlarge-styleBackground', function(el) {
+Vue.directive('enlarge-styleBackground', el => {
   el.style.backgroundSize = '100%'
   el.style.backgroundRepeat = 'no-repeat'
   el.style.backgroundPosition = '50% 50%'

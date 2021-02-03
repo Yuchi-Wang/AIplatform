@@ -13,7 +13,7 @@
           <p class="app-scene-dec">参与多家知名技术公司合作与开发</p>
         </div>
         <div class="ability2">
-          <p class="app-scene-dec">AI技术开发团队 </p>
+          <p class="app-scene-dec">AI技术开发团队</p>
         </div>
         <div class="ability3">
           <p class="app-scene-dec">金融领域范畴的AI产品开发</p>
@@ -23,19 +23,21 @@
     <div class="dev">
       <h3>公司简介</h3>
       <div class="history">
-        <h4>公司历程</h4>
-        <div class="prev">2018</div>
-        <div class="next">2020</div>
-        <div class="history-item">
-          <el-timeline :reverse="reverse" size="large">
-            <el-timeline-item
-              v-for="(activity, index) in activities"
-              :key="index"
-              :timestamp="activity.timestamp"
-            >
-              {{ activity.content }}
-            </el-timeline-item>
-          </el-timeline>
+        <div>
+          <h4>公司历程</h4>
+          <div class="next" @click="nextYears">{{ nextYear }}</div>
+          <div class="prev" @click="prevYears">{{ prevYear }}</div>
+          <div class="history-item">
+            <el-timeline :reverse="reverse" size="large">
+              <el-timeline-item
+                v-for="(activity, index) in activities"
+                :key="index"
+                :timestamp="activity.timestamp"
+              >
+                {{ activity.content }}
+              </el-timeline-item>
+            </el-timeline>
+          </div>
         </div>
       </div>
     </div>
@@ -47,27 +49,85 @@
 export default {
   name: 'CompanyInfo',
   data: () => ({
-    reverse: false,
-    activities: [{
-      content: '2019'
-    },
-    {
-      content: '08-19 公司收购xxx公司股份'
-    },
-    {
-      content: '08-19 公司收购xxx公司股份'
-    },
-    {
-      content: '08-19 公司收购xxx公司股份'
-    },
-    {
-      content: '2020'
-    }]
+    reverse: true,
+    activities: [],
+    nextYear: '2021',
+    prevYear: '2019'
   }),
-  mounted() {},
+  mounted() {
+    this.activities = [
+      {
+        content: '2019'
+      },
+      {
+        content: '08-19 公司收购xxx公司股份'
+      },
+      {
+        content: '08-19 公司收购xxx公司股份'
+      },
+      {
+        content: '08-19 公司收购xxx公司股份'
+      },
+      {
+        content: '2020'
+      }
+    ]
+  },
   methods: {
     coperation() {
       this.$router.push('/about/businessCoperation')
+    },
+    prevYears() {
+      if (this.prevYear === '2017') {
+        this.nextYear = '2019'
+        this.prevYear = '2017'
+      } else {
+        this.prevYear = Number(this.prevYear) - 1 + ''
+        this.nextYear = Number(this.nextYear) - 1 + ''
+      }
+      this.activities = [
+        {
+          content: this.prevYear
+        },
+        {
+          content: `${this.nextYear - 1}年 08-19 公司收购xxx公司股份`
+        },
+        {
+          content: `${this.nextYear - 1}年 08-19 公司收购xxx公司股份`
+        },
+        {
+          content: `${this.nextYear - 1}年 08-19 公司收购xxx公司股份`
+        },
+        {
+          content: Number(this.nextYear) - 1 + ''
+        }
+      ]
+    },
+    nextYears() {
+      if (this.nextYear === '2022') {
+        this.nextYear = '2022'
+        this.prevYear = '2021'
+      } else {
+        this.nextYear = Number(this.nextYear) + 1 + ''
+        this.prevYear = Number(this.prevYear) + 1 + ''
+      }
+      this.activities = [
+        {
+          content: this.prevYear
+        },
+        {
+          content: `${this.nextYear - 1}年 08-19 公司收购xxx公司股份`
+        },
+        {
+          content: `${this.nextYear - 1}年 08-19 公司收购xxx公司股份`
+        },
+        {
+          content: `${this.nextYear - 1}年 08-19 公司收购xxx公司股份`
+        },
+        {
+          content: Number(this.nextYear) - 1 + ''
+        }
+      ]
     }
   }
 }
@@ -208,14 +268,41 @@ export default {
       }
     }
     .history {
-      position: relative;
       width: 100%;
       height: 472px;
       background:url('../../assets/img/about/companyInfo/history.jpg');
       background-repeat: no-repeat;
       background-size: cover;
       background-position: 50% 50%;
-      .prev {
+      > div {
+        position: relative;
+        width: 1000px;
+        height: 472px;
+        margin: auto;
+          h4 {
+          position: absolute;
+          top: 165px;
+          left: 220px;
+          height: 43px;
+          font-size: 31px;
+          font-weight: 600;
+          color: #FFFFFF;
+          line-height: 43px;
+        }
+        .history-item {
+          margin-left: 400px;
+          padding-top: 105px;
+          /deep/ .el-timeline-item__content {
+            color: #fff;
+          }
+          .el-timeline-item {
+            /deep/  .el-timeline-item__timestamp.is-bottom {
+              margin-bottom: 30px;
+            }
+          }
+        }
+      }
+      .next {
         position: absolute;
         width: 77px;
         height: 70px;
@@ -244,7 +331,7 @@ export default {
           -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
         }
       }
-      .next {
+      .prev {
         position: absolute;
         width: 77px;
         height: 70px;
@@ -274,31 +361,6 @@ export default {
           -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
         }
       }
-      h4 {
-        position: absolute;
-        top: 165px;
-        left: 450px;
-        height: 43px;
-        font-size: 31px;
-        font-weight: 600;
-        color: #FFFFFF;
-        line-height: 43px;
-      }
-      .history-item {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-40%);
-        /deep/ .el-timeline-item__content {
-          color: #fff;
-        }
-        .el-timeline-item {
-        /deep/  .el-timeline-item__timestamp.is-bottom {
-          margin-bottom: 30px;
-        }
-        }
-      }
-
     }
   }
 }

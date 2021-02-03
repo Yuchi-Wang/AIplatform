@@ -144,7 +144,7 @@ export default {
         text-shadow: 0px 0px 14px #0F244F;
         transition: all .3s;
         &:hover {
-           background: rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.2);
         }
       }
     }

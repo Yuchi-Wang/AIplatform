@@ -11,7 +11,7 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" />
-      <el-table-column prop="content" label="内容" min-width="750" />
+      <el-table-column prop="content" label="内容" min-width="650" />
       <el-table-column label="日期" min-width="200">
         <template v-slot="scope">{{ scope.row.date }}</template>
       </el-table-column>

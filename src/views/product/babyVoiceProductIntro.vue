@@ -24,7 +24,7 @@
             <li>
               <div class="li-box">
                 <div class="img-box" style="padding-top:16px">
-                  <img src="../../assets/img/product/babyVoiceProduct/voice.png" alt="">
+                  <img src="@/assets/img/product/babyVoiceProduct/voice.png">
                 </div>
                 <div class="content">
                   <p>请按住录音按钮，录制宝宝声音，时长范围3s～20s</p>
@@ -103,17 +103,17 @@ export default {
   data: () => ({
     productCharacteristic: [
       { id: 1,
-        src: require('../../assets/img/product/babyVoiceProduct/product-characteristic1.svg'),
+        src: require('@/assets/img/product/babyVoiceProduct/product-characteristic1.svg'),
         title: '识别种类多',
         dec: '识别的宝宝哭声类型多，比如宝宝饿了、困了、尿床、肚子疼'
       },
       { id: 2,
-        src: require('../../assets/img/product/babyVoiceProduct/product-characteristic2.svg'),
+        src: require('@/assets/img/product/babyVoiceProduct/product-characteristic2.svg'),
         title: '高辨识率',
         dec: '录制宝宝声音后，可以实时准确识别出宝宝的声音'
       },
       { id: 3,
-        src: require('../../assets/img/product/babyVoiceProduct/product-characteristic3.svg'),
+        src: require('@/assets/img/product/babyVoiceProduct/product-characteristic3.svg'),
         title: '智能分析',
         dec: '从病理和生理多角度分析宝宝哭的原因'
       }

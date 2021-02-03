@@ -8,7 +8,7 @@
         <el-form-item label="我的ID：" prop="userName">
           <el-input v-model="baseInfoForm.userName" />
         </el-form-item>
-        <el-form-item label="绑定手机号：" prop="phone">
+        <el-form-item label="绑定手机号：">
           <el-input v-model.number="baseInfoForm.phone" disabled maxlength="11" />
           <el-link :underline="false" type="primary" class="m-l-10" @click="unbundlingPhone">解绑手机号</el-link>
         </el-form-item>
@@ -116,10 +116,6 @@ export default {
           { required: true, message: '请输入用户名', trigger: 'blur' },
           { min: 1, max: 12, message: '长度不超过12字符', trigger: 'blur' }
         ],
-        phone: [
-          { required: true, message: '请输入联系电话', trigger: 'blur' },
-          { min: 11, max: 11, message: '联系电话格式不正确', trigger: 'blur' }
-        ],
         companyName: [
           { required: true, message: '请输入公司名', trigger: 'blur' },
           { min: 1, max: 50, message: '长度不超过50字符', trigger: 'blur' }
@@ -147,7 +143,15 @@ export default {
     }
   },
   methods: {
-    submitForm(form) {},
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!')
+        } else {
+          return false
+        }
+      })
+    },
     unbundlingPhone() {
       this.$confirm('此操作将解绑手机号, 是否继续?', '提示', {
         confirmButtonText: '确定',

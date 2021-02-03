@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Console from '../../components/Console/NoticeList'
+import Console from '@/components/Console/NoticeList'
 export default {
   name: 'NoticeList',
   components: { Console },
