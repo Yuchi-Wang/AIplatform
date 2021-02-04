@@ -74,7 +74,6 @@ export default {
     },
     qrcodeLogin: false
   }),
-  mounted() {},
   methods: {
     submitForm(loginForm) {},
     fogetPassword() {
