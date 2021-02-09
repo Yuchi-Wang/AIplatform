@@ -2,29 +2,29 @@
   <div class="company-info">
     <div class="banner">
       <div>
-        <h3>公司简介</h3>
-        <button @click="coperation">合作咨询</button>
+        <h3>{{ $t('about.companyProfile') }}</h3>
+        <button @click="coperation">{{ $t('product.CooperationService') }}</button>
       </div>
     </div>
     <div class="main">
       <div class="app-scene">
-        <h3>落地能力</h3>
+        <h3>{{ $t('about.landingAbility') }}</h3>
         <div class="ability1">
-          <p class="app-scene-dec">参与多家知名技术公司合作与开发</p>
+          <p class="app-scene-dec">{{ $t('about.cooperativeDevelopment') }}</p>
         </div>
         <div class="ability2">
-          <p class="app-scene-dec">AI技术开发团队</p>
+          <p class="app-scene-dec">{{ $t('about.aiTeam') }}</p>
         </div>
         <div class="ability3">
-          <p class="app-scene-dec">金融领域范畴的AI产品开发</p>
+          <p class="app-scene-dec">{{ $t('about.financialProduct') }}</p>
         </div>
       </div>
     </div>
     <div class="dev">
-      <h3>公司简介</h3>
+      <h3>{{ $t('about.companyProfile') }}</h3>
       <div class="history">
         <div>
-          <h4>公司历程</h4>
+          <h4>{{ $t('about.developmentHistory') }}</h4>
           <div class="next" @click="nextYears">{{ nextYear }}</div>
           <div class="prev" @click="prevYears">{{ prevYear }}</div>
           <div class="history-item">
@@ -60,13 +60,13 @@ export default {
         content: '2019'
       },
       {
-        content: '08-19 公司收购xxx公司股份'
+        content: this.$t('about.historyContent')
       },
       {
-        content: '08-19 公司收购xxx公司股份'
+        content: this.$t('about.historyContent')
       },
       {
-        content: '08-19 公司收购xxx公司股份'
+        content: this.$t('about.historyContent')
       },
       {
         content: '2020'
@@ -90,13 +90,13 @@ export default {
           content: this.prevYear
         },
         {
-          content: `${this.nextYear - 1}年 08-19 公司收购xxx公司股份`
+          content: `${this.nextYear - 1} ${this.$t('about.historyContent')}`
         },
         {
-          content: `${this.nextYear - 1}年 08-19 公司收购xxx公司股份`
+          content: `${this.nextYear - 1} ${this.$t('about.historyContent')}`
         },
         {
-          content: `${this.nextYear - 1}年 08-19 公司收购xxx公司股份`
+          content: `${this.nextYear - 1} ${this.$t('about.historyContent')}`
         },
         {
           content: Number(this.nextYear) - 1 + ''
@@ -116,13 +116,13 @@ export default {
           content: this.prevYear
         },
         {
-          content: `${this.nextYear - 1}年 08-19 公司收购xxx公司股份`
+          content: `${this.nextYear - 1} ${this.$t('about.historyContent')}`
         },
         {
-          content: `${this.nextYear - 1}年 08-19 公司收购xxx公司股份`
+          content: `${this.nextYear - 1} ${this.$t('about.historyContent')}`
         },
         {
-          content: `${this.nextYear - 1}年 08-19 公司收购xxx公司股份`
+          content: `${this.nextYear - 1} ${this.$t('about.historyContent')}`
         },
         {
           content: Number(this.nextYear) - 1 + ''
@@ -282,7 +282,7 @@ export default {
           h4 {
           position: absolute;
           top: 165px;
-          left: 220px;
+          left: 110px;
           height: 43px;
           font-size: 31px;
           font-weight: 600;

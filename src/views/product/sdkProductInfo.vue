@@ -2,23 +2,20 @@
   <div class="sdkProductinfo">
     <div class="banner">
       <div>
-        <h3>智慧金融SDK</h3>
-        <p>
-          针对金融领域，进行声学模型以及语言模型的数据训练，提升准确率，可用于智能会议、智能质检分析等场景。 将文字信息转化为声音信息。
-          合成音在音色、自然度等方面的表现均接近甚至超过了人声。可用于智能客服、智能外呼等方案。
-        </p>
-        <button @click="coperation">合作咨询</button>
+        <h3>{{ $t('sdkProduct.bannerTitle') }}</h3>
+        <p>{{ $t('sdkProduct.bannerText') }}</p>
+        <button @click="coperation">{{ $t('product.CooperationService') }}</button>
       </div>
     </div>
     <div class="main">
       <div>
-        <h3>产品功能</h3>
+        <h3>{{ $t('product.function') }}</h3>
         <p>
-          基于讯飞自主研发的机器翻译引擎，提供更优质的翻译接口。其中中英互译能力媲美大学英语六级水平，目前已逐步支持英日韩法西俄等多语种与中文的高品质互译。
+          {{ $t('sdkProduct.ProductFunctionTxt') }}
         </p>
       </div>
       <div class="app-scenarios">
-        <h3>应用场景</h3>
+        <h3>{{ $t('product.scenarios') }}</h3>
         <div>
           <el-row>
             <el-col v-for="(item, index) in appScenarios" :key="item.id" :span="8">
@@ -39,16 +36,16 @@
         </div>
       </div>
       <div>
-        <h3>技术规格</h3>
+        <h3>{{ $t('sdkProduct.technicalSpecifications') }}</h3>
         <div class="technical-specifications">
-          <p>支持平台 Android</p>
-          <p>版本：Android 4.0.4 及以上</p>
-          <p>支持的 CPU：armabi-v7a 与 arm64-v8a，支持 NEON 指令集，最低配置参考：高通骁龙 435 及以上*</p>
-          <p>RAM：300M 及以上 </p>
-          <p>ROM：50M 及以上</p>
-          <p>支持的摄像头：30万像素及以上</p>
-          <p>图片推荐分辨率：640x480</p>
-          <p>支持的图片格式：YUV、RGB</p>
+          <p>{{ $t('sdkProduct.platform') }}</p>
+          <p>{{ $t('sdkProduct.version') }}</p>
+          <p>{{ $t('sdkProduct.cpu') }}</p>
+          <p>{{ $t('sdkProduct.ram') }}</p>
+          <p>{{ $t('sdkProduct.rom') }}</p>
+          <p>{{ $t('sdkProduct.camera') }}</p>
+          <p>{{ $t('sdkProduct.recommended') }}</p>
+          <p>{{ $t('sdkProduct.format') }}</p>
         </div>
       </div>
     </div>
@@ -59,28 +56,30 @@
 <script>
 export default {
   name: 'SdkProductInfo',
-  data: () => ({
-    appScenarios: [
-      {
-        id: 1,
-        src: require('@/assets/img/product/sdk/app-scenarios1.png'),
-        hoverSrc: require('@/assets/img/product/sdk/app-scenarios1-hover.png'),
-        title: '营销获客'
-      },
-      {
-        id: 2, src: require('@/assets/img/product/sdk/app-scenarios2.png'),
-        hoverSrc: require('@/assets/img/product/sdk/app-scenarios2-hover.png'),
-        title: '人机交互'
-      },
-      {
-        id: 3,
-        src: require('@/assets/img/product/sdk/app-scenarios3.png'),
-        hoverSrc: require('@/assets/img/product/sdk/app-scenarios3-hover.png'),
-        title: '风险控制'
-      }
-    ],
-    selectAppScenariosIndex: -1
-  }),
+  data() {
+    return {
+      appScenarios: [
+        {
+          id: 1,
+          src: require('@/assets/img/product/sdk/app-scenarios1.png'),
+          hoverSrc: require('@/assets/img/product/sdk/app-scenarios1-hover.png'),
+          title: this.$t('sdkProduct.marketingCustomers')
+        },
+        {
+          id: 2, src: require('@/assets/img/product/sdk/app-scenarios2.png'),
+          hoverSrc: require('@/assets/img/product/sdk/app-scenarios2-hover.png'),
+          title: this.$t('sdkProduct.humanComputerInteraction')
+        },
+        {
+          id: 3,
+          src: require('@/assets/img/product/sdk/app-scenarios3.png'),
+          hoverSrc: require('@/assets/img/product/sdk/app-scenarios3-hover.png'),
+          title: this.$t('sdkProduct.riskManagement')
+        }
+      ],
+      selectAppScenariosIndex: -1
+    }
+  },
   methods: {
     selectApplication(index) {
       this.selectAppScenariosIndex = index
@@ -113,7 +112,7 @@ export default {
         margin-bottom: 30px;
       }
       p {
-        width: 528px;
+        width: 770px;
         font-size: 16px;
         font-weight: 500;
         color: #FFFFFF;

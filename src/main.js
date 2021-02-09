@@ -13,10 +13,16 @@ Vue.use(CustomElement)
 import './directive/enlargeBgimg'
 //  初始化CSS
 import '@/assets/css/reset.css'
+// 国际化
+import i18n from './lang'
+Vue.use(CustomElement, {
+  i18n: (key, value) => i18n.t(key, value)
+})
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
+  i18n,
   render: h => h(App)
 }).$mount('#app')

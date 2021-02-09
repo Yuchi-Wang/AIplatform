@@ -11,14 +11,14 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" />
-      <el-table-column prop="content" label="内容" min-width="650" />
-      <el-table-column label="日期" min-width="200">
+      <el-table-column prop="content" :label="content" min-width="650" />
+      <el-table-column :label="date" min-width="200">
         <template v-slot="scope">{{ scope.row.date }}</template>
       </el-table-column>
-      <el-table-column label="操作" min-width="200">
+      <el-table-column :label="operating" min-width="200">
         <template slot-scope="scope">
-          <el-link :underline="false" style="margin-right:10px" type="primary" @click="checkNotice(scope.row)">查看</el-link>
-          <el-link :underline="false" type="primary" @click="deleteNotice(scope.row)">删除</el-link>
+          <el-link :underline="false" style="margin-right:10px" type="primary" @click="checkNotice(scope.row)">{{ $t('button.view') }}</el-link>
+          <el-link :underline="false" type="primary" @click="deleteNotice(scope.row)">{{ $t('button.delete') }}</el-link>
         </template>
       </el-table-column>
     </el-table>
@@ -51,6 +51,17 @@ export default {
         size: 10,
         total: 6
       }
+    }
+  },
+  computed: {
+    operating() {
+      return this.$t('console.app.operating')
+    },
+    date() {
+      return this.$t('console.notice.date')
+    },
+    content() {
+      return this.$t('console.notice.content')
     }
   },
   methods: {

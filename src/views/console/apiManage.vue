@@ -6,7 +6,7 @@
           <el-col v-for="item in sdkList" :key="item.id" :span="6">
             <div>
               <p>{{ item.text }}</p>
-              <h5>API文档</h5>
+              <h5>{{ $t('console.api.doc') }}</h5>
             </div>
           </el-col>
         </el-row>
@@ -24,35 +24,35 @@ export default {
       sdkList: [
         {
           id: 1,
-          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+          text: this.$t('console.api.content')
         },
         {
           id: 2,
-          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+          text: this.$t('console.api.content')
         },
         {
           id: 3,
-          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+          text: this.$t('console.api.content')
         },
         {
           id: 4,
-          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+          text: this.$t('console.api.content')
         },
         {
           id: 5,
-          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+          text: this.$t('console.api.content')
         },
         {
           id: 6,
-          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+          text: this.$t('console.api.content')
         },
         {
           id: 7,
-          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+          text: this.$t('console.api.content')
         },
         {
           id: 8,
-          text: 'HumanBody Detect API (V1) 检测图片的人体位置和属性。'
+          text: this.$t('console.api.content')
         }
       ]
     }

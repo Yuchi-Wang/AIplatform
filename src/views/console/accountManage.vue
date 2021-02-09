@@ -4,34 +4,34 @@
       <img src="@/assets/img/console/account-icon.svg">
     </div>
     <div class="account-form">
-      <el-form ref="ruleForm" :model="baseInfoForm" :rules="rules" label-width="130px">
-        <el-form-item label="我的ID：" prop="userName">
+      <el-form ref="ruleForm" :model="baseInfoForm" :rules="rules" label-width="150px">
+        <el-form-item :label="myID" prop="userName">
           <el-input v-model="baseInfoForm.userName" />
         </el-form-item>
-        <el-form-item label="绑定手机号：">
+        <el-form-item :label="bindingMobileNumber">
           <el-input v-model.number="baseInfoForm.phone" disabled maxlength="11" />
-          <el-link :underline="false" type="primary" class="m-l-10" @click="unbundlingPhone">解绑手机号</el-link>
+          <el-link :underline="false" type="primary" class="m-l-10" @click="unbundlingPhone">{{ $t('form.unbindingMobileNumber') }}</el-link>
         </el-form-item>
-        <el-form-item label="绑定微信：" prop="wechatID">
+        <el-form-item :label="bindingWechat" prop="wechatID">
           <el-input v-model="baseInfoForm.wechatID" disabled />
-          <el-link :underline="false" type="primary" class="m-l-10" @click="unbundlingWechat">解绑微信</el-link>
+          <el-link :underline="false" type="primary" class="m-l-10" @click="unbundlingWechat">{{ $t('form.unbindingWechat') }}</el-link>
         </el-form-item>
-        <el-form-item label="登录密码：">
-          <el-link :underline="false" type="primary" @click="pwdDialogVisible = true">设置新密码</el-link>
+        <el-form-item :label="password">
+          <el-link :underline="false" type="primary" @click="pwdDialogVisible = true">{{ $t('form.editPassword') }}</el-link>
         </el-form-item>
-        <el-form-item label="公司名称：" prop="companyName">
+        <el-form-item :label="companyName" prop="companyName">
           <el-input v-model="baseInfoForm.companyName" />
         </el-form-item>
-        <el-form-item label="姓名：" prop="name">
+        <el-form-item :label="name" prop="name">
           <el-input v-model="baseInfoForm.name" :disabled="editName" />
-          <el-link v-if="editName" :underline="false" type="primary" class="m-l-10" @click="editName = false">修改</el-link>
+          <el-link v-if="editName" :underline="false" type="primary" class="m-l-10" @click="editName = false">{{ $t('form.editPassword') }}</el-link>
         </el-form-item>
-        <el-form-item label="所在地：" prop="baseName">
+        <el-form-item :label="location" prop="baseName">
           <el-input v-model="baseInfoForm.baseName" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" class="submit-button" @click="submitForm('ruleForm')">提交</el-button>
-          <el-button>重置</el-button>
+          <el-button type="primary" class="submit-button" @click="submitForm('ruleForm')">{{ $t('form.submit') }}</el-button>
+          <el-button>{{ $t('button.reset') }}</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -45,14 +45,14 @@
       <div slot="title" class="header-title">
         <h3>
           <img src="@/assets/img/console/password.svg">
-          修改密码
+          {{ $t('form.modifyPassword') }}
         </h3>
       </div>
       <el-form ref="changePwdForm" :model="changePwdForm" :rules="rules" class="change-form">
         <el-form-item prop="originalPwd">
           <el-input
             v-model="changePwdForm.originalPwd"
-            placeholder="请输入原密码"
+            :placeholder="originalPassword"
             maxlength="16"
             show-password
           />
@@ -60,7 +60,7 @@
         <el-form-item prop="newPassword">
           <el-input
             v-model="changePwdForm.newPassword"
-            placeholder="请输入新密码"
+            :placeholder="newPassword"
             maxlength="16"
             show-password
           />
@@ -68,15 +68,15 @@
         <el-form-item prop="confirmPassword">
           <el-input
             v-model="changePwdForm.confirmPassword"
-            placeholder="请再次输入密码"
+            :placeholder="passwordAgain"
             maxlength="16"
             show-password
           />
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" round @click="pwdDialogVisible = false">确 认</el-button>
-        <el-button round @click="pwdDialogVisible = false">返 回</el-button>
+        <el-button type="primary" round @click="pwdDialogVisible = false">{{ $t('form.submit') }}</el-button>
+        <el-button round @click="pwdDialogVisible = false">{{ $t('button.return') }}</el-button>
       </span>
     </el-dialog>
   </div>
@@ -88,9 +88,9 @@ export default {
   data() {
     const checkPassword = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请再次输入密码'))
+        callback(new Error(this.$t('form.error.passwordAgain')))
       } else if (value !== this.changePwdForm.newPassword) {
-        callback(new Error('两次输入密码不一致!'))
+        callback(new Error(this.$t('form.error.passwordConfirm')))
       } else {
         callback()
       }
@@ -113,33 +113,71 @@ export default {
       pwdDialogVisible: false,
       rules: {
         userName: [
-          { required: true, message: '请输入用户名', trigger: 'blur' },
-          { min: 1, max: 12, message: '长度不超过12字符', trigger: 'blur' }
+          { required: true, message: this.$t('form.error.userName'), trigger: 'blur' },
+          { min: 1, max: 12, message: this.$t('form.error.contactPersonLength'), trigger: 'blur' }
         ],
         companyName: [
-          { required: true, message: '请输入公司名', trigger: 'blur' },
-          { min: 1, max: 50, message: '长度不超过50字符', trigger: 'blur' }
+          { required: true, message: this.$t('form.error.companyName'), trigger: 'blur' },
+          { min: 1, max: 50, message: this.$t('form.error.companyNameLength'), trigger: 'blur' }
         ],
         baseName: [
-          { required: true, message: '请输入所在地', trigger: 'blur' },
-          { min: 1, max: 20, message: '长度不超过20字符', trigger: 'blur' }
+          { required: true, message: this.$t('form.error.baseName'), trigger: 'blur' },
+          { min: 1, max: 20, message: this.$t('form.error.baseNameLength'), trigger: 'blur' }
         ],
         name: [
-          { required: true, message: '请输入姓名', trigger: 'blur' },
-          { min: 1, max: 12, message: '长度不超过12字符', trigger: 'blur' }
+          { required: true, message: this.$t('form.error.name'), trigger: 'blur' },
+          { min: 1, max: 12, message: this.$t('form.error.userName'), trigger: 'blur' }
         ],
         originalPwd: [
-          { required: true, message: '请输入原密码', trigger: 'blur' },
-          { min: 6, max: 16, message: '密码长度在 6 到 16 个字符', trigger: 'blur' }
+          { required: true, message: this.$t('placeholder.originalPassword'), trigger: 'blur' },
+          { min: 6, max: 16, message: this.$t('form.error.passwordLength'), trigger: 'blur' }
         ],
         newPassword: [
-          { required: true, message: '请输入新密码', trigger: 'blur' },
-          { min: 6, max: 16, message: '密码长度在 6 到 16 个字符', trigger: 'blur' }
+          { required: true, message: this.$t('placeholder.newPassword'), trigger: 'blur' },
+          { min: 6, max: 16, message: this.$t('form.error.passwordLength'), trigger: 'blur' }
         ],
         confirmPassword: [
           { validator: checkPassword, trigger: 'blur' }
         ]
       }
+    }
+  },
+  computed: {
+    myID() {
+      return this.$t('form.myID')
+    },
+    name() {
+      return this.$t('form.name')
+    },
+    bindingMobileNumber() {
+      return this.$t('form.bindingMobileNumber')
+    },
+    unbindingMobileNumber() {
+      return this.$t('form.unbindingMobileNumber')
+    },
+    bindingWechat() {
+      return this.$t('form.bindingWechat')
+    },
+    unbindingWechat() {
+      return this.$t('form.unbindingWechat')
+    },
+    companyName() {
+      return this.$t('form.companyName')
+    },
+    password() {
+      return this.$t('form.password')
+    },
+    originalPassword() {
+      return this.$t('placeholder.originalPassword')
+    },
+    newPassword() {
+      return this.$t('placeholder.newPassword')
+    },
+    passwordAgain() {
+      return this.$t('placeholder.passwordAgain')
+    },
+    location() {
+      return this.$t('form.location')
     }
   },
   methods: {
@@ -153,36 +191,36 @@ export default {
       })
     },
     unbundlingPhone() {
-      this.$confirm('此操作将解绑手机号, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm(this.$t('console.app.unbundlingPhoneRemain'), this.$t('console.app.warning'), {
+        confirmButtonText: this.$t('button.submit'),
+        cancelButtonText: this.$t('button.cancle'),
         type: 'warning'
       }).then(() => {
         this.$message({
           type: 'success',
-          message: '解绑手机号成功!'
+          message: this.$t('console.app.successUnbundlingPhoneRemain')
         })
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消解绑手机号'
+          message: this.$t('console.app.cancleUnbundlingPhoneRemain')
         })
       })
     },
     unbundlingWechat() {
-      this.$confirm('此操作将解绑微信, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm(this.$t('console.app.unbundlingWechatRemain'), this.$t('console.app.warning'), {
+        confirmButtonText: this.$t('button.submit'),
+        cancelButtonText: this.$t('button.cancle'),
         type: 'warning'
       }).then(() => {
         this.$message({
           type: 'success',
-          message: '解绑微信成功!'
+          message: this.$t('console.app.successUnbundlingWechatRemain')
         })
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消解绑微信'
+          message: this.$t('console.app.cancleUnbundlingWechatRemain')
         })
       })
     }

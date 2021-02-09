@@ -7,7 +7,7 @@
         <div class="content-wrapper">
           <div class="content-header">
             <h3>
-              <span>控制台</span> > {{ headerTitle }}
+              <span>{{ $t('route.console') }}</span> > {{ headerTitle }}
             </h3>
           </div>
           <div class="content-box">
@@ -61,6 +61,9 @@ export default {
           }
         }
       }
+    }
+    .el-dropdown {
+      color: #000
     }
     .el-menu--horizontal {
       /deep/ .el-submenu__icon-arrow {

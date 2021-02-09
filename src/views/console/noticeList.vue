@@ -1,23 +1,23 @@
 <template>
   <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane label="未读" name="first">
+    <el-tab-pane :label="unread" name="first">
       <el-input
         v-model="keyWords"
-        placeholder="请输入内容"
+        :placeholder="toast"
         prefix-icon="el-icon-search"
         style="width:220px"
       />
-      <el-button type="primary" round size="small">删除</el-button>
+      <el-button type="primary" round size="small">{{ $t('button.delete') }}</el-button>
       <Console :table-data="tableData" />
     </el-tab-pane>
-    <el-tab-pane label="已读" name="second">
+    <el-tab-pane :label="haveRead" name="second">
       <el-input
         v-model="keyWords"
-        placeholder="请输入内容"
+        :placeholder="toast"
         prefix-icon="el-icon-search"
         style="width:220px"
       />
-      <el-button type="primary" round size="small">删除</el-button>
+      <el-button type="primary" round size="small">{{ $t('button.delete') }}</el-button>
       <Console :table-data="tableData" />
     </el-tab-pane>
   </el-tabs>
@@ -28,42 +28,55 @@ import Console from '@/components/Console/NoticeList'
 export default {
   name: 'NoticeList',
   components: { Console },
-  data: () => ({
-    activeName: 'first',
-    keyWords: '',
-    tableData: [{
-      id: 1,
-      date: '2016-05-03',
-      name: '王小虎',
-      content: '您的申请已通过'
+  data() {
+    return {
+      activeName: 'first',
+      keyWords: '',
+      tableData: [{
+        id: 1,
+        date: '2016-05-03',
+        name: '王小虎',
+        content: this.$t('console.notice.content')
+      },
+      {
+        id: 2,
+        date: '2016-05-02',
+        name: '王小虎',
+        content: this.$t('console.notice.content')
+      }, {
+        id: 3,
+        date: '2016-05-04',
+        name: '王小虎',
+        content: this.$t('console.notice.content')
+      }, {
+        id: 4,
+        date: '2016-05-01',
+        name: '王小虎',
+        content: this.$t('console.notice.content')
+      }, {
+        id: 5,
+        date: '2016-05-08',
+        name: '王小虎',
+        content: this.$t('console.notice.content')
+      }, {
+        id: 6,
+        date: '2016-05-08',
+        name: '王小虎',
+        content: this.$t('console.notice.content')
+      }]
+    }
+  },
+  computed: {
+    haveRead() {
+      return this.$t('console.notice.haveRead')
     },
-    {
-      id: 2,
-      date: '2016-05-02',
-      name: '王小虎',
-      content: '您的申请已通过'
-    }, {
-      id: 3,
-      date: '2016-05-04',
-      name: '王小虎',
-      content: '您的申请已通过'
-    }, {
-      id: 4,
-      date: '2016-05-01',
-      name: '王小虎',
-      content: '您的申请已通过'
-    }, {
-      id: 5,
-      date: '2016-05-08',
-      name: '王小虎',
-      content: '您的申请已通过'
-    }, {
-      id: 6,
-      date: '2016-05-08',
-      name: '王小虎',
-      content: '您的申请已通过'
-    }]
-  }),
+    unread() {
+      return this.$t('console.notice.unread')
+    },
+    toast() {
+      return this.$t('form.error.content')
+    }
+  },
   methods: {
     handleClick(tab, event) {}
   }

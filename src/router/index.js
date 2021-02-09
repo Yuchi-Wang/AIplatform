@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Layout from '@/components/Layout/DefaultLayout'
 import FileLayout from '@/components/Layout/FileLayout'
 import ConsoleLayout from '@/components/Layout/ConsoleLayout'
+import i18n from '../lang'
 const _resolve = file => resolve => require([`@/views/${file}.vue`], resolve)
 
 Vue.use(VueRouter)
@@ -37,7 +38,7 @@ const Home = {
   component: Layout,
   singleMenu: true,
   meta: {
-    title: '首页'
+    title: i18n.t('route.home')
   },
   children: [
     {
@@ -54,7 +55,7 @@ const solution = {
   component: Layout,
   singleMenu: true,
   meta: {
-    title: '解决方案'
+    title: i18n.t('route.solution')
   },
   children: [
     {
@@ -72,7 +73,7 @@ const product = {
   singleMenu: false,
   redirect: '/product/abaoProduct',
   meta: {
-    title: '产品简介'
+    title: i18n.t('route.product')
   },
   children: [
     {
@@ -80,7 +81,7 @@ const product = {
       name: 'abaoProduct',
       component: _resolve('product/abaoProduct'),
       meta: {
-        title: '诚龙阿宝'
+        title: i18n.t('route.abao')
       }
     },
     {
@@ -96,7 +97,7 @@ const product = {
       name: 'babyVoiceProductIntro',
       component: _resolve('product/babyVoiceProductIntro'),
       meta: {
-        title: '婴儿哭声'
+        title: i18n.t('route.cryrecognition')
       }
     }
   ]
@@ -125,7 +126,7 @@ const navConsole = {
   component: Layout,
   singleMenu: true,
   meta: {
-    title: '控制台'
+    title: i18n.t('route.console')
   },
   children: [
     {
@@ -142,7 +143,7 @@ const navFile = {
   singleMenu: true,
   component: Layout,
   meta: {
-    title: '开发文档'
+    title: i18n.t('route.document')
   },
   children: [
     {
@@ -159,7 +160,7 @@ const about = {
   singleMenu: false,
   redirect: '/about/companyInfo',
   meta: {
-    title: '关于我们'
+    title: i18n.t('route.about')
   },
   children: [
     {
@@ -167,7 +168,7 @@ const about = {
       name: 'companyInfo',
       component: _resolve('about/companyInfo'),
       meta: {
-        title: '公司简介'
+        title: i18n.t('about.companyProfile')
       }
     },
     {
@@ -175,7 +176,7 @@ const about = {
       name: 'businessCoperation',
       component: _resolve('about/businessCoperation'),
       meta: {
-        title: '商务合作'
+        title: i18n.t('about.businessCooperation')
       }
     },
     {
@@ -183,7 +184,7 @@ const about = {
       name: 'technicalSupport',
       component: _resolve('about/technicalSupport'),
       meta: {
-        title: '技术支持'
+        title: i18n.t('about.technicalSupport')
       }
     }
   ]
@@ -217,7 +218,7 @@ const ReadingGuide = {
   redirect: '/file/platformInfo',
   name: 'ReadingGuide',
   meta: {
-    title: '导读'
+    title: i18n.t('route.guide')
   },
   children: [
     {
@@ -225,7 +226,7 @@ const ReadingGuide = {
       name: 'platformInfo',
       component: _resolve('file/platformInfo'),
       meta: {
-        title: '简介'
+        title: i18n.t('route.briefIntroduction')
       }
     },
     {
@@ -233,7 +234,7 @@ const ReadingGuide = {
       name: 'quickGuide',
       component: _resolve('file/quickGuide'),
       meta: {
-        title: '快速指引'
+        title: i18n.t('route.quickGuide')
       }
     },
     {
@@ -241,7 +242,7 @@ const ReadingGuide = {
       name: 'authentication',
       component: _resolve('file/authentication'),
       meta: {
-        title: '鉴权认证机制'
+        title: i18n.t('route.authentication')
       }
     }
   ]
@@ -255,7 +256,7 @@ const babyVoiceTechDoucment = {
   singleMenu: true,
   redirect: '/file/babyVoiceTechDoucment',
   meta: {
-    title: '婴儿哭泣识别'
+    title: i18n.t('route.babyCrying')
   },
   children: [
     {
@@ -263,7 +264,7 @@ const babyVoiceTechDoucment = {
       name: 'babyVoiceTechDoucment',
       component: _resolve('file/babyVoiceTechDoucment'),
       meta: {
-        title: '婴儿哭泣识别'
+        title: i18n.t('route.babyCrying')
       }
     }
   ]
@@ -276,7 +277,7 @@ const clabTechDoucment = {
   singleMenu: true,
   redirect: '/file/clabTechDoucment',
   meta: {
-    title: '成龙阿宝'
+    title: i18n.t('route.abao')
   },
   children: [
     {
@@ -284,7 +285,7 @@ const clabTechDoucment = {
       name: 'clabTechDoucment',
       component: _resolve('file/clabTechDoucment'),
       meta: {
-        title: '成龙阿宝'
+        title: i18n.t('route.abao')
       }
     }
   ]
@@ -319,7 +320,7 @@ const account = {
   singleMenu: true,
   redirect: '/console/accountManage',
   meta: {
-    title: '账号管理'
+    title: i18n.t('route.accountManage')
   },
   children: [
     {
@@ -327,7 +328,7 @@ const account = {
       name: 'accountManage',
       component: _resolve('console/accountManage'),
       meta: {
-        title: '账号管理'
+        title: i18n.t('route.accountManage')
       }
     }
   ]
@@ -341,7 +342,7 @@ const appManage = {
   redirect: '/console/appManage/apiManage',
   name: 'appManage',
   meta: {
-    title: '应用管理'
+    title: i18n.t('route.appManage')
   },
   children: [
     {
@@ -365,7 +366,7 @@ const appManage = {
       name: 'clabConsoleList',
       component: _resolve('console/clabConsoleList'),
       meta: {
-        title: '诚龙阿宝'
+        title: i18n.t('route.abao')
       }
     },
     {
@@ -373,7 +374,7 @@ const appManage = {
       name: 'babyVocieConsoleList',
       component: _resolve('console/babyVocieConsoleList'),
       meta: {
-        title: '婴语识别'
+        title: i18n.t('route.cryrecognition')
       }
     }
   ]
@@ -395,7 +396,7 @@ const sdkDiction = {
       name: 'sdkDiction',
       component: _resolve('console/sdkDiction'),
       meta: {
-        title: 'SDK资源库'
+        title: i18n.t('route.resouce')
       }
     }
   ]
@@ -408,7 +409,7 @@ const noticeList = {
   redirect: '/console/noticeManage/noticeList',
   name: 'noticeManage',
   meta: {
-    title: '通知管理'
+    title: i18n.t('route.noticeManage')
   },
   children: [
     {
@@ -416,7 +417,7 @@ const noticeList = {
       name: 'noticeList',
       component: _resolve('console/noticeList'),
       meta: {
-        title: '通知列表'
+        title: i18n.t('route.noticeList')
       }
     },
     {
@@ -425,7 +426,7 @@ const noticeList = {
       hidden: true,
       component: _resolve('console/noticeDetail'),
       meta: {
-        title: '通知详情'
+        title: i18n.t('route.noticeDetail')
       }
     }
   ]

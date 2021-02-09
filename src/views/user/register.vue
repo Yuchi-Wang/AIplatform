@@ -11,21 +11,21 @@
             <el-input
               v-model="registerForm.userName"
               maxlength="18"
-              placeholder="请输入用户名"
+              :placeholder="userName"
             />
           </el-form-item>
           <el-form-item v-if="registerType === 'mobile'" prop="mobile" class="m-b-18">
             <el-input
               v-model.number="registerForm.mobile"
               maxlength="11"
-              placeholder="请输入手机号码"
+              :placeholder="phone"
             />
           </el-form-item>
           <el-form-item v-if="registerType === 'email'" prop="email" class="m-b-18">
             <el-input
               v-model="registerForm.email"
               maxlength="50"
-              placeholder="请输入邮箱"
+              :placeholder="email"
             />
           </el-form-item>
           <el-form-item prop="verificationCode" class="m-b-18">
@@ -33,16 +33,16 @@
               v-model.number="registerForm.verificationCode"
               maxlength="6"
               class="verification-input"
-              placeholder="请输入验证码"
+              :placeholder="vCode"
             />
-            <el-button class="verification-button" @click.prevent="getVerificationCode">获取验证码</el-button>
+            <el-button class="verification-button" @click.prevent="getVerificationCode">{{ $t('button.getVCode') }}</el-button>
           </el-form-item>
           <el-form-item prop="password" class="m-b-18">
             <el-input
               v-model="registerForm.password"
               maxlength="16"
               class="password-input"
-              placeholder="请输入密码"
+              :placeholder="password"
               show-password
             />
           </el-form-item>
@@ -50,28 +50,28 @@
             <el-input
               v-model="registerForm.confirmPassword"
               type="password"
-              placeholder="请再次输入密码"
+              :placeholder="passwordAgain"
               show-password
               class="m-b-5"
             />
           </el-form-item>
           <el-form-item class="policy">
             <el-checkbox v-model="checked">
-              我已阅读并同意
+              {{ $t('user.agree') }}
             </el-checkbox>
-            <span class="policy-color" @click.prevent="checkAgreement">《服务协议》</span>
-            <span>和</span>
-            <span class="policy-color" @click.prevent="checkPolicy">《隐私政策》</span>
+            <span class="policy-color" @click.prevent="checkAgreement">{{ $t('user.agreement') }}</span>
+            <span>{{ $t('user.and') }}</span>
+            <span class="policy-color" @click.prevent="checkPolicy">{{ $t('user.privacyPolicy') }}</span>
           </el-form-item>
           <el-form-item class="m-b-14">
-            <el-button type="primary" class="register-button" @click="submitForm('registerForm')">注册</el-button>
+            <el-button type="primary" class="register-button" @click="submitForm('registerForm')">{{ $t('button.register') }}</el-button>
           </el-form-item>
         </el-form>
-        <el-button class="login-button" @click="turnBack">返回登录</el-button>
+        <el-button class="login-button" @click="turnBack">{{ $t('button.backTologin') }}</el-button>
       </div>
       <footer>
         <p>
-          <span>备案号</span>
+          <span>{{ $t('footer.recordNumber') }}</span>
           <span class="record-no">xxx xxxxxxxxxxx</span>
           <span>v.1.0</span>
         </p>
@@ -86,9 +86,9 @@ export default {
   data() {
     const checkPassword = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请再次输入密码'))
+        callback(new Error(this.$t('form.error.passwordAgain')))
       } else if (value !== this.registerForm.password) {
-        callback(new Error('两次输入密码不一致!'))
+        callback(new Error(this.$t('form.error.passwordConfirm')))
       } else {
         callback()
       }
@@ -105,30 +105,53 @@ export default {
       },
       rules: {
         userName: [
-          { required: true, message: '请输入用户名', trigger: 'blur' },
-          { min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur' }
+          { required: true, message: this.$t('form.error.userName'), trigger: 'blur' },
+          { min: 6, max: 18, message: this.$t('form.error.userNameLength'), trigger: 'blur' }
         ],
         mobile: [
-          { required: true, message: '请输入手机号码', trigger: 'blur' },
-          { min: 11, max: 11, message: '请输入正确的手机号码', trigger: 'blur' }
+          { required: true, message: this.$t('form.error.phone'), trigger: 'blur' },
+          { min: 11, max: 11, message: this.$t('form.error.phoneConfirm'), trigger: 'blur' }
         ],
         email: [
-          { required: true, message: '请输入邮箱地址', trigger: 'blur' },
-          { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur' }
+          { required: true, message: this.$t('form.error.email'), trigger: 'blur' },
+          { type: 'email', message: this.$t('form.error.emailConfirm'), trigger: 'blur' }
         ],
         verificationCode: [
-          { required: true, message: '请输入验证码', trigger: 'blur' },
-          { min: 6, max: 6, message: '请输入正确的验证码', trigger: 'blur' }
+          { required: true, message: this.$t('form.error.vCode'), trigger: 'blur' },
+          { min: 6, max: 6, message: this.$t('form.error.vCodeConfirm'), trigger: 'blur' }
         ],
         password: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 6, max: 16, message: '密码长度在 6 到 16 个字符', trigger: 'blur' }
+          { required: true, message: this.$t('form.error.password'), trigger: 'blur' },
+          { min: 6, max: 16, message: this.$t('form.error.passwordLength'), trigger: 'blur' }
         ],
         confirmPassword: [
           { validator: checkPassword, trigger: 'blur' }
         ]
       },
       checked: false
+    }
+  },
+  computed: {
+    userName() {
+      return this.$t('form.error.userName')
+    },
+    password() {
+      return this.$t('form.error.password')
+    },
+    passwordAgain() {
+      return this.$t('form.error.passwordAgain')
+    },
+    vCode() {
+      return this.$t('form.error.vCode')
+    },
+    phone() {
+      return this.$t('form.error.phone')
+    },
+    phoneConfirm() {
+      return this.$t('form.error.phoneConfirm')
+    },
+    email() {
+      return this.$t('form.error.email')
     }
   },
   mounted() {

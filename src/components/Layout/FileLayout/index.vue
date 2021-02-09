@@ -58,6 +58,9 @@ export default {
         }
       }
     }
+    .el-dropdown {
+      color: #000
+    }
   }
   .main {
     position: absolute;

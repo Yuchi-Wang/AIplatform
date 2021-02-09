@@ -2,28 +2,28 @@
   <div class="technical-support">
     <div class="banner" />
     <div class="main">
-      <h3>商务合作</h3>
+      <h3>{{ $t('about.businessCooperation') }}</h3>
       <el-form ref="ruleForm" :model="supportForm" :rules="rules" label-width="180px">
-        <el-form-item label="联系人" prop="userName">
+        <el-form-item :label="contactPerson" prop="userName">
           <el-input v-model="supportForm.userName" />
         </el-form-item>
-        <el-form-item label="联系电话" prop="phone">
+        <el-form-item :label="contactNumber" prop="phone">
           <el-input v-model.number="supportForm.phone" maxlength="11" />
         </el-form-item>
         <el-form-item label="E-mail" prop="email">
           <el-input v-model="supportForm.email" />
         </el-form-item>
-        <el-form-item label="咨询内容" prop="content">
+        <el-form-item :label="content" prop="content">
           <el-input v-model="supportForm.content" type="textarea" maxlength="300" show-word-limit :rows="10" />
         </el-form-item>
-        <el-form-item label="公司名称" prop="companyName">
+        <el-form-item :label="companyName" prop="companyName">
           <el-input v-model="supportForm.companyName" />
         </el-form-item>
-        <el-form-item label="所在地" prop="baseName">
+        <el-form-item :label="location" prop="baseName">
           <el-input v-model="supportForm.baseName" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">{{ $t('form.submit') }}</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -34,42 +34,61 @@
 <script>
 export default {
   name: 'TechnicalSupport',
-  data: () => ({
-    supportForm: {
-      userName: '',
-      email: '',
-      phone: '',
-      content: '',
-      companyName: '',
-      baseName: ''
-    },
-    rules: {
-      userName: [
-        { required: true, message: '请输入联系人', trigger: 'blur' },
-        { min: 1, max: 12, message: '长度不超过12字符', trigger: 'blur' }
-      ],
-      phone: [
-        { required: true, message: '请输入联系电话', trigger: 'blur' },
-        { min: 11, max: 11, message: '联系电话格式不正确', trigger: 'blur' }
-      ],
-      email: [
-        { required: true, message: '请输入邮箱地址', trigger: 'blur' },
-        { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
-      ],
-      content: [
-        { required: true, message: '请输入内容', trigger: 'blur' },
-        { min: 1, max: 300, message: '长度不超过300字符', trigger: 'blur' }
-      ],
-      companyName: [
-        { required: true, message: '请输入内容', trigger: 'blur' },
-        { min: 1, max: 50, message: '长度不超过50字符', trigger: 'blur' }
-      ],
-      baseName: [
-        { required: true, message: '请输入内容', trigger: 'blur' },
-        { min: 1, max: 20, message: '长度不超过20字符', trigger: 'blur' }
-      ]
+  data() {
+    return {
+      supportForm: {
+        userName: '',
+        email: '',
+        phone: '',
+        content: '',
+        companyName: '',
+        baseName: ''
+      },
+      rules: {
+        userName: [
+          { required: true, message: this.$t('form.error.contactPerson'), trigger: 'blur' },
+          { min: 1, max: 12, message: this.$t('form.error.contactPersonLength'), trigger: 'blur' }
+        ],
+        phone: [
+          { required: true, message: this.$t('form.error.contactNumber'), trigger: 'blur' },
+          { min: 11, max: 11, message: this.$t('form.error.contactNumberConfirm'), trigger: 'blur' }
+        ],
+        email: [
+          { required: true, message: this.$t('form.error.email'), trigger: 'blur' },
+          { type: 'email', message: this.$t('form.error.emailConfirm'), trigger: ['blur', 'change'] }
+        ],
+        content: [
+          { required: true, message: this.$t('form.error.content'), trigger: 'blur' },
+          { min: 1, max: 300, message: this.$t('form.error.contentLength'), trigger: 'blur' }
+        ],
+        companyName: [
+          { required: true, message: this.$t('form.error.companyName'), trigger: 'blur' },
+          { min: 1, max: 50, message: this.$t('form.error.companyNameLength'), trigger: 'blur' }
+        ],
+        baseName: [
+          { required: true, message: this.$t('form.error.baseName'), trigger: 'blur' },
+          { min: 1, max: 20, message: this.$t('form.error.baseNameLength'), trigger: 'blur' }
+        ]
+      }
     }
-  }),
+  },
+  computed: {
+    contactPerson() {
+      return this.$t('form.contactPerson')
+    },
+    contactNumber() {
+      return this.$t('form.contactNumber')
+    },
+    content() {
+      return this.$t('form.consultationContent')
+    },
+    companyName() {
+      return this.$t('form.companyName')
+    },
+    location() {
+      return this.$t('form.location')
+    }
+  },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {

@@ -1,15 +1,15 @@
 <template>
   <div class="bady-voice">
     <div>
-      <h3>接口描述</h3>
-      <p>支持对婴儿的情绪，包括生气、饿、尿床、痛苦的情绪变化哭声识别。</p>
+      <h3> {{ $t('file.babyCrying.interfaceDescription') }}</h3>
+      <p>{{ $t('file.babyCrying.interfaceDescriptionContent') }}</p>
     </div>
     <div>
-      <h3>请求说明</h3>
+      <h3>{{ $t('file.babyCrying.requestExplanation') }}</h3>
       <p
         style="background: #F9F9F9;height: 40px;line-height:40px;padding-left:12px;margin-bottom:10px"
-      >向授权服务地址http://140.125.46.88/api/company/{ Company_id }/token发送请求（推荐使用POST）</p>
-      <p style="margin-bottom:35px">HTTP method使用GET</p>
+      >{{ $t('file.babyCrying.requestExplanationDetail') }}</p>
+      <p style="margin-bottom:35px">HTTP method {{ $t('product.use') }} GET</p>
       <h4>header：</h4>
       <el-table :header-cell-style="{background:'#f9f9f9'}" :data="headerData" border style="width: 100%">
         <el-table-column
@@ -21,8 +21,8 @@
           label="value"
         />
       </el-table>
-      <h4>body设定：</h4>
-      <h5>设定body，请选择form-data格式，之后新增两个栏位，内容如下</h5>
+      <h4>body{{ $t('product.setting') }}：</h4>
+      <h5>{{ $t('file.babyCrying.badySetting') }}</h5>
       <el-table :header-cell-style="{background:'#f9f9f9'}" :data="bodyData" border style="width: 100%">
         <el-table-column
           prop="Key"
@@ -34,18 +34,18 @@
         />
         <el-table-column
           prop="type"
-          label="格式"
+          label="format"
         />
       </el-table>
-      <h5>HTTP method 使用POST </h5>
+      <h5>HTTP method {{ $t('product.use') }} POST </h5>
       <p
         style="background: #F9F9F9;height: 40px;line-height:40px;padding-left:12px;margin-bottom:10px"
       >http://192.168.47.117/api/recognize</p>
-      <h4 style="margin-top:47px">执行辨识：</h4>
+      <h4 style="margin-top:47px">{{ $t('file.babyCrying.executiveIdentification') }}：</h4>
       <p
         style="background: #F9F9F9;height: 40px;line-height:40px;padding-left:12px;margin-bottom:10px"
       >http://192.168.47.117/api/recognize</p>
-      <h4 style="margin:20px 0">识别画面</h4>
+      <h4 style="margin:20px 0">{{ $t('file.babyCrying.recognitionScreen') }}</h4>
     </div>
   </div>
 </template>
@@ -66,7 +66,7 @@ export default {
         },
         {
           Key: 'file',
-          value: '音档',
+          value: 'file',
           type: 'File'
         }
       ]

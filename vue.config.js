@@ -1,24 +1,21 @@
 'use strict'
 const path = require('path')
 const resolve = dir => path.join(__dirname, dir)
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
+  lintOnSave: !isProduction,
   productionSourceMap: false,
   chainWebpack: config => {
     config.resolve.alias
       .set('@', resolve('src'))
       .set('@assets', resolve('src/assets'))
       .set('@components', resolve('src/components'))
-    // // 压缩图片
-    // config.module
-    //   .rule('images')
-    //   .test(/\.(png|jpe?g|svg)(\?.*)?$/)
-    //   .use('image-webpack-loader')
-    //   .loader('image-webpack-loader')
-    //   .options({bypassOnDebug: true })
     // 拆包
     config.optimization.splitChunks({
       chunks: 'all',
@@ -36,5 +33,39 @@ module.exports = {
         }
       }
     })
+  },
+  configureWebpack: config => {
+    if (isProduction) {
+      const plugins = []
+      // 配置gzip
+      plugins.push(
+        new CompressionWebpackPlugin({
+          filename: '[path].gz[query]',
+          algorithm: 'gzip',
+          test: /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i,
+          threshold: 10240,
+          minRatio: 0.8
+        }),
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            output: {
+              comments: true // 去掉注释
+            },
+            warnings: true,
+            compress: {
+              drop_console: true,
+              drop_debugger: true,
+              pure_funcs: ['console.log']// 移除console
+            }
+          },
+          cache: true, // 启用文件缓存
+          parallel: true // 使用多进程并行运行来提高构建速度
+        })
+      )
+      config.plugins = [
+        ...config.plugins,
+        ...plugins
+      ]
+    }
   }
 }

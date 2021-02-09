@@ -8,7 +8,7 @@
             <p>{{ item.text }}</p>
           </el-checkbox>
         </el-checkbox-group>
-        <el-button type="primary">下载</el-button>
+        <el-button type="primary">{{ $t('button.download') }}</el-button>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -24,43 +24,43 @@ export default {
       sdkList: [
         {
           id: 1,
-          title: '模糊匹配',
-          text: '人脸81关键点，人脸106关键点'
+          title: this.$t('console.sdk.fuzzyMatching'),
+          text: this.$t('console.sdk.content')
         },
         {
           id: 2,
-          title: '模糊匹配1',
-          text: '人脸81关键点，人脸106关键点'
+          title: this.$t('console.sdk.fuzzyMatching'),
+          text: this.$t('console.sdk.content')
         },
         {
           id: 3,
-          title: '模糊匹配2',
-          text: '人脸81关键点，人脸106关键点'
+          title: this.$t('console.sdk.fuzzyMatching'),
+          text: this.$t('console.sdk.content')
         },
         {
           id: 4,
-          title: '模糊匹配3',
-          text: '人脸81关键点，人脸106关键点'
+          title: this.$t('console.sdk.fuzzyMatching'),
+          text: this.$t('console.sdk.content')
         },
         {
           id: 5,
-          title: '模糊匹配4',
-          text: '人脸81关键点，人脸106关键点'
+          title: this.$t('console.sdk.fuzzyMatching'),
+          text: this.$t('console.sdk.content')
         },
         {
           id: 6,
-          title: '模糊匹配5',
-          text: '人脸81关键点，人脸106关键点'
+          title: this.$t('console.sdk.fuzzyMatching'),
+          text: this.$t('console.sdk.content')
         },
         {
           id: 7,
-          title: '模糊匹配6',
-          text: '人脸81关键点，人脸106关键点'
+          title: this.$t('console.sdk.fuzzyMatching'),
+          text: this.$t('console.sdk.content')
         },
         {
           id: 8,
-          title: '模糊匹配7',
-          text: '人脸81关键点，人脸106关键点'
+          title: this.$t('console.sdk.fuzzyMatching'),
+          text: this.$t('console.sdk.content')
         }
       ]
     }

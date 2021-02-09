@@ -1,19 +1,19 @@
 <template>
   <div class="login">
     <div>
-      <h3>胜龙AI开放平台</h3>
-      <h4>AI&emsp;解决方案&emsp;科技未来</h4>
-      <p>提供金融等各行业技术服务</p>
+      <h3>{{ $t('user.text1') }}</h3>
+      <h4>{{ $t('user.text2') }}</h4>
+      <p>{{ $t('user.text3') }}</p>
       <div class="login-form">
         <img src="@/assets/img/user/login-title.svg" class="login-title" @click="goIndex">
         <img v-if="!qrcodeLogin" src="@/assets/img/user/login-qrcode.svg" class="login-qrcode" @click="qrcodeLogin = true">
         <el-form v-if="!qrcodeLogin" ref="loginForm" :rules="rules" :model="loginForm" class="login-ruleForm">
-          <el-form-item prop="password">
+          <el-form-item prop="account">
             <el-input
               v-model="loginForm.account"
               maxlength="18"
               prop="account"
-              placeholder="请输入手机号码/邮箱账号/用户名"
+              :placeholder="loginRemain"
             />
           </el-form-item>
           <el-form-item prop="password">
@@ -21,31 +21,31 @@
               v-model="loginForm.password"
               maxlength="16"
               class="password-input"
-              placeholder="请输入密码"
+              :placeholder="password"
               show-password
             />
           </el-form-item>
           <el-form-item class="fogot-password">
-            <el-link type="primary" :underline="false" @click="fogetPassword">忘记密码？</el-link>
+            <el-link type="primary" :underline="false" @click="fogetPassword">{{ $t('button.forgotPassword') }}</el-link>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" class="login-button" @click="submitForm('loginForm')">登录</el-button>
+            <el-button type="primary" class="login-button" @click="submitForm('loginForm')">{{ $t('button.login') }}</el-button>
           </el-form-item>
         </el-form>
         <p v-if="!qrcodeLogin" class="no-register">
-          <span>您还没有注册？</span>
-          <span class="mob-register register-color" @click="mobileRegistration">手机注册</span>
-          <span class="register-color" @click="emailRegistration">邮箱注册</span>
+          <span>{{ $t('user.noRegister') }}</span>
+          <span class="mob-register register-color" @click="mobileRegistration">{{ $t('user.mobileRegister') }}</span>
+          <span class="register-color" @click="emailRegistration">{{ $t('user.emailRegister') }}</span>
         </p>
         <div v-if="qrcodeLogin" class="qrcode-login-box">
           <img src="@/assets/img/user/login-qrcode.png">
-          <p>微信扫码登录</p>
-          <el-button @click="qrcodeLogin = false">返回</el-button>
+          <p>{{ $t('user.wechatLogin') }}</p>
+          <el-button @click="qrcodeLogin = false">{{ $t('button.return') }}</el-button>
         </div>
       </div>
       <footer>
         <p>
-          <span>备案号</span>
+          <span>{{ $t('footer.recordNumber') }}</span>
           <span class="record-no">xxx xxxxxxxxxxx</span>
           <span>v.1.0</span>
         </p>
@@ -57,23 +57,33 @@
 <script>
 export default {
   name: 'Login',
-  data: () => ({
-    loginForm: {
-      account: '',
-      password: ''
+  data() {
+    return {
+      loginForm: {
+        account: '',
+        password: ''
+      },
+      rules: {
+        account: [
+          { required: true, message: this.$t('form.error.loginName'), trigger: 'blur' },
+          { min: 6, max: 18, message: this.$t('form.error.userNameLength'), trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: this.$t('form.error.password'), trigger: 'blur' },
+          { min: 6, max: 16, message: this.$t('form.error.passwordLength'), trigger: 'blur' }
+        ]
+      },
+      qrcodeLogin: false
+    }
+  },
+  computed: {
+    loginRemain() {
+      return this.$t('form.error.loginName')
     },
-    rules: {
-      account: [
-        { required: true, message: '请输入手机号码/邮箱账号或者用户名', trigger: 'blur' },
-        { min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur' }
-      ],
-      password: [
-        { required: true, message: '请输入密码', trigger: 'blur' },
-        { min: 6, max: 16, message: '密码长度在 6 到 16 个字符', trigger: 'blur' }
-      ]
-    },
-    qrcodeLogin: false
-  }),
+    password() {
+      return this.$t('form.error.password')
+    }
+  },
   methods: {
     submitForm(loginForm) {},
     fogetPassword() {

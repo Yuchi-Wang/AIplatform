@@ -27,7 +27,10 @@ import {
   Link,
   MessageBox,
   Message,
-  Backtop
+  Backtop,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem
 } from 'element-ui'
 const CustomElement = {
   install: Vue => {
@@ -58,6 +61,9 @@ const CustomElement = {
       .use(Timeline)
       .use(TimelineItem)
       .use(Backtop)
+      .use(Dropdown)
+      .use(DropdownMenu)
+      .use(DropdownItem)
     Vue.prototype.$message = Message
     Vue.prototype.$confirm = MessageBox.confirm
   }

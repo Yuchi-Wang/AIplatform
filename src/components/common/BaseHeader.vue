@@ -27,6 +27,8 @@
             v-else
             :key="item.name"
             :index="item.name || item.path"
+            :show-timeout="0"
+            :hide-timeout="0"
           >
             <template slot="title">
               {{ item.meta && item.meta.title }}
@@ -45,6 +47,21 @@
           </el-submenu>
         </template>
       </el-menu>
+      <el-dropdown @command="handleCommand">
+        <span class="el-dropdown-link">
+          {{ lang }}
+          <i class="el-icon-arrow-down el-icon--right" />
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item
+            v-for="item in langList"
+            :key="item.id"
+            :command="item"
+          >
+            {{ item.text }}
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </div>
   </header>
 </template>
@@ -62,7 +79,25 @@ export default {
   data: () => ({
     navRouter,
     defaultLogo: require('@/assets/img/common/logo.png'),
-    consoleLogo: require('@/assets/img/common/console-logo.png')
+    consoleLogo: require('@/assets/img/common/console-logo.png'),
+    langList: [
+      {
+        id: 1,
+        vaule: 'zh',
+        text: '简体中文'
+      },
+      {
+        id: 2,
+        vaule: 'en',
+        text: 'English'
+      },
+      {
+        id: 3,
+        vaule: 'tw',
+        text: '繁體中文'
+      }
+    ],
+    lang: localStorage.getItem('langText') || '简体中文'
   }),
   methods: {
     goIndex() {
@@ -70,6 +105,13 @@ export default {
     },
     selectMenuItem(path) {
       this.$router.push({ path: path })
+    },
+    handleCommand(command) {
+      this.$i18n.locale = command.vaule
+      this.lang = command.text
+      localStorage.setItem('lang', command.vaule)
+      localStorage.setItem('langText', command.text)
+      location.reload()
     }
   }
 }
@@ -97,7 +139,7 @@ export default {
     .nav-menu {
       border-bottom: none;
       width: 750px;
-      margin-left: 450px;
+      margin-left: 375px;
       height: 61.49px;
       > li {
         height: 61.49px;
@@ -114,6 +156,13 @@ export default {
           }
         }
       }
+    }
+    /deep/.el-dropdown {
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
     }
   }
 }

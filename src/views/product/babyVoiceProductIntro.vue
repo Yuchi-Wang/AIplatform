@@ -2,23 +2,22 @@
   <div class="prompt-product">
     <div class="banner">
       <div>
-        <h3>婴语识别</h3>
+        <h3>{{ $t('productList.babyVoice.bannerTitle') }}</h3>
         <p>
-          婴语识别基于新生儿哭声侦测及辨识技术开发，协助新手爸妈于短时间内听懂哭声、了解宝宝的内心在想什么；利用婴儿哭声中的特定声学特征、
-          随着婴儿的成长自动修正哭声模型，再结合机器学习与巨量资料分析技术；并且支持肚子饿、想睡觉、尿布湿、需要安抚等不同哭声模型。
+          {{ $t('productList.babyVoice.bannerText') }}
         </p>
-        <button @click="coperation">合作咨询</button>
+        <button @click="coperation">{{ $t('product.CooperationService') }}</button>
       </div>
     </div>
     <div class="main">
       <div>
-        <h3>产品体验</h3>
+        <h3>{{ $t('product.experience') }}</h3>
         <div class="prompt-experience">
-          <h3>分析结果</h3>
+          <h3>{{ $t('productList.babyVoice.result') }}</h3>
           <div class="dec">
-            <p>根据宝宝的声音数据分析得到的结果：您的宝宝应该是肚子饿了。</p>
-            <p>解决办法如下：</p>
-            <p>1.这个时间段宝宝处于生长发育阶段，正常情况下，如果宝宝饿的非常快说明宝宝身体还是比较健康，家长可以给宝宝做一些营养特别丰富的食物。</p>
+            <p>{{ $t('productList.babyVoice.resultTitle') }}</p>
+            <p>{{ $t('productList.babyVoice.resultContent') }}</p>
+            <p>{{ $t('productList.babyVoice.resultContentList') }}</p>
           </div>
           <ul>
             <li>
@@ -27,7 +26,7 @@
                   <img src="@/assets/img/product/babyVoiceProduct/voice.png">
                 </div>
                 <div class="content">
-                  <p>请按住录音按钮，录制宝宝声音，时长范围3s～20s</p>
+                  <p>{{ $t('productList.babyVoice.recording') }}</p>
                 </div>
               </div>
             </li>
@@ -45,12 +44,12 @@
                     :on-exceed="handleExceed"
                     :file-list="fileList"
                   >
-                    <el-button size="small" type="primary">上传<i class="el-icon-upload el-icon--right" /></el-button>
+                    <el-button size="small" type="primary">{{ $t('button.upload') }}<i class="el-icon-upload el-icon--right" /></el-button>
                   </el-upload>
                 </div>
                 <div class="content" style="margin-left:35px">
-                  <p>上传的音频文件格式为：mp3、wav</p>
-                  <p>文件容量小于1mb</p>
+                  <p>{{ $t('productList.babyVoice.file') }}</p>
+                  <p>{{ $t('productList.babyVoice.fileSize') }}</p>
                 </div>
               </div>
             </li>
@@ -58,7 +57,7 @@
         </div>
       </div>
       <div class="product-characteristic">
-        <h3>产品特点</h3>
+        <h3>{{ $t('product.features') }}</h3>
         <ul>
           <li v-for="item in productCharacteristic" :key="item.id">
             <div
@@ -71,24 +70,24 @@
         </ul>
       </div>
       <div class="app-scene">
-        <h3>应用场景</h3>
+        <h3>{{ $t('product.scenarios') }}</h3>
         <div v-enlarge-styleBackground class="boby-hunger">
-          <p class="app-scene-dec">宝宝饿了</p>
+          <p class="app-scene-dec">{{ $t('productList.babyVoice.scenarios.hungry') }}</p>
         </div>
         <div class="boby-info">
           <div v-enlarge-styleBackground class="boby-sleep">
-            <p class="app-scene-dec">宝宝困了</p>
+            <p class="app-scene-dec">{{ $t('productList.babyVoice.scenarios.sleepy') }}</p>
           </div>
           <div v-enlarge-styleBackground class="boby-cry">
-            <p class="app-scene-dec">宝宝哭闹</p>
+            <p class="app-scene-dec">{{ $t('productList.babyVoice.scenarios.crying') }}</p>
           </div>
         </div>
         <div class="boby-info">
           <div v-enlarge-styleBackground class="boby-ill">
-            <p class="app-scene-dec">宝宝生病了</p>
+            <p class="app-scene-dec">{{ $t('productList.babyVoice.scenarios.ill') }}</p>
           </div>
           <div v-enlarge-styleBackground class="boby-diarrhea">
-            <p class="app-scene-dec">宝宝拉肚子</p>
+            <p class="app-scene-dec">{{ $t('productList.babyVoice.scenarios.diarrhea') }}</p>
           </div>
         </div>
       </div>
@@ -100,26 +99,28 @@
 <script>
 export default {
   name: 'PromptProductIntro',
-  data: () => ({
-    productCharacteristic: [
-      { id: 1,
-        src: require('@/assets/img/product/babyVoiceProduct/product-characteristic1.svg'),
-        title: '识别种类多',
-        dec: '识别的宝宝哭声类型多，比如宝宝饿了、困了、尿床、肚子疼'
-      },
-      { id: 2,
-        src: require('@/assets/img/product/babyVoiceProduct/product-characteristic2.svg'),
-        title: '高辨识率',
-        dec: '录制宝宝声音后，可以实时准确识别出宝宝的声音'
-      },
-      { id: 3,
-        src: require('@/assets/img/product/babyVoiceProduct/product-characteristic3.svg'),
-        title: '智能分析',
-        dec: '从病理和生理多角度分析宝宝哭的原因'
-      }
-    ],
-    fileList: []
-  }),
+  data() {
+    return {
+      productCharacteristic: [
+        { id: 1,
+          src: require('@/assets/img/product/babyVoiceProduct/product-characteristic1.svg'),
+          title: this.$t('productList.babyVoice.features.recognition'),
+          dec: this.$t('productList.babyVoice.features.recognitionText')
+        },
+        { id: 2,
+          src: require('@/assets/img/product/babyVoiceProduct/product-characteristic2.svg'),
+          title: this.$t('productList.babyVoice.features.rate'),
+          dec: this.$t('productList.babyVoice.features.rateContent')
+        },
+        { id: 3,
+          src: require('@/assets/img/product/babyVoiceProduct/product-characteristic3.svg'),
+          title: this.$t('productList.babyVoice.features.analysis'),
+          dec: this.$t('productList.babyVoice.features.analysisContent')
+        }
+      ],
+      fileList: []
+    }
+  },
   methods: {
     handleRemove() {},
     coperation() {
@@ -158,7 +159,7 @@ export default {
         margin-bottom: 30px;
       }
       p {
-        width: 528px;
+        width: 700px;
         font-size: 16px;
         font-weight: 500;
         color: #FFFFFF;

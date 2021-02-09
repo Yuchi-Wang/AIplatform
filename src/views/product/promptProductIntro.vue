@@ -4,15 +4,14 @@
       <div>
         <h3>prompt</h3>
         <p>
-          Prompt是一款基于人工智能技术，为各行各业的企业和开发者提供的针对文本智能化分析及处理的服务，意在帮助用户高效处理文本数据，
-          实现数字化和智能化转型；应用范围包括：电商、交通、金融、游戏等行业。
+          {{ $t('productList.prompt.bannerText') }}
         </p>
-        <button @click="coperation">合作咨询</button>
+        <button @click="coperation">{{ $t('product.CooperationService') }}</button>
       </div>
     </div>
     <div class="main">
       <div>
-        <h3>产品体验</h3>
+        <h3>{{ $t('product.experience') }}</h3>
         <div class="prompt-experience">
           <img
             :src="prdductExperienceSrc ? prdductExperienceHover: prdductExperience"
@@ -22,7 +21,7 @@
         </div>
       </div>
       <div class="product-characteristic">
-        <h3>产品体验</h3>
+        <h3>{{ $t('product.features') }}</h3>
         <ul>
           <li v-for="item in productCharacteristic" :key="item.id">
             <div>
@@ -36,20 +35,20 @@
         </ul>
       </div>
       <div class="app-scene">
-        <h3>应用场景</h3>
+        <h3>{{ $t('product.scenarios') }}</h3>
         <div v-enlarge-styleBackground class="customer-service">
-          <p class="app-scene-dec">智能客服</p>
+          <p class="app-scene-dec">{{ $t('productList.prompt.intelligentCustomerService') }}</p>
         </div>
         <div class="robot-intelligence">
           <div v-enlarge-styleBackground class="robot-ai">
-            <p class="app-scene-dec">机器人AI</p>
+            <p class="app-scene-dec">{{ $t('productList.prompt.rootAI') }}</p>
           </div>
           <div v-enlarge-styleBackground class="intelligence-search">
-            <p class="app-scene-dec">智能搜索</p>
+            <p class="app-scene-dec">{{ $t('productList.prompt.intelligentSearch') }}</p>
           </div>
         </div>
         <div v-enlarge-styleBackground class="intelligence-transaction">
-          <p class="app-scene-dec">智能交易</p>
+          <p class="app-scene-dec">{{ $t('productList.prompt.smartTrading') }}</p>
         </div>
       </div>
     </div>
@@ -60,38 +59,40 @@
 <script>
 export default {
   name: 'PromptProductIntro',
-  data: () => ({
-    prdductExperience: require('@/assets/img/product/prompt/experience.png'),
-    prdductExperienceHover: require('@/assets/img/product/prompt/experience.gif'),
-    prdductExperienceSrc: false,
-    productCharacteristic: [
-      { id: 1,
-        src: require('@/assets/img/product/prompt/product-characteristic1.svg'),
-        title: '语音输入'
-      },
-      { id: 2,
-        src: require('@/assets/img/product/prompt/product-characteristic2.svg'),
-        title: '注音校正'
-      },
-      { id: 3,
-        src: require('@/assets/img/product/prompt/product-characteristic3.svg'),
-        title: '文本纠错'
-      },
-      { id: 4,
-        src: require('@/assets/img/product/prompt/product-characteristic4.svg'),
-        title: '词法分析'
-      },
-      { id: 5,
-        src: require('@/assets/img/product/prompt/product-characteristic5.svg'),
-        title: '敏感词识别'
-      },
-      { id: 6,
-        src: require('@/assets/img/product/prompt/product-characteristic6.svg'),
-        title: '关键词提取'
-      }
-    ],
-    textarea: ''
-  }),
+  data() {
+    return {
+      prdductExperience: require('@/assets/img/product/prompt/experience.png'),
+      prdductExperienceHover: require('@/assets/img/product/prompt/experience.gif'),
+      prdductExperienceSrc: false,
+      productCharacteristic: [
+        { id: 1,
+          src: require('@/assets/img/product/prompt/product-characteristic1.svg'),
+          title: this.$t('productList.prompt.voiceInput')
+        },
+        { id: 2,
+          src: require('@/assets/img/product/prompt/product-characteristic2.svg'),
+          title: this.$t('productList.prompt.phoneticCorrection')
+        },
+        { id: 3,
+          src: require('@/assets/img/product/prompt/product-characteristic3.svg'),
+          title: this.$t('productList.prompt.textErrorCorrection')
+        },
+        { id: 4,
+          src: require('@/assets/img/product/prompt/product-characteristic4.svg'),
+          title: this.$t('productList.prompt.lexicalAnalysis')
+        },
+        { id: 5,
+          src: require('@/assets/img/product/prompt/product-characteristic5.svg'),
+          title: this.$t('productList.prompt.sensitiveWordRecognition')
+        },
+        { id: 6,
+          src: require('@/assets/img/product/prompt/product-characteristic6.svg'),
+          title: this.$t('productList.prompt.keywordExtraction')
+        }
+      ],
+      textarea: ''
+    }
+  },
   methods: {
     coperation() {
       this.$router.push('/about/businessCoperation')

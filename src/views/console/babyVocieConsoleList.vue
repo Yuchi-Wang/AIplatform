@@ -1,12 +1,12 @@
 <template>
   <div class="clab-console">
-    <el-button type="primary" size="small" @click="createApiKey">新建API Key</el-button>
+    <el-button type="primary" size="small" @click="createApiKey">{{ $t('console.app.apiKey') }}</el-button>
     <div class="api-key">
       <h4>API Key</h4>
       <el-table :data="apiData" stripe border style="width: 100%" class="table-class">
         <el-table-column
           prop="name"
-          label="api接口应用名称"
+          :label="applicationName"
         />
         <el-table-column
           prop="keyName"
@@ -16,30 +16,36 @@
           prop="APISercret"
           label="API sercret"
         />
-        <el-table-column label="状态">
+        <el-table-column :label="status">
           <template slot-scope="scope">
-            {{ scope.row.status ? '启用': '禁用' }}
+            {{ scope.row.status ? enable: '禁用' }}
           </template>
         </el-table-column>
-        <el-table-column label="操作">
+        <el-table-column :label="operating">
           <template slot-scope="scope">
-            <el-link :underline="false" type="primary" @click="operation(scope.row)">查看</el-link>
+            <el-link
+              :underline="false"
+              type="primary"
+              @click="operation(scope.row)"
+            >
+              {{ $t('console.app.view') }}
+            </el-link>
           </template>
         </el-table-column>
       </el-table>
     </div>
     <div class="api-times">
-      <h4>API 使用次数统计</h4>
+      <h4>{{ $t('console.app.statistics') }}</h4>
       <el-table :data="apiTimes" stripe border style="width: 100%" class="table-class">
         <el-table-column prop="api" label="api" />
-        <el-table-column prop="type" label="次数套餐类型" />
-        <el-table-column prop="remainingDays" label="剩余天数" />
-        <el-table-column prop="remainingTimes" label="剩余次数" />
+        <el-table-column prop="type" :label="packageType" />
+        <el-table-column prop="remainingDays" :label="remainingDays" />
+        <el-table-column prop="remainingTimes" :label="remainingTimes" />
       </el-table>
     </div>
     <div class="api-situation">
-      <h4>使用情况汇总</h4>
-      <el-select v-model="timeValue" placeholder="请选择">
+      <h4>{{ $t('console.app.usageSummary') }}</h4>
+      <el-select v-model="timeValue" :placeholder="select">
         <el-option
           v-for="item in timeOptions"
           :key="item.value"
@@ -47,12 +53,12 @@
           :value="item.value"
         />
       </el-select>
-      <span class="situation-range">最近使用时间范围</span>
+      <span class="situation-range">{{ $t('console.app.timeLimit') }}</span>
       <el-table :data="situationData" stripe border style="width: 100%" class="table-class">
         <el-table-column prop="api" label="api" />
-        <el-table-column prop="type" label="次数套餐类型" />
-        <el-table-column prop="remainingDays" label="剩余天数" />
-        <el-table-column prop="remainingTimes" label="剩余次数" />
+        <el-table-column prop="type" :label="packageType" />
+        <el-table-column prop="remainingDays" :label="remainingDays" />
+        <el-table-column prop="remainingTimes" :label="remainingTimes" />
       </el-table>
     </div>
     <!-- api弹窗 -->
@@ -61,11 +67,11 @@
       :visible.sync="apiDialog"
       center
       class="api-dialog"
-      width="395px"
+      width="450px"
     >
-      <el-form :model="apiForm" label-width="85px">
-        <el-form-item label="应用名称：">
-          <el-select v-if="editDialog" v-model="apiForm.name">
+      <el-form :model="apiForm" label-width="120px">
+        <el-form-item :label="appName">
+          <el-select v-if="editDialog" v-model="apiForm.name" :placeholder="select">
             <el-option
               v-for="item in apiNameOption"
               :key="item.value"
@@ -79,8 +85,8 @@
             :disabled="true"
           />
         </el-form-item>
-        <el-form-item label="应用分类：">
-          <el-select v-if="editDialog" v-model="apiForm.className">
+        <el-form-item :label="appClass">
+          <el-select v-if="editDialog" v-model="apiForm.className" :placeholder="select">
             <el-option
               v-for="item in apiClass"
               :key="item.value"
@@ -94,8 +100,8 @@
             :disabled="true"
           />
         </el-form-item>
-        <el-form-item label="应用平台：">
-          <el-select v-if="editDialog" v-model="apiForm.platform">
+        <el-form-item :label="appPlatform">
+          <el-select v-if="editDialog" v-model="apiForm.platform" :placeholder="select">
             <el-option
               v-for="item in apiPlatform"
               :key="item.value"
@@ -116,20 +122,20 @@
           class="create-button"
           type="primary"
           @click="apiDialog = false"
-        >创 建
+        >{{ $t('button.create') }}
         </el-button>
         <el-button
           v-if="!editDialog"
           class="edit-button"
           @click="editApiKey"
-        >编 辑
+        >{{ $t('button.edit') }}
         </el-button>
         <el-button
           v-if="!editDialog"
           type="danger"
           class="delete-button"
           @click="apiDialog = false"
-        >删 除
+        >{{ $t('button.delete') }}
         </el-button>
       </div>
     </el-dialog>
@@ -143,13 +149,14 @@ export default {
       apiData: [
         {
           id: 1,
-          name: '人脸识别接口',
+          name: this.$t('console.app.apiKeyName'),
           keyName: 'dj85_C93TOz7CYQSaArz…',
           APISercret: 'bwhj1m5-rYtoi8r-…',
           status: true
         },
         {
-          name: '人脸识别接口',
+          id: 2,
+          name: this.$t('console.app.apiKeyName'),
           keyName: 'dj85_C93TOz7CYQSaArz…',
           APISercret: 'bwhj1m5-rYtoi8r-…',
           status: true
@@ -157,9 +164,8 @@ export default {
       ],
       apiTimes: [
         {
-          id: 2,
-          api: '人脸识别接口',
-          type: '类型1',
+          api: this.$t('console.app.apiKeyName'),
+          type: this.$t('console.app.class'),
           remainingDays: '5',
           remainingTimes: '5'
         }
@@ -169,43 +175,43 @@ export default {
       timeOptions: [
         {
           value: '1',
-          label: '1小时'
+          label: this.$t('console.app.oneHour')
         },
         {
           value: '2',
-          label: '2小时'
+          label: this.$t('console.app.twoHours')
         },
         {
           value: '3',
-          label: '3小时'
+          label: this.$t('console.app.threeHour')
         }
       ],
       detailId: 0,
       apiNameOption: [
         {
           value: '1',
-          label: '名称一'
+          label: this.$t('console.app.name')
         }, {
           value: '2',
-          label: '名称二'
+          label: this.$t('console.app.name')
         }
       ],
       apiClass: [
         {
           value: '1',
-          label: '分类一'
+          label: this.$t('console.app.class')
         }, {
           value: '2',
-          label: '分类二'
+          label: this.$t('console.app.class')
         }
       ],
       apiPlatform: [
         {
           value: '1',
-          label: '平台一'
+          label: this.$t('console.app.platform')
         }, {
           value: '2',
-          label: '平台二'
+          label: this.$t('console.app.platform')
         }
       ],
       apiForm: {
@@ -219,22 +225,57 @@ export default {
       editDialog: true
     }
   },
+  computed: {
+    applicationName() {
+      return this.$t('console.app.applicationName')
+    },
+    status() {
+      return this.$t('console.app.status')
+    },
+    enable() {
+      return this.$t('console.app.enable')
+    },
+    operating() {
+      return this.$t('console.app.operating')
+    },
+    remainingDays() {
+      return this.$t('console.app.remainingDays')
+    },
+    remainingTimes() {
+      return this.$t('console.app.remainingTimes')
+    },
+    packageType() {
+      return this.$t('console.app.packageType')
+    },
+    appName() {
+      return this.$t('console.app.appName')
+    },
+    appClass() {
+      return this.$t('console.app.appClass')
+    },
+    appPlatform() {
+      return this.$t('console.app.appPlatform')
+    },
+    select() {
+      return this.$t('select.name')
+    }
+  },
   methods: {
     operation(row) {
       this.id = row.id
       this.apiDialog = true
       this.editDialog = false
-      this.dialogTitle = '查看API Key'
+      this.dialogTitle = `${this.$t('button.view')}  API Key`
     },
     createApiKey() {
       this.apiDialog = true
       this.editDialog = true
-      this.dialogTitle = '创建API Key'
+      this.dialogTitle = `${this.$t('button.create')}  API Key`
     },
     editApiKey() {
       this.apiDialog = true
       this.editDialog = true
-      this.dialogTitle = '编辑API Key'
+      this.dialogTitle = `${this.$t('button.edit')}  API Key`
     }
   }
 }
@@ -246,8 +287,8 @@ export default {
   > .el-button {
     margin-bottom: 18px;
     background:#2F54EB;
-    transition: all .3s;
     border: 1px solid #2F54EB;
+    transition: all .3s;
     &:hover {
       background: #1d39c4;
       border: 1px solid #1d39c4;
@@ -301,7 +342,7 @@ export default {
       line-height: 15px;
     }
   }
-   .api-dialog {
+  .api-dialog {
     .el-select,.el-input {
       width: 235px;
     }

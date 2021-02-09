@@ -2,22 +2,22 @@
   <div class="technical-support">
     <div class="banner" />
     <div class="main">
-      <h3>技术支持</h3>
+      <h3>{{ $t('about.technicalSupport') }}</h3>
       <el-form ref="ruleForm" :model="supportForm" :rules="rules" label-width="180px">
-        <el-form-item label="联系人" prop="userName">
+        <el-form-item :label="contactPerson" prop="userName">
           <el-input v-model="supportForm.userName" />
         </el-form-item>
         <el-form-item label="E-mail" prop="email">
           <el-input v-model="supportForm.email" />
         </el-form-item>
-        <el-form-item label="应用场景和技术能力要求" prop="content">
+        <el-form-item :label="scenarios" prop="content">
           <el-input v-model="supportForm.content" type="textarea" />
         </el-form-item>
-        <el-form-item label="公司名称" prop="companyName">
+        <el-form-item :label="companyName" prop="companyName">
           <el-input v-model="supportForm.companyName" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">{{ $t('form.submit') }}</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -28,32 +28,45 @@
 <script>
 export default {
   name: 'TechnicalSupport',
-  data: () => ({
-    supportForm: {
-      userName: '',
-      email: '',
-      content: '',
-      companyName: ''
-    },
-    rules: {
-      userName: [
-        { required: true, message: '请输入联系人', trigger: 'blur' },
-        { min: 1, max: 12, message: '长度不超过12字符', trigger: 'blur' }
-      ],
-      email: [
-        { required: true, message: '请输入邮箱地址', trigger: 'blur' },
-        { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
-      ],
-      content: [
-        { required: true, message: '请输入内容', trigger: 'blur' },
-        { min: 1, max: 300, message: '长度不超过300字符', trigger: 'blur' }
-      ],
-      companyName: [
-        { required: true, message: '请输入内容', trigger: 'blur' },
-        { min: 1, max: 50, message: '长度不超过50字符', trigger: 'blur' }
-      ]
+  data() {
+    return {
+      supportForm: {
+        userName: '',
+        email: '',
+        content: '',
+        companyName: ''
+      },
+      rules: {
+        userName: [
+          { required: true, message: this.$t('form.error.contactPerson'), trigger: 'blur' },
+          { min: 1, max: 12, message: this.$t('form.error.contactPersonLength'), trigger: 'blur' }
+        ],
+        email: [
+          { required: true, message: this.$t('form.error.email'), trigger: 'blur' },
+          { type: 'email', message: this.$t('form.error.emailConfirm'), trigger: ['blur', 'change'] }
+        ],
+        content: [
+          { required: true, message: this.$t('form.error.content'), trigger: 'blur' },
+          { min: 1, max: 300, message: this.$t('form.error.contentLength'), trigger: 'blur' }
+        ],
+        companyName: [
+          { required: true, message: this.$t('form.error.companyName'), trigger: 'blur' },
+          { min: 1, max: 50, message: this.$t('form.error.companyNameLength'), trigger: 'blur' }
+        ]
+      }
     }
-  }),
+  },
+  computed: {
+    contactPerson() {
+      return this.$t('form.contactPerson')
+    },
+    companyName() {
+      return this.$t('form.companyName')
+    },
+    scenarios() {
+      return this.$t('form.scenarios')
+    }
+  },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {

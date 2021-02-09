@@ -4,14 +4,14 @@
       <el-carousel height="675px" class="banner-img">
         <el-carousel-item v-for="item in bannerList" :key="item.id">
           <div class="banner-content" :style="{'background-image': 'url('+ item.src +')'}">
-            <h3>诚龙AI 科技未来</h3>
+            <h3>{{ $t('homeBanner.text') }}</h3>
           </div>
         </el-carousel-item>
       </el-carousel>
     </div>
     <div class="product-info">
       <div>
-        <h3>产品介绍</h3>
+        <h3>{{ $t('product.introduction') }}</h3>
         <ul class="product-info-title">
           <li
             v-for="(item, index) in productInfoList"
@@ -39,7 +39,7 @@
     </div>
     <div class="market-advantage">
       <div>
-        <h3>市场优势</h3>
+        <h3>{{ $t('product.advantage') }}</h3>
         <ul>
           <li v-for="item in productAdvantage" :key="item.id">
             <div
@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="application-scenarios">
-      <h3>应用场景</h3>
+      <h3>{{ $t('product.scenarios') }}</h3>
       <div>
         <el-row>
           <el-col v-for="(item, index) in appScenarios" :key="item.id" :span="8">
@@ -76,8 +76,8 @@
     </div>
     <div class="cooperation">
       <div>
-        <button @click="coperation">合作洽谈</button>
-        <p>联系方式：021-2651625</p>
+        <button @click="coperation">{{ $t('product.Cooperation') }}</button>
+        <p>{{ $t('product.tel') }}021-2651625</p>
       </div>
     </div>
     <BaseFooter />
@@ -87,93 +87,96 @@
 <script>
 export default {
   name: 'Home',
-  data: () => ({
-    bannerList: [
-      { id: 1, src: require('@/assets/img/home/banner.jpg') },
-      { id: 2, src: require('@/assets/img/home/banner1.jpg') },
-      { id: 3, src: require('@/assets/img/home/banner2.jpg') }
-    ],
-    productInfoList: [
-      { id: 1, title: 'prompt' },
-      { id: 2, title: '诚龙阿宝' },
-      { id: 3, title: '婴语识别' }
-    ],
-    productInfoBg: {
-      backgroundImage: 'url(' + require('@/assets/img/home/product-info-title.png') + ')',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-      backgroundPosition: '50% 50%'
-    },
-    productInfoDetail: [
-      {
-        id: 1,
-        src: require('@/assets/img/home/protuct-info-detail1.png'),
-        title: 'prompt产品介绍',
-        content: 'prompt是具有唯一辨识度的用户特征，且具有不可复制性。身份认证，刷脸支付等业务已经成为金融行业的发展新方向，在金融领域价值巨大。'
+  data() {
+    return {
+      bannerList: [
+        { id: 1, src: require('@/assets/img/home/banner.jpg') },
+        { id: 2, src: require('@/assets/img/home/banner1.jpg') },
+        { id: 3, src: require('@/assets/img/home/banner2.jpg') }
+      ],
+      productInfoList: [
+        { id: 1, title: this.$t('defaultPage.productList.prompt') },
+        { id: 2, title: this.$t('defaultPage.productList.abao') },
+        { id: 3, title: this.$t('defaultPage.productList.cryrecognition') }
+      ],
+      productInfoBg: {
+        backgroundImage: 'url(' + require('@/assets/img/home/product-info-title.png') + ')',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: '50% 50%'
       },
-      {
-        id: 2, src: require('@/assets/img/home/protuct-info-detail2.png'),
-        title: '诚龙阿宝产品介绍',
-        content: '诚龙阿宝是具有唯一辨识度的用户特征，且具有不可复制性。身份认证，刷脸支付等业务已经成为金融行业的发展新方向，在金融领域价值巨大。'
-      },
-      {
-        id: 3,
-        src: require('@/assets/img/home/protuct-info-detail3.png'),
-        title: '婴语识别产品介绍',
-        content: '婴语识别是具有唯一辨识度的用户特征，且具有不可复制性。身份认证，刷脸支付等业务已经成为金融行业的发展新方向，在金融领域价值巨大。'
-      }
-    ],
-    productAdvantage: [
-      {
-        id: 1,
-        src: require('@/assets/img/home/advantage1.png'),
-        title: '多终端适配',
-        content: '防御多种攻击方式，防攻击算法更新频率高'
-      },
-      {
-        id: 2, src: require('@/assets/img/home/advantage2.png'),
-        title: '算法技术领先',
-        content: '防御多种攻击方式，防攻击算法更新频率高'
-      },
-      {
-        id: 3,
-        src: require('@/assets/img/home/advantage3.png'),
-        title: '支付级安全性',
-        content: '防御多种攻击方式，防攻击算法更新频率高'
-      },
-      {
-        id: 4,
-        src: require('@/assets/img/home/advantage4.png'),
-        title: '防伪攻击',
-        content: '防御多种攻击方式，防攻击算法更新频率高'
-      }
-    ],
-    appScenarios: [
-      {
-        id: 1,
-        src: require('@/assets/img/home/medical.png'),
-        hoverSrc: require('@/assets/img/home/medical-hover.png'),
-        title: '医疗',
-        content: '防御多种攻击方式，防攻击算法更新频率高'
-      },
-      {
-        id: 2,
-        src: require('@/assets/img/home/office.png'),
-        hoverSrc: require('@/assets/img/home/office-hover.png'),
-        title: '办公',
-        content: '防御多种攻击方式，防攻击算法更新频率高'
-      },
-      {
-        id: 3,
-        src: require('@/assets/img/home/edu.png'),
-        hoverSrc: require('@/assets/img/home/edu-hover.png'),
-        title: '教育',
-        content: '防御多种攻击方式，防攻击算法更新频率高'
-      }
-    ],
-    activeIndex: 0,
-    selectAppScenariosIndex: -1
-  }),
+      productInfoDetail: [
+        {
+          id: 1,
+          src: require('@/assets/img/home/protuct-info-detail1.png'),
+          title: this.$t('defaultPage.productList.prompt') + this.$t('product.introduction'),
+          content: this.$t('defaultPage.promptIntroduction')
+        },
+        {
+          id: 2, src: require('@/assets/img/home/protuct-info-detail2.png'),
+          title: this.$t('defaultPage.productList.abao') + this.$t('product.introduction'),
+          content: this.$t('defaultPage.abaoIntroduction')
+        },
+        {
+          id: 3,
+          src: require('@/assets/img/home/protuct-info-detail3.png'),
+          title: this.$t('defaultPage.productList.cryrecognition') + this.$t('product.introduction'),
+          content: this.$t('defaultPage.Cryrecognition')
+        }
+      ],
+      productAdvantage: [
+        {
+          id: 1,
+          src: require('@/assets/img/home/advantage1.png'),
+          title: this.$t('defaultPage.MarketAdvantage.terminal.title'),
+          content: this.$t('defaultPage.MarketAdvantage.terminal.text')
+        },
+        {
+          id: 2,
+          src: require('@/assets/img/home/advantage2.png'),
+          title: this.$t('defaultPage.MarketAdvantage.algorithm.title'),
+          content: this.$t('defaultPage.MarketAdvantage.terminal.text')
+        },
+        {
+          id: 3,
+          src: require('@/assets/img/home/advantage3.png'),
+          title: this.$t('defaultPage.MarketAdvantage.security.title'),
+          content: this.$t('defaultPage.MarketAdvantage.terminal.text')
+        },
+        {
+          id: 4,
+          src: require('@/assets/img/home/advantage4.png'),
+          title: this.$t('defaultPage.MarketAdvantage.attack.title'),
+          content: this.$t('defaultPage.MarketAdvantage.terminal.text')
+        }
+      ],
+      appScenarios: [
+        {
+          id: 1,
+          src: require('@/assets/img/home/medical.png'),
+          hoverSrc: require('@/assets/img/home/medical-hover.png'),
+          title: this.$t('defaultPage.medical')
+        },
+        {
+          id: 2,
+          src: require('@/assets/img/home/office.png'),
+          hoverSrc: require('@/assets/img/home/office-hover.png'),
+          title: this.$t('defaultPage.office')
+        },
+        {
+          id: 3,
+          src: require('@/assets/img/home/edu.png'),
+          hoverSrc: require('@/assets/img/home/edu-hover.png'),
+          title: this.$t('defaultPage.education')
+        }
+      ],
+      activeIndex: 0,
+      selectAppScenariosIndex: -1
+    }
+  },
+  mounted() {
+    console.log(this.$t('defaultPage.promptIntroduction'))
+  },
   methods: {
     coperation() {
       this.$router.push('/about/businessCoperation')
@@ -200,6 +203,8 @@ export default {
       position: absolute;
       top: 50%;
       left: 50%;
+      width: 1200px;
+      text-align: center;
       transform: translate(-50%, -50%);
       font-size: 80px;
       color: #FFFFFF;

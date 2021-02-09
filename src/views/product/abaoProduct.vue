@@ -2,39 +2,38 @@
   <div class="abao-product">
     <div class="banner">
       <div>
-        <h3>诚龙阿宝</h3>
+        <h3>{{ $t('productList.abao.bannerTitle') }}</h3>
         <p>
-          阿宝作为胜龙主要产品形态之一，包含金融词库、语音模糊匹配、智能应答、等多模态产品组合，
-          基于行业应用场景实践，搭载了诚龙AI算法，可用于金融业，电信业、教育业等各类复杂场景的综合应用。
+          {{ $t('productList.abao.bannerText') }}
         </p>
-        <button @click="coperation">合作咨询</button>
+        <button @click="coperation">{{ $t('product.CooperationService') }}</button>
       </div>
     </div>
     <div class="main">
       <div>
-        <h3>产品体验</h3>
+        <h3>{{ $t('product.scenarios') }}</h3>
         <div class="prompt-experience">
           <ul>
             <li>
-              <h3>输入搜索内容</h3>
+              <h3>{{ $t('productList.abao.searchContent') }}</h3>
               <div>
                 <el-input
                   v-model="textarea"
                   type="textarea"
                   :rows="8"
-                  placeholder="请输入内容"
+                  :placeholder="content"
                 />
               </div>
             </li>
             <li>
-              <h3>搜索结果</h3>
+              <h3>{{ $t('productList.abao.searchResult') }}</h3>
               <div />
             </li>
           </ul>
         </div>
       </div>
       <div class="product-characteristic">
-        <h3>产品特点</h3>
+        <h3>{{ $t('product.features') }}</h3>
         <ul>
           <li v-for="item in porduCtcharacteristic" :key="item.id">
             <img :src="item.src" :alt="item.title">
@@ -44,24 +43,24 @@
         </ul>
       </div>
       <div class="app-scene">
-        <h3>应用场景</h3>
+        <h3>{{ $t('product.scenarios') }}</h3>
         <div v-enlarge-styleBackground class="quick-search-info">
-          <p class="app-scene-dec">快速查询金融产品资讯</p>
+          <p class="app-scene-dec">{{ $t('productList.abao.quickQueryFinancial') }}</p>
         </div>
         <div class="quick-info">
           <div v-enlarge-styleBackground class="quick-transaction">
-            <p class="app-scene-dec">快速交易</p>
+            <p class="app-scene-dec">{{ $t('productList.abao.fastTrading') }}</p>
           </div>
           <div v-enlarge-styleBackground class="quick-pay">
-            <p class="app-scene-dec">快速支付</p>
+            <p class="app-scene-dec">{{ $t('productList.abao.fastPayment') }}</p>
           </div>
         </div>
         <div class="quick-info">
           <div v-enlarge-styleBackground class="quick-order">
-            <p class="app-scene-dec">快速下单</p>
+            <p class="app-scene-dec">{{ $t('productList.abao.quickOrder') }}</p>
           </div>
           <div v-enlarge-styleBackground class="quick-search">
-            <p class="app-scene-dec">快速查询</p>
+            <p class="app-scene-dec">{{ $t('productList.abao.quickQuery') }}</p>
           </div>
         </div>
       </div>
@@ -73,29 +72,36 @@
 <script>
 export default {
   name: 'AbaoProduct',
-  data: () => ({
-    textarea: '',
-    porduCtcharacteristic: [
-      {
-        id: 1,
-        src: require('@/assets/img/product/abao/characteristic1.png'),
-        title: '响应快',
-        content: '毫秒级响应。通过实时的语音转换，及时响应用户的操作。'
-      },
-      {
-        id: 2,
-        src: require('@/assets/img/product/abao/characteristic2.png'),
-        title: '金融词汇',
-        content: '丰富的金融词库，满足用户搜索金融资讯。'
-      },
-      {
-        id: 3,
-        src: require('@/assets/img/product/abao/characteristic3.png'),
-        title: '语音交互',
-        content: '支持全程语音模式，线上查询、线上开户、线上交易，实现语音一体化操作。'
-      }
-    ]
-  }),
+  data() {
+    return {
+      textarea: '',
+      porduCtcharacteristic: [
+        {
+          id: 1,
+          src: require('@/assets/img/product/abao/characteristic1.png'),
+          title: this.$t('productList.abao.fastResponse'),
+          content: this.$t('productList.abao.fastResponseContent')
+        },
+        {
+          id: 2,
+          src: require('@/assets/img/product/abao/characteristic2.png'),
+          title: this.$t('productList.abao.financialVocabulary'),
+          content: this.$t('productList.abao.financialVocabularyContent')
+        },
+        {
+          id: 3,
+          src: require('@/assets/img/product/abao/characteristic3.png'),
+          title: this.$t('productList.abao.voiceInteraction'),
+          content: this.$t('productList.abao.voiceInteractionContent')
+        }
+      ]
+    }
+  },
+  computed: {
+    content() {
+      return this.$t('form.error.content')
+    }
+  },
   methods: {
     coperation() {
       this.$router.push('/about/businessCoperation')
@@ -257,7 +263,6 @@ export default {
           top: 50%;
           left: 50%;
           transform: translate(-50%,-50%);
-          height: 21px;
           font-size: 19px;
           font-weight: 600;
           color: #FFFFFF;

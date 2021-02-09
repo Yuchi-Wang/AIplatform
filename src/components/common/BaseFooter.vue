@@ -3,22 +3,22 @@
     <div>
       <ul>
         <li>
-          <p>联系我们：021-56352617</p>
+          <p>{{ $t('footer.contactUs') }}：021-56352617</p>
         </li>
         <li>
-          <p>商务合作：xxxxxx@xxx.com</p>
+          <p>{{ $t('footer.businessCooperation') }}：xxxxxx@xxx.com</p>
         </li>
         <li class="qr-code-box">
           <img src="@/assets/img/common/qrCode.png">
-          <p>关注公众号</p>
+          <p>{{ $t('footer.publicAccount') }}</p>
         </li>
       </ul>
       <ul>
         <li>
-          <p>公网安备：1111111111号</p>
+          <p>{{ $t('footer.networkSecurity') }}：1111111111号</p>
         </li>
         <li>
-          <p>备案号：1111111111号</p>
+          <p>{{ $t('footer.recordNumber') }}：1111111111号</p>
         </li>
       </ul>
     </div>
@@ -55,8 +55,9 @@ export default {
           .qr-code-box {
             width: 100px;
             p {
+              width: 200px;
               margin-top: 10px;
-              text-align: center;
+              text-align: left;
             }
           }
         }

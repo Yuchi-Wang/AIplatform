@@ -6,13 +6,12 @@
       <p>提供金融等各行业技术服务</p>
       <div class="register-form">
         <img src="@/assets/img/user/login-title.svg" class="register-title">
-        <img src="@/assets/img/user/login-qrcode.svg" class="register-qrcode">
         <el-form ref="registerForm" :rules="rules" :model="registerForm" class="register-ruleForm">
           <el-form-item prop="userName">
             <el-input
               v-model="registerForm.userName"
               maxlength="18"
-              placeholder="请输入手机号码/邮箱账号/用户名"
+              :placeholder="loginRemain"
             />
           </el-form-item>
           <el-form-item prop="verificationCode">
@@ -20,16 +19,16 @@
               v-model.number="registerForm.verificationCode"
               maxlength="6"
               class="verification-input"
-              placeholder="请输入验证码"
+              :placeholder="vCode"
             />
-            <el-button class="verification-button" @click.prevent="getVerificationCode">获取验证码</el-button>
+            <el-button class="verification-button" @click.prevent="getVerificationCode">{{ $t('button.getVCode') }}</el-button>
           </el-form-item>
           <el-form-item prop="password">
             <el-input
               v-model="registerForm.password"
               maxlength="16"
               class="password-input"
-              placeholder="请输入密码"
+              :placeholder="password"
               show-password
             />
           </el-form-item>
@@ -37,15 +36,15 @@
             <el-input
               v-model="registerForm.confirmPassword"
               type="password"
-              placeholder="请再次输入密码"
+              :placeholder="passwordAgain"
               show-password
             />
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" class="register-button" @click="submitForm('registerForm')">找回密码</el-button>
+            <el-button type="primary" class="register-button" @click="submitForm('registerForm')">{{ $t('button.submit') }}</el-button>
           </el-form-item>
         </el-form>
-        <el-button class="login-button" @click="turnBack">返回登录</el-button>
+        <el-button class="login-button" @click="turnBack">{{ $t('button.backTologin') }}</el-button>
       </div>
       <footer>
         <p>
@@ -64,9 +63,9 @@ export default {
   data() {
     const checkPassword = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请再次输入密码'))
+        callback(new Error(this.$t('form.error.passwordAgain')))
       } else if (value !== this.registerForm.password) {
-        callback(new Error('两次输入密码不一致!'))
+        callback(new Error(this.$t('form.error.passwordConfirm')))
       } else {
         callback()
       }
@@ -80,20 +79,35 @@ export default {
       },
       rules: {
         userName: [
-          { required: true, message: '请输入用户名', trigger: 'blur' }
+          { required: true, message: this.$t('form.error.userName'), trigger: 'blur' },
+          { min: 6, max: 18, message: this.$t('form.error.userNameLength'), trigger: 'blur' }
         ],
         verificationCode: [
-          { required: true, message: '请输入验证码', trigger: 'blur' },
-          { min: 6, max: 6, message: '请输入正确的验证码', trigger: 'blur' }
+          { required: true, message: this.$t('form.error.vCode'), trigger: 'blur' },
+          { min: 6, max: 6, message: this.$t('form.error.vCodeConfirm'), trigger: 'blur' }
         ],
         password: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 6, max: 16, message: '密码长度在 6 到 16 个字符', trigger: 'blur' }
+          { required: true, message: this.$t('form.error.password'), trigger: 'blur' },
+          { min: 6, max: 16, message: this.$t('form.error.passwordLength'), trigger: 'blur' }
         ],
         confirmPassword: [
           { validator: checkPassword, trigger: 'blur' }
         ]
       }
+    }
+  },
+  computed: {
+    loginRemain() {
+      return this.$t('form.error.loginName')
+    },
+    password() {
+      return this.$t('form.error.password')
+    },
+    passwordAgain() {
+      return this.$t('form.error.passwordAgain')
+    },
+    vCode() {
+      return this.$t('form.error.vCode')
     }
   },
   methods: {
@@ -185,11 +199,6 @@ body, html {
         .register-title {
           width: 157px;
           margin-top: 47px;
-        }
-        .register-qrcode {
-          position: absolute;
-          top: -5px;
-          right: -5px;
         }
         .register-ruleForm {
           padding: 20px 50px 0 50px;
