@@ -21,6 +21,10 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+// 兼容火狐
+.app-wrapper /deep/ .baseHeader .el-menu--horizontal  .el-submenu__icon-arrow {
+  color: #fff!important;
+}
 .app-wrapper {
   position: relative;
   width: 100%;

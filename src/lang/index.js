@@ -25,7 +25,7 @@ const messages = {
 }
 
 const i18n = new VueI18n({
-  locale: localStorage.getItem('lang') || 'zh',
+  locale: sessionStorage.getItem('lang') || 'zh',
   messages
 })
 

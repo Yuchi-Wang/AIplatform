@@ -174,9 +174,6 @@ export default {
       selectAppScenariosIndex: -1
     }
   },
-  mounted() {
-    console.log(this.$t('defaultPage.promptIntroduction'))
-  },
   methods: {
     coperation() {
       this.$router.push('/about/businessCoperation')

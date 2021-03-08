@@ -43,6 +43,10 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+// 兼容火狐
+.app-wrapper /deep/ .baseHeader .el-menu--horizontal  .el-submenu__icon-arrow {
+  color: #000!important;
+}
 .app-wrapper {
   position: relative;
   width: 100%;
@@ -119,14 +123,4 @@ export default {
     }
   }
 }
-// .baseHeader {
-//   /deep/ .el-menu--horizontal {
-//   /deep/ .el-menu--popup-bottom-start {
-//     background: rgba(0, 0, 0, 0.6)!important;
-//   }
-//   /deep/ .el-submenu__icon-arrow {
-//     color: #fff!important;
-//   }
-// }
-// }
 </style>

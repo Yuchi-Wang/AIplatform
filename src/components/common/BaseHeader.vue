@@ -97,7 +97,7 @@ export default {
         text: '繁體中文'
       }
     ],
-    lang: localStorage.getItem('langText') || '简体中文'
+    lang: sessionStorage.getItem('langText') || '简体中文'
   }),
   methods: {
     goIndex() {
@@ -109,8 +109,8 @@ export default {
     handleCommand(command) {
       this.$i18n.locale = command.vaule
       this.lang = command.text
-      localStorage.setItem('lang', command.vaule)
-      localStorage.setItem('langText', command.text)
+      sessionStorage.setItem('lang', command.vaule)
+      sessionStorage.setItem('langText', command.text)
       location.reload()
     }
   }
@@ -169,5 +169,14 @@ export default {
 .el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
   background: #4575FF!important;
   color: #fff!important;
+}
+
+// 兼容火狐／deep／失效问题
+.baseHeader .el-dropdown {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
 }
 </style>
